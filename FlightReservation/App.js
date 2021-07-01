@@ -1,14 +1,20 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Provider} from 'react-redux';
-import {store} from './src/store/store';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SignUp from './src/screens/SignUp';
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <Provider store={store}>
-      <View>
-        <Text>App</Text>
-      </View>
-    </Provider>
+    <NavigationContainer>
+      <Stack.Navigator  screenOptions={{header: () => null}}>
+        <Stack.Screen name="SignUp" component={SignUp} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
+
+export default App;
