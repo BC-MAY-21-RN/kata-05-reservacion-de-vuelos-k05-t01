@@ -1,34 +1,17 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, TextInput, SafeAreaView} from 'react-native';
+import {View, Text, Button, SafeAreaView} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from '../store/store';
 import {Formik} from 'formik';
-import CheckBox from '@react-native-community/checkbox';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import * as yup from 'yup';
+import TextField from '../components/form/TextField';
+import PasswordField from '../components/form/PasswordField';
+import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignIn';
+import CheckBoxField from '../components/form/CheckBoxField';
 
 const SignUp = function () {
-  const [showPassword, setShowPassword] = useState(false);
-  const [subscribeForProducts, setSubscribeForProducts] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const signUpValidationSchema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    email: yup.string().required('Email Address is Required'),
-    password: yup
-      .string()
-      .min(8, ({min}) => `Password must be at least ${min}`)
-      .required('Password is required')
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character',
-      ),
-    agreeTerms: yup
-      .bool()
-      .oneOf([true], 'Accept Terms & Conditions is required'),
-  });
 
   const handleSignIn = values => {
     const {name, email, password} = values;
@@ -53,77 +36,41 @@ const SignUp = function () {
           }}
           validateOnMount={true}
           onSubmit={values => handleSignIn(values)}>
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            setFieldValue,
-            values,
-            touched,
-            errors,
-            isValid,
-          }) => (
+          {formProps => (
             <View>
               <Text>Sign up</Text>
               <View>
-                <Text>Name</Text>
-                <TextInput
-                  onChangeText={handleChange('name')}
-                  onBlur={handleBlur('name')}
-                  value={values.name}
-                />
-                {errors.name && touched.name && <Text>{errors.name}</Text>}
+                <TextField {...formProps} label="Name" name="name" />
               </View>
               <View>
-                <Text>Email</Text>
-                <TextInput
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
-                />
-                {errors.email && touched.email && <Text>{errors.email}</Text>}
+                <TextField {...formProps} label="Email" name="email" />
               </View>
               <View>
-                <Text>Password</Text>
-                <TextInput
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                  value={values.password}
-                  secureTextEntry={!showPassword}
+                <PasswordField
+                  {...formProps}
+                  title="Password"
+                  name="password"
                 />
-                <Icon
-                  name={showPassword ? 'visibility' : 'visibility-off'}
-                  onPress={() => setShowPassword(!showPassword)}
-                />
-                {errors.password && touched.password && (
-                  <Text>{errors.password}</Text>
-                )}
               </View>
               <View>
-                <CheckBox
-                  disabled={false}
-                  onValueChange={newValue =>
-                    setFieldValue('agreeTerms', newValue)
-                  }
-                  value={values.agreeTerms}
+                <CheckBoxField
+                  {...formProps}
+                  label="I agree with the Terms and Privacy Policy. *"
+                  name="agreeTerms"
                 />
-                {errors.agreeTerms && touched.agreeTerms && (
-                  <Text>{errors.agreeTerms}</Text>
-                )}
-                <Text>I agree with the Terms and Privacy Policy.</Text>
-                <Text>*</Text>
-                <CheckBox
-                  disabled={false}
-                  onValueChange={newValue => setSubscribeForProducts(newValue)}
-                  value={subscribeForProducts}
+              </View>
+              <View>
+                <CheckBoxField
+                  {...formProps}
+                  label="Subscribe for select product updates."
+                  name="subscribeForProducts"
                 />
-                <Text>Subscribe for select product updates.</Text>
               </View>
               <View>
                 <Button
                   rounded
-                  disabled={!isValid || loading}
-                  onPress={handleSubmit}
+                  disabled={!formProps.isValid || loading}
+                  onPress={formProps.handleSubmit}
                   title="Sign up"
                 />
                 <Text>or</Text>
