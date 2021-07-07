@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, TextInput, StyleSheet, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+// import {Colors} from 'react-native/Libraries/NewAppScreen';
 import colors from '../../consts/colors';
 
 export default function TextField({
@@ -14,13 +14,13 @@ export default function TextField({
 }) {
   return (
     <>
-      <View style={style.inputs__container}>
-        <Text style={style.textField__text}>{label}</Text>
+      <View style={style.inputs_nameAndMail_container}>
+        <Text style={style.textField_text}>{label}</Text>
         <TextInput
           onChangeText={handleChange(name)}
           onBlur={handleBlur(name)}
           value={values[name]}
-          style={style.textField__input}
+          style={style.input}
         />
         {errors[name] && touched[name] && <Text>{errors[name]}</Text>}
       </View>
@@ -29,18 +29,18 @@ export default function TextField({
 }
 
 const style = StyleSheet.create({
-  textField__text: {
-    color: '#fff',
-    fontSize: 20,
-    paddingLeft: 20,
-    alignSelf: 'flex-start',
-  },
-  inputs__container: {
+  inputs_nameAndMail_container: {
     flexDirection: 'column',
     alignItems: 'center',
     paddingBottom: 18,
   },
-  textField__input: {
+  textField_text: {
+    color: colors.white,
+    fontSize: 20,
+    paddingLeft: 20,
+    alignSelf: 'flex-start',
+  },
+  input: {
     paddingLeft: 20,
     backgroundColor: colors.light_green,
     borderColor: colors.white,
