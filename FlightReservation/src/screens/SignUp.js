@@ -7,18 +7,19 @@ import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
-import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignIn';
+import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 
 const SignUp = function () {
   const [loading, setLoading] = useState(false);
+  const [emailInUseError, setEmailInUseError] = useState(false);
 
   const handleSignIn = values => {
     const {name, email, password} = values;
     setLoading(true);
     signInWithNameEmailAndPassword(name, email, password)
-      .then(console.log)
-      .catch(console.log)
+      .then(() => setEmailInUseError(false))
+      .catch(() => setEmailInUseError(true))
       .finally(() => setLoading(false));
   };
 
@@ -26,6 +27,7 @@ const SignUp = function () {
     <SafeAreaView>
       <Provider store={store}>
         {loading && <Text>Loading...</Text>}
+        {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
         <Formik
           validationSchema={signUpValidationSchema}
           initialValues={{
