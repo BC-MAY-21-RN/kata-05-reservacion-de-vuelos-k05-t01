@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView} from 'react-native';
+import {View, Text, Button, SafeAreaView, StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from '../store/store';
 import {Formik} from 'formik';
@@ -9,6 +9,8 @@ import PasswordField from '../components/form/PasswordField';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignIn';
 import CheckBoxField from '../components/form/CheckBoxField';
+import colors from '../consts/colors';
+import {bool} from 'yup';
 
 const SignUp = function () {
   const [loading, setLoading] = useState(false);
@@ -38,19 +40,26 @@ const SignUp = function () {
           onSubmit={values => handleSignIn(values)}>
           {formProps => (
             <View>
-              <Text>Sign up</Text>
-              <View>
-                <TextField {...formProps} label="Name" name="name" />
-              </View>
-              <View>
-                <TextField {...formProps} label="Email" name="email" />
-              </View>
-              <View>
-                <PasswordField
-                  {...formProps}
-                  title="Password"
-                  name="password"
-                />
+              <View style={{backgroundColor: colors.green}}>
+                <Text style={style.title}>Sign Up</Text>
+                <View style={style.textField__text}>
+                  <TextField
+                    {...formProps}
+                    label="Name"
+                    name="name"
+                    style={{backgroundColor: colors.orange}}
+                  />
+                </View>
+                <View>
+                  <TextField {...formProps} label="Email" name="email" />
+                </View>
+                <View>
+                  <PasswordField
+                    {...formProps}
+                    title="Password"
+                    name="password"
+                  />
+                </View>
               </View>
               <View>
                 <CheckBoxField
@@ -85,5 +94,17 @@ const SignUp = function () {
     </SafeAreaView>
   );
 };
+
+const style = StyleSheet.create({
+  title: {
+    // backgroundColor: colors.green,
+    fontSize: 28,
+    color: colors.white,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingBottom: 50,
+  },
+});
 
 export default SignUp;
