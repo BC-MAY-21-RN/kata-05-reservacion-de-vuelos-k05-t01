@@ -26,8 +26,6 @@ export default function PasswordField({
             style={style.password_text}
           />
           <Icon
-            // size={25}
-            // color={colors.white}
             style={style.icon}
             name={showPassword ? 'visibility' : 'visibility-off'}
             onPress={() => setShowPassword(!showPassword)}
@@ -35,13 +33,12 @@ export default function PasswordField({
         </View>
 
         {errors[name] && touched[name] && <Text>{errors[name]}</Text>}
-        {/* <Icon
-          // style={style.password_icon}
-          name={showPassword ? 'visibility' : 'visibility-off'}
-          onPress={() => setShowPassword(!showPassword)}
-        /> */}
+
         {errors.password && touched.password && <Text>{errors.password}</Text>}
       </View>
+      <Text style={style.password_advice}>
+        Use 8 or more characters with a mix of letter, numbers and symbols
+      </Text>
     </>
   );
 }
@@ -50,7 +47,7 @@ const style = StyleSheet.create({
   input_password_container: {
     flexDirection: 'column',
     alignItems: 'center',
-    paddingBottom: 18,
+    paddingBottom: 10,
   },
   textField_text: {
     color: colors.white,
@@ -79,5 +76,12 @@ const style = StyleSheet.create({
     fontSize: 25,
     color: colors.white,
     paddingRight: 20,
+  },
+  password_advice: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 10,
+    color: colors.white,
+    alignSelf: 'center',
   },
 });
