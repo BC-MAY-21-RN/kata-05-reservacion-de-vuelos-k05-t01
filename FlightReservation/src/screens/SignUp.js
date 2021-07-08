@@ -126,7 +126,7 @@ const SignUp = function () {
                   </Pressable>
 
                   <View style={style.lower_content_text}>
-                    <Text style={{paddingTop: 30}}>
+                    <Text style={{paddingTop: 20}}>
                       Already have an account?
                       <Text
                         style={{color: 'blue'}}
@@ -153,7 +153,7 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 20,
     paddingLeft: 20,
-    paddingBottom: 50,
+    paddingBottom: 30,
   },
   inferior_content_container: {
     flexDirection: 'column',
