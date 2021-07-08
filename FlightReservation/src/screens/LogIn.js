@@ -8,16 +8,15 @@ import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
-import CheckBoxField from '../components/form/CheckBoxField';
 
-const SignUp = function () {
+const LogIn = function () {
   const [loading, setLoading] = useState(false);
-  const [emailInUseError, setEmailInUseError] = useState(false);
+//   const [emailInUseError, setEmailInUseError] = useState(false);
 
   const handleSignIn = values => {
-    const {name, email, password} = values;
+    const {email, password} = values;
     setLoading(true);
-    signInWithNameEmailAndPassword(name, email, password)
+    signInWithNameEmailAndPassword(email, password)
       .then(() => setEmailInUseError(false))
       .catch(() => setEmailInUseError(true))
       .finally(() => setLoading(false));
@@ -27,7 +26,7 @@ const SignUp = function () {
     <SafeAreaView>
       <Provider store={store}>
         {loading && <Text>Loading...</Text>}
-        {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
+        {/* {emailInUseError && <Text>Email in use. Use a diferent email</Text>} */}
         <Formik
           validationSchema={signUpValidationSchema}
           initialValues={{
@@ -40,10 +39,7 @@ const SignUp = function () {
           onSubmit={values => handleSignIn(values)}>
           {formProps => (
             <View>
-              <Text>Sign up</Text>
-              <View>
-                <TextField {...formProps} label="Name" name="name" />
-              </View>
+              <Text>Log in</Text>
               <View>
                 <TextField {...formProps} label="Email" name="email" />
               </View>
@@ -55,30 +51,16 @@ const SignUp = function () {
                 />
               </View>
               <View>
-                <CheckBoxField
-                  {...formProps}
-                  label="I agree with the Terms and Privacy Policy. *"
-                  name="agreeTerms"
-                />
-              </View>
-              <View>
-                <CheckBoxField
-                  {...formProps}
-                  label="Subscribe for select product updates."
-                  name="subscribeForProducts"
-                />
-              </View>
-              <View>
                 <Button
                   rounded
                   disabled={!formProps.isValid || loading}
                   onPress={formProps.handleSubmit}
-                  title="Sign up"
+                  title="Log in"
                 />
                 <Text>or</Text>
-                <Button title="Sign up with Google" />
-                <Text>already have an account?</Text>
-                <Text>Log in</Text>
+                <Button title="Log in with Google" />
+                <Text>Don't have an account?</Text>
+                <Text>Sign up</Text>
               </View>
             </View>
           )}
@@ -88,5 +70,4 @@ const SignUp = function () {
   );
 };
 
-
-export default SignUp;
+export default LogIn;
