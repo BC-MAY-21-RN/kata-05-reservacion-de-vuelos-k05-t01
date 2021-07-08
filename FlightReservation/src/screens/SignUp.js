@@ -18,6 +18,7 @@ import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignIn';
 import CheckBoxField from '../components/form/CheckBoxField';
 import colors from '../consts/colors';
 import {bool} from 'yup';
+import style from './../consts/style';
 
 const SignUp = function () {
   const [loading, setLoading] = useState(false);
@@ -145,34 +146,5 @@ const SignUp = function () {
     </SafeAreaView>
   );
 };
-
-const style = StyleSheet.create({
-  title: {
-    fontSize: 28,
-    color: colors.white,
-    fontWeight: 'bold',
-    paddingTop: 20,
-    paddingLeft: 20,
-    paddingBottom: 30,
-  },
-  inferior_content_container: {
-    flexDirection: 'column',
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  lower_content_text: {
-    alignSelf: 'center',
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  btn: {
-    height: 50,
-    marginHorizontal: 20,
-    backgroundColor: colors.orange,
-    borderRadius: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default SignUp;

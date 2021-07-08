@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Text, TextInput, View, StyleSheet} from 'react-native';
-import colors from '../../consts/colors';
+import style from './../../consts/style';
 
 export default function PasswordField({
   handleChange,
@@ -42,46 +42,3 @@ export default function PasswordField({
     </>
   );
 }
-
-const style = StyleSheet.create({
-  input_password_container: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingBottom: 10,
-  },
-  textField_text: {
-    color: colors.white,
-    fontSize: 20,
-    paddingLeft: 20,
-    alignSelf: 'flex-start',
-  },
-  password_inputField_container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: colors.light_green,
-    borderRadius: 5,
-    borderWidth: 0.5,
-    borderColor: colors.white,
-    height: 50,
-    width: 350,
-  },
-  password_text: {
-    paddingLeft: 20,
-    color: colors.white,
-    fontSize: 20,
-    height: 50,
-  },
-  icon: {
-    fontSize: 25,
-    color: colors.white,
-    paddingRight: 20,
-  },
-  password_advice: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 10,
-    color: colors.white,
-    alignSelf: 'center',
-  },
-});
