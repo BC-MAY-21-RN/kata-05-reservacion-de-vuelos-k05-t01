@@ -163,6 +163,7 @@ const style = StyleSheet.create({
   lower_content_text: {
     alignSelf: 'center',
     fontSize: 15,
+    fontWeight: 'bold',
   },
   btn: {
     height: 50,
