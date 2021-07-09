@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {View, Text, Button, SafeAreaView} from 'react-native';
-import {Provider} from 'react-redux';
-import {store} from '../store/store';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -11,7 +9,6 @@ import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 
 const LogIn = function () {
   const [loading, setLoading] = useState(false);
-//   const [emailInUseError, setEmailInUseError] = useState(false);
 
   const handleSignIn = values => {
     const {email, password} = values;
@@ -24,9 +21,7 @@ const LogIn = function () {
 
   return (
     <SafeAreaView>
-      <Provider store={store}>
         {loading && <Text>Loading...</Text>}
-        {/* {emailInUseError && <Text>Email in use. Use a diferent email</Text>} */}
         <Formik
           validationSchema={signUpValidationSchema}
           initialValues={{
@@ -65,7 +60,6 @@ const LogIn = function () {
             </View>
           )}
         </Formik>
-      </Provider>
     </SafeAreaView>
   );
 };

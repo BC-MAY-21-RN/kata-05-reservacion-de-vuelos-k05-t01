@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {View, Text, Button, SafeAreaView} from 'react-native';
-import {Provider} from 'react-redux';
-import {store} from '../store/store';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -25,7 +23,6 @@ const SignUp = function () {
 
   return (
     <SafeAreaView>
-      <Provider store={store}>
         {loading && <Text>Loading...</Text>}
         {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
         <Formik
@@ -83,7 +80,6 @@ const SignUp = function () {
             </View>
           )}
         </Formik>
-      </Provider>
     </SafeAreaView>
   );
 };
