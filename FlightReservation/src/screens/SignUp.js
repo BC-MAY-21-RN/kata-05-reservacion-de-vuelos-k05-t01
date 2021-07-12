@@ -82,15 +82,7 @@ const SignUp = function () {
                     Subscribe for select product updates.
                   </Text>
                 </View>
-                <View>
-                  {/* <Button
-                    rounded
-                    disabled={!formProps.isValid || loading}
-                    onPress={formProps.handleSubmit}
-                    title="Sign up"
-                  />
-                  <Text style={style.inferior_content_text}>or</Text>
-                  <Button title="Sign up with Google" /> */}
+                <View>               
                   <View
                     style={{
                       flex: 1,
@@ -148,3 +140,4 @@ const SignUp = function () {
 };
 
 export default SignUp;
+
