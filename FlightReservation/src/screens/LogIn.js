@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView} from 'react-native';
+import {View, Text, Button, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 
-const LogIn = function () {
+const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = values => {
@@ -54,8 +54,12 @@ const LogIn = function () {
                 />
                 <Text>or</Text>
                 <Button title="Log in with Google" />
-                <Text>Don't have an account?</Text>
-                <Text>Sign up</Text>
+                <Text>
+                  Don't have an account?
+                </Text>
+                <TouchableOpacity onPress={()=> {navigation.navigate("SignUp")}}>
+                  <Text>Sign up</Text>
+                </TouchableOpacity>
               </View>
             </View>
           )}
