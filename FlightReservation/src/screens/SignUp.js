@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView} from 'react-native';
+import {View, Text, Button, SafeAreaView, Pressable,TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -11,7 +11,7 @@ import colors from '../consts/colors';
 import {bool} from 'yup';
 import style from './../consts/style';
 
-const SignUp = function () {
+const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
   const [emailInUseError, setEmailInUseError] = useState(false);
 
@@ -109,17 +109,13 @@ const SignUp = function () {
                     </Text>
                   </View>
                 </Pressable>
-
                 <View style={style.lower_content_text}>
                   <Text style={{paddingTop: 20}}>
                     Already have an account?
-                    <Text
-                      style={{color: 'blue'}}
-                      onPress={() => Linking.openURL('http://google.com')}>
-                      {' '}
-                      Log in{' '}
-                    </Text>
                   </Text>
+                  <TouchableOpacity onPress={()=> {navigation.navigate("LogIn")}}>
+                    <Text style={{color: 'blue'}}>Log in</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
