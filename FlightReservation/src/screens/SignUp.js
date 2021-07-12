@@ -7,6 +7,9 @@ import PasswordField from '../components/form/PasswordField';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
+import colors from '../consts/colors';
+import {bool} from 'yup';
+import style from './../consts/style';
 
 const SignUp = function () {
   const [loading, setLoading] = useState(false);
@@ -23,23 +26,29 @@ const SignUp = function () {
 
   return (
     <SafeAreaView>
-        {loading && <Text>Loading...</Text>}
-        {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
-        <Formik
-          validationSchema={signUpValidationSchema}
-          initialValues={{
-            name: 'Juan',
-            email: 'juan1@example.com',
-            password: 'Juan123%',
-            agreeTerms: true,
-          }}
-          validateOnMount={true}
-          onSubmit={values => handleSignIn(values)}>
-          {formProps => (
-            <View>
-              <Text>Sign up</Text>
-              <View>
-                <TextField {...formProps} label="Name" name="name" />
+      {loading && <Text>Loading...</Text>}
+      {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
+      <Formik
+        validationSchema={signUpValidationSchema}
+        initialValues={{
+          name: 'Juan',
+          email: 'juan1@example.com',
+          password: 'Juan123%',
+          agreeTerms: true,
+        }}
+        validateOnMount={true}
+        onSubmit={values => handleSignIn(values)}>
+        {formProps => (
+          <View>
+            <View style={{backgroundColor: colors.green}}>
+              <Text style={style.title}>Sign Up</Text>
+              <View style={style.textField__text}>
+                <TextField
+                  {...formProps}
+                  label="Name"
+                  name="name"
+                  style={{backgroundColor: colors.orange}}
+                />
               </View>
               <View>
                 <TextField {...formProps} label="Email" name="email" />
@@ -51,38 +60,74 @@ const SignUp = function () {
                   name="password"
                 />
               </View>
-              <View>
-                <CheckBoxField
-                  {...formProps}
-                  label="I agree with the Terms and Privacy Policy. *"
-                  name="agreeTerms"
-                />
+            </View>
+            <View style={style.inferior_content_container}>
+              <View style={{flexDirection: 'row', paddingTop: 20}}>
+                <CheckBoxField {...formProps} name="agreeTerms" />
+                <Text style={style.lower_content_text}>
+                  I agree with the Terms and Privacy Policy. *
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row'}}>
+                <CheckBoxField {...formProps} name="subscribeForProducts" />
+                <Text style={style.lower_content_text}>
+                  Subscribe for select product updates.
+                </Text>
               </View>
               <View>
-                <CheckBoxField
-                  {...formProps}
-                  label="Subscribe for select product updates."
-                  name="subscribeForProducts"
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'flex-end',
+                    paddingBottom: 40,
+                  }}
                 />
-              </View>
-              <View>
-                <Button
-                  rounded
+                <Pressable
                   disabled={!formProps.isValid || loading}
-                  onPress={formProps.handleSubmit}
-                  title="Sign up"
-                />
-                <Text>or</Text>
-                <Button title="Sign up with Google" />
-                <Text>already have an account?</Text>
-                <Text>Log in</Text>
+                  onPress={formProps.handleSubmit}>
+                  <View style={style.btn}>
+                    <Text style={{color: colors.white, fontSize: 18}}>
+                      Sign Up
+                    </Text>
+                  </View>
+                </Pressable>
+
+                <Text
+                  style={[
+                    style.lower_content_text,
+                    {paddingTop: 10, paddingBottom: 10},
+                  ]}>
+                  or
+                </Text>
+
+                <Pressable
+                  disabled={!formProps.isValid || loading}
+                  onPress={formProps.handleSubmit}>
+                  <View style={style.btn}>
+                    <Text style={{color: colors.white, fontSize: 18}}>
+                      Sign Up with Google
+                    </Text>
+                  </View>
+                </Pressable>
+
+                <View style={style.lower_content_text}>
+                  <Text style={{paddingTop: 20}}>
+                    Already have an account?
+                    <Text
+                      style={{color: 'blue'}}
+                      onPress={() => Linking.openURL('http://google.com')}>
+                      {' '}
+                      Log in{' '}
+                    </Text>
+                  </Text>
+                </View>
               </View>
             </View>
-          )}
-        </Formik>
+          </View>
+        )}
+      </Formik>
     </SafeAreaView>
   );
 };
-
 
 export default SignUp;
