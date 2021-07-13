@@ -10,6 +10,7 @@ import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
 
+  //Change the handleSignIn function for the handleLogIn
   const handleSignIn = values => {
     const {email, password} = values;
     setLoading(true);
