@@ -4,12 +4,13 @@ import {View, Text, Button, SafeAreaView, Pressable,TouchableOpacity} from 'reac
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
+import ButtonForm from '../components/form/ButtonForm';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import colors from '../consts/colors';
-import {bool} from 'yup';
 import style from './../consts/style';
+import {bool} from 'yup';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -82,16 +83,7 @@ const SignUp = function ({navigation}) {
                     paddingBottom: 40,
                   }}
                 />
-                <Pressable
-                  disabled={!formProps.isValid || loading}
-                  onPress={formProps.handleSubmit}>
-                  <View style={style.btn}>
-                    <Text style={{color: colors.white, fontSize: 18}}>
-                      Sign Up
-                    </Text>
-                  </View>
-                </Pressable>
-
+                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
                 <Text
                   style={[
                     style.lower_content_text,
@@ -99,16 +91,7 @@ const SignUp = function ({navigation}) {
                   ]}>
                   or
                 </Text>
-
-                <Pressable
-                  disabled={!formProps.isValid || loading}
-                  onPress={formProps.handleSubmit}>
-                  <View style={style.btn}>
-                    <Text style={{color: colors.white, fontSize: 18}}>
-                      Sign Up with Google
-                    </Text>
-                  </View>
-                </Pressable>
+                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign Up with Google" loading = {loading}/>
                 <View style={style.lower_content_text}>
                   <Text style={{paddingTop: 20}}>
                     Already have an account?
