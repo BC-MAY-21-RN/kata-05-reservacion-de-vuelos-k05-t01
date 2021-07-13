@@ -4,7 +4,7 @@ import {View, Text, Button, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
-import {signUpValidationSchema} from '../schemas/signUpSchema';
+import {logInValidationSchema} from '../schemas/logInSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 
 const LogIn = function ({navigation}) {
@@ -23,12 +23,10 @@ const LogIn = function ({navigation}) {
     <SafeAreaView>
         {loading && <Text>Loading...</Text>}
         <Formik
-          validationSchema={signUpValidationSchema}
+          validationSchema={logInValidationSchema}
           initialValues={{
-            name: 'Juan',
             email: 'juan1@example.com',
             password: 'Juan123%',
-            agreeTerms: true,
           }}
           validateOnMount={true}
           onSubmit={values => handleSignIn(values)}>
