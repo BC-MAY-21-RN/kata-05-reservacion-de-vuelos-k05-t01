@@ -1,11 +1,13 @@
 /* eslint-disable prettier/prettier */
+import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SignUp from './src/screens/SignUp';
+import LogIn from './src/screens/LogIn';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
-import LogIn from './src/screens/LogIn';
+// import LogIn from './src/screens/LogIn';
 
 const Stack = createStackNavigator();
 

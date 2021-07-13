@@ -3,6 +3,11 @@ import colors from './colors';
 
 const style = StyleSheet.create({
   //* SignUp Style *//
+
+  upper_background: {
+    backgroundColor: colors.green,
+  },
+
   title: {
     fontSize: 28,
     color: colors.white,

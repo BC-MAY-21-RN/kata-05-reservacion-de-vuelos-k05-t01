@@ -1,6 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  SafeAreaView,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -10,7 +17,7 @@ import CheckBoxField from '../components/form/CheckBoxField';
 import colors from '../consts/colors';
 import {bool} from 'yup';
 import style from './../consts/style';
-import {Pressable} from 'react-native';
+// import {Pressable} from 'react-native';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -41,7 +48,7 @@ const SignUp = function ({navigation}) {
         onSubmit={values => handleSignIn(values)}>
         {formProps => (
           <View>
-            <View style={{backgroundColor: colors.green}}>
+            <View style={style.upper_background}>
               <Text style={style.title}>Sign Up</Text>
               <View style={style.textField__text}>
                 <TextField
@@ -110,15 +117,15 @@ const SignUp = function ({navigation}) {
                     </Text>
                   </View>
                 </Pressable>
-
                 <View style={style.lower_content_text}>
                   <Text style={{paddingTop: 20}}>
                     Already have an account?
-                    <Text
-                      style={{color: 'blue'}}
-                      onPress={() => navigation.navigate('LogIn')}>
-                      Log in
-                    </Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate('LogIn');
+                      }}>
+                      <Text style={{color: 'blue'}}> Log in</Text>
+                    </TouchableOpacity>
                   </Text>
                 </View>
               </View>
