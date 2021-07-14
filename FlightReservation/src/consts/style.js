@@ -3,6 +3,12 @@ import colors from './colors';
 
 const style = StyleSheet.create({
   //* SignUp Style *//
+  textFieldView: {
+    backgroundColor: colors.green,
+  },
+  textFieldBG : {
+    backgroundColor: colors.orange,
+  },
   title: {
     fontSize: 28,
     color: colors.white,
@@ -20,6 +26,8 @@ const style = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 15,
     fontWeight: 'bold',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   btn: {
     height: 50,
@@ -28,6 +36,25 @@ const style = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  btnForm: {
+    fontSize:18,
+    color: colors.white,
+  },
+  termsView : {
+    flexDirection: 'row',
+    paddingTop: 20,
+  },
+  signUpBtns: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: 40,
+  },
+  alreadyTxt: {
+    paddingTop: 20,
+  },
+  logInLink :{
+    color: colors.blue,
   },
 
   //* PasswordFields Style *//
