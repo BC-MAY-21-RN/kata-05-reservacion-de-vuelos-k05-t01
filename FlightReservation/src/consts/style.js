@@ -8,6 +8,12 @@ const style = StyleSheet.create({
     backgroundColor: colors.green,
   },
 
+  textFieldView: {
+    backgroundColor: colors.green,
+  },
+  textFieldBG: {
+    backgroundColor: colors.orange,
+  },
   title: {
     fontSize: 28,
     color: colors.white,
@@ -21,10 +27,17 @@ const style = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
+  termsView: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingTop: 10,
+  },
   lower_content_text: {
     alignSelf: 'center',
     fontSize: 15,
     fontWeight: 'bold',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   btn: {
     height: 50,
@@ -33,6 +46,25 @@ const style = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  btnForm: {
+    fontSize: 18,
+    color: colors.white,
+  },
+  buttons_container: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: 20,
+  },
+  button_text: {
+    color: colors.white,
+    fontSize: 18,
+  },
+  alreadyTxt: {
+    paddingTop: 10,
+  },
+  account_link: {
+    color: colors.blue,
   },
 
   //* PasswordFields Style *//

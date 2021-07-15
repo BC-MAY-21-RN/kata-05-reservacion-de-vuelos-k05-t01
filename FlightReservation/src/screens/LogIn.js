@@ -51,21 +51,13 @@ const LogIn = function ({navigation}) {
             </View>
 
             <View>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: 'flex-end',
-                  paddingBottom: 40,
-                }}
-              />
+              <View style={style.buttons_container} />
               <Pressable
                 disabled={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}
                 title="Log in">
                 <View style={style.btn}>
-                  <Text style={{color: colors.white, fontSize: 18}}>
-                    Log In
-                  </Text>
+                  <Text style={style.button_text}>Log In</Text>
                 </View>
               </Pressable>
 
@@ -81,19 +73,17 @@ const LogIn = function ({navigation}) {
                 disabled={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}>
                 <View style={style.btn}>
-                  <Text style={{color: colors.white, fontSize: 18}}>
-                    Log In with Google
-                  </Text>
+                  <Text style={style.button_text}>Log In with Google</Text>
                 </View>
               </Pressable>
               <View style={style.lower_content_text}>
                 <Text
-                  style={{paddingTop: 20}}
+                  style={style.alreadyTxt}
                   onPress={() => {
                     navigation.navigate('SignUp');
                   }}>
                   Already have an account?{' '}
-                  <Text style={{color: 'blue'}}>Sign up</Text>
+                  <Text style={style.account_link}>Sign up</Text>
                 </Text>
               </View>
             </View>

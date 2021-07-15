@@ -4,6 +4,7 @@ const colors = {
   orange: '#FC8417',
   white: '#fff',
   dark: '#1C1C1C',
+  blue: '#0000ff',
 };
 
 export default colors;
