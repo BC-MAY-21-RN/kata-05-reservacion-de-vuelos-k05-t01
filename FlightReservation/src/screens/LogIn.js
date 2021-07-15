@@ -61,13 +61,7 @@ const LogIn = function ({navigation}) {
                 </View>
               </Pressable>
 
-              <Text
-                style={[
-                  style.lower_content_text,
-                  {paddingTop: 10, paddingBottom: 10},
-                ]}>
-                or
-              </Text>
+              <Text style={style.lower_content_text}>or</Text>
 
               <Pressable
                 disabled={!formProps.isValid || loading}
