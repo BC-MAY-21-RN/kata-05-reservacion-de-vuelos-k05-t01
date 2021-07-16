@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView, Pressable,TouchableOpacity} from 'react-native';
+import {View, Text, Button, SafeAreaView, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -69,28 +69,40 @@ const SignUp = function ({navigation}) {
                   {I18n.t('terms')}
                 </Text>
               </View>
-              <View style={{flexDirection: 'row'}}>
+              <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="subscribeForProducts" />
                 <Text style={style.lower_content_text}>
                   {I18n.t('productUpdates')}
                 </Text>
               </View>
               <View>
-                <View style={style.signUpBtns}/>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = {I18n.t('signup')} loading = {loading}/>
-                <Text
-                  style={style.lower_content_text}>
-                    {I18n.t('or')}
-                </Text>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = {I18n.t('signupGoogle')}loading = {loading}/>
-                <View style={style.lower_content_text}>
-                  <Text style={style.alreadyTxt}>
-                    {I18n.t('alreadyAccount')}
+              <View style={style.buttons_container} />
+              <ButtonForm
+                isValid={formProps.isValid}
+                handleSubmit={formProps.handleSubmit}
+                text= {I18n.t('signup')}
+                loading={loading}
+              />
+              <Text style={style.lower_content_text}>{I18n.t('or')}</Text>
+              <ButtonForm
+                isValid={formProps.isValid}
+                handleSubmit={formProps.handleSubmit}
+                text= {I18n.t('signupGoogle')}
+                loading={loading}
+              />
+              <View style={style.lower_content_text}>
+                <Text style={style.alreadyTxt}>
+                  {I18n.t('alreadyAccount')}
+                  <Text
+                    style={style.account_link}
+                    onPress={() => {
+                      navigation.navigate('LogIn');
+                    }}>
+                    {' '}
+                    {I18n.t('login')}
                   </Text>
-                  <TouchableOpacity onPress={()=> {navigation.navigate("LogIn")}}>
-                    <Text style={style.logInLink}>{I18n.t('login')}</Text>
-                  </TouchableOpacity>
-                </View>
+                </Text>
+              </View>
               </View>
             </View>
           </View>
