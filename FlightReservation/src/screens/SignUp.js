@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView, Pressable,TouchableOpacity} from 'react-native';
+import {View, Text, Button, SafeAreaView, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -68,27 +68,39 @@ const SignUp = function ({navigation}) {
                   I agree with the Terms and Privacy Policy. *
                 </Text>
               </View>
-              <View style={{flexDirection: 'row'}}>
+              <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="subscribeForProducts" />
                 <Text style={style.lower_content_text}>
                   Subscribe for select product updates.
                 </Text>
               </View>
               <View>
-                <View style={style.signUpBtns}/>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
-                <Text
-                  style={style.lower_content_text}>
-                    or
-                </Text>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign Up with Google" loading = {loading}/>
+                <View style={style.buttons_container} />
+                <ButtonForm
+                  isValid={formProps.isValid}
+                  handleSubmit={formProps.handleSubmit}
+                  text="Sign up"
+                  loading={loading}
+                />
+                <Text style={style.lower_content_text}>or</Text>
+                <ButtonForm
+                  isValid={formProps.isValid}
+                  handleSubmit={formProps.handleSubmit}
+                  text="Sign Up with Google"
+                  loading={loading}
+                />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
                     Already have an account?
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('LogIn');
+                      }}>
+                      {' '}
+                      Log in
+                    </Text>
                   </Text>
-                  <TouchableOpacity onPress={()=> {navigation.navigate("LogIn")}}>
-                    <Text style={style.logInLink}>Log in</Text>
-                  </TouchableOpacity>
                 </View>
               </View>
             </View>

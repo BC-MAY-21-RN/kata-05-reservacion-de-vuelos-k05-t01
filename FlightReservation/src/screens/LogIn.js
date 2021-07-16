@@ -1,11 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView, TouchableOpacity} from 'react-native';
+import {View, Text, Button, SafeAreaView} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+import colors from '../consts/colors';
+import style from './../consts/style';
+import {Pressable} from 'react-native';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -22,18 +25,19 @@ const LogIn = function ({navigation}) {
 
   return (
     <SafeAreaView>
-        {loading && <Text>Loading...</Text>}
-        <Formik
-          validationSchema={logInValidationSchema}
-          initialValues={{
-            email: 'juan1@example.com',
-            password: 'Juan123%',
-          }}
-          validateOnMount={true}
-          onSubmit={values => handleSignIn(values)}>
-          {formProps => (
-            <View>
-              <Text>Log in</Text>
+      {loading && <Text>Loading...</Text>}
+      <Formik
+        validationSchema={logInValidationSchema}
+        initialValues={{
+          email: 'juan1@example.com',
+          password: 'Juan123%',
+        }}
+        validateOnMount={true}
+        onSubmit={values => handleSignIn(values)}>
+        {formProps => (
+          <View>
+            <View style={style.upper_background}>
+              <Text style={style.title}>Log in</Text>
               <View>
                 <TextField {...formProps} label="Email" name="email" />
               </View>
@@ -44,25 +48,43 @@ const LogIn = function ({navigation}) {
                   name="password"
                 />
               </View>
-              <View>
-                <Button
-                  rounded
-                  disabled={!formProps.isValid || loading}
-                  onPress={formProps.handleSubmit}
-                  title="Log in"
-                />
-                <Text>or</Text>
-                <Button title="Log in with Google" />
-                <Text>
-                  Don't have an account?
+            </View>
+
+            <View>
+              <View style={style.buttons_container} />
+              <Pressable
+                disabled={!formProps.isValid || loading}
+                onPress={formProps.handleSubmit}
+                title="Log in">
+                <View style={style.btn}>
+                  <Text style={style.button_text}>Log In</Text>
+                </View>
+              </Pressable>
+
+              <Text style={style.lower_content_text}>or</Text>
+
+              <Pressable
+                disabled={!formProps.isValid || loading}
+                onPress={formProps.handleSubmit}>
+                <View style={style.btn}>
+                  <Text style={style.button_text}>Log In with Google</Text>
+                </View>
+              </Pressable>
+              <View style={style.lower_content_text}>
+                <Text
+                  style={style.alreadyTxt}
+                  onPress={() => {
+                    navigation.navigate('SignUp');
+                  }}>
+                  Already have an account?{' '}
+                  <Text style={style.account_link}>Sign up</Text>
                 </Text>
-                <TouchableOpacity onPress={()=> {navigation.navigate("SignUp")}}>
-                  <Text>Sign up</Text>
-                </TouchableOpacity>
               </View>
             </View>
-          )}
-        </Formik>
+            {/*  */}
+          </View>
+        )}
+      </Formik>
     </SafeAreaView>
   );
 };

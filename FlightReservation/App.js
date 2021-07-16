@@ -7,7 +7,7 @@ import SignUp from './src/screens/SignUp';
 import LogIn from './src/screens/LogIn';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
-
+// import LogIn from './src/screens/LogIn';
 
 const Stack = createStackNavigator();
 
