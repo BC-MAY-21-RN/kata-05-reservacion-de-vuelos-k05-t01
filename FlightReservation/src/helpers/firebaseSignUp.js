@@ -11,6 +11,7 @@ export const signInWithNameEmailAndPassword = (name, email, password) => {
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
           reject('That email address is already in use!');
         }
       });

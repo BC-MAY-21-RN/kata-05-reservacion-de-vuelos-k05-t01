@@ -5,19 +5,21 @@ import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
-import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+// import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import colors from '../consts/colors';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
+import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
+  const [emailInUseError, setEmailInUseError] = useState(false);
 
   //Change the handleSignIn function for the handleLogIn
-  const handleSignIn = values => {
+  const handleLogIn = values => {
     const {email, password} = values;
     setLoading(true);
-    signInWithNameEmailAndPassword(email, password)
+    logInWithEmailAndPassword(email, password)
       .then(() => setEmailInUseError(false))
       .catch(() => setEmailInUseError(true))
       .finally(() => setLoading(false));
@@ -26,6 +28,8 @@ const LogIn = function ({navigation}) {
   return (
     <SafeAreaView>
       {loading && <Text>Loading...</Text>}
+      {emailInUseError && <Text>Cannot log in</Text>}
+
       <Formik
         validationSchema={logInValidationSchema}
         initialValues={{
@@ -33,7 +37,7 @@ const LogIn = function ({navigation}) {
           password: 'Juan123%',
         }}
         validateOnMount={true}
-        onSubmit={values => handleSignIn(values)}>
+        onSubmit={values => handleLogIn(values)}>
         {formProps => (
           <View>
             <View style={style.upper_background}>

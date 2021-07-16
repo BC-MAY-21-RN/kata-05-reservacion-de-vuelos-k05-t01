@@ -1,20 +1,30 @@
 import auth from '@react-native-firebase/auth';
 
-export const LogInWithPasswordAndEmail = async (email, password) => {
+export const logInWithEmailAndPassword = async (email, password) => {
+  //   return await auth()
+  //     .then(({user}) => {
+  //       console.log('User account created & signed in!');
+  //     })
+  //     .catch(error => {
+  //       if (error.code === 'auth/email-already-in-use') {
+  //         console.log('That email address is already in use!');
+  //       }
+
+  //       if (error.code === 'auth/invalid-email') {
+  //         console.log('That email address is invalid!');
+  //       }
+
+  //       console.error(error);
+  //     });
+  // };
   return await auth()
     .signInWithEmailAndPassword(email, password)
     .then(() => {
-      console.log('User account created & signed in!');
+      console.log('Login succesful');
+      true;
     })
-    .catch(error => {
-      if (error.code === 'auth/email-already-in-use') {
-        console.log('That email address is already in use!');
-      }
-
-      if (error.code === 'auth/invalid-email') {
-        console.log('That email address is invalid!');
-      }
-
-      console.error(error);
+    .catch(() => {
+      console.log('Invalid credentials');
+      false;
     });
 };
