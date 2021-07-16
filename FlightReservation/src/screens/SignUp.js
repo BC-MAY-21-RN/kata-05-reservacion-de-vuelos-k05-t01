@@ -9,6 +9,7 @@ import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
+import I18n from '../consts/i18n/en';
 import {bool} from 'yup';
 
 const SignUp = function ({navigation}) {
@@ -26,8 +27,8 @@ const SignUp = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && <Text>Loading...</Text>}
-      {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
+      {loading && <Text>{I18n.t('loading')}</Text>}
+      {emailInUseError && <Text>{I18n.t('emailUsed')}</Text>}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -41,7 +42,7 @@ const SignUp = function ({navigation}) {
         {formProps => (
           <View>
             <View style={style.textFieldView}>
-              <Text style={style.title}>Sign Up</Text>
+              <Text style={style.title}>{I18n.t('signup')}</Text>
               <View style={style.textField__text}>
                 <TextField
                   {...formProps}
@@ -65,29 +66,29 @@ const SignUp = function ({navigation}) {
               <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="agreeTerms" />
                 <Text style={style.lower_content_text}>
-                  I agree with the Terms and Privacy Policy. *
+                  {I18n.t('terms')}
                 </Text>
               </View>
               <View style={{flexDirection: 'row'}}>
                 <CheckBoxField {...formProps} name="subscribeForProducts" />
                 <Text style={style.lower_content_text}>
-                  Subscribe for select product updates.
+                  {I18n.t('productUpdates')}
                 </Text>
               </View>
               <View>
                 <View style={style.signUpBtns}/>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
+                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = {I18n.t('signup')} loading = {loading}/>
                 <Text
                   style={style.lower_content_text}>
-                    or
+                    {I18n.t('or')}
                 </Text>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign Up with Google" loading = {loading}/>
+                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = {I18n.t('signupGoogle')}loading = {loading}/>
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
-                    Already have an account?
+                    {I18n.t('alreadyAccount')}
                   </Text>
                   <TouchableOpacity onPress={()=> {navigation.navigate("LogIn")}}>
-                    <Text style={style.logInLink}>Log in</Text>
+                    <Text style={style.logInLink}>{I18n.t('login')}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
