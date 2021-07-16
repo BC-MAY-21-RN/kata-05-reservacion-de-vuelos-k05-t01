@@ -10,7 +10,6 @@ import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import I18n from '../consts/i18n/en';
-import {bool} from 'yup';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);

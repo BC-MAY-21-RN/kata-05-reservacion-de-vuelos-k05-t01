@@ -6,9 +6,10 @@ import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
-import colors from '../consts/colors';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
+import I18n from '../consts/i18n/en';
+
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ const LogIn = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && <Text>Loading...</Text>}
+      {loading && <Text>{I18n.t('loading')}</Text>}
       <Formik
         validationSchema={logInValidationSchema}
         initialValues={{
@@ -37,9 +38,9 @@ const LogIn = function ({navigation}) {
         {formProps => (
           <View>
             <View style={style.upper_background}>
-              <Text style={style.title}>Log in</Text>
+              <Text style={style.title}>{I18n.t('login')}</Text>
               <View>
-                <TextField {...formProps} label="Email" name="email" />
+                <TextField {...formProps} label={I18n.t('email')} name="email" />
               </View>
               <View>
                 <PasswordField
@@ -49,7 +50,6 @@ const LogIn = function ({navigation}) {
                 />
               </View>
             </View>
-
             <View>
               <View style={style.buttons_container} />
               <Pressable
@@ -57,17 +57,15 @@ const LogIn = function ({navigation}) {
                 onPress={formProps.handleSubmit}
                 title="Log in">
                 <View style={style.btn}>
-                  <Text style={style.button_text}>Log In</Text>
+                  <Text style={style.button_text}>{I18n.t('login')}</Text>
                 </View>
               </Pressable>
-
-              <Text style={style.lower_content_text}>or</Text>
-
+              <Text style={style.lower_content_text}>{I18n.t('or')}</Text>
               <Pressable
                 disabled={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}>
                 <View style={style.btn}>
-                  <Text style={style.button_text}>Log In with Google</Text>
+                  <Text style={style.button_text}>{I18n.t('loginGoogle')}</Text>
                 </View>
               </Pressable>
               <View style={style.lower_content_text}>
@@ -76,12 +74,11 @@ const LogIn = function ({navigation}) {
                   onPress={() => {
                     navigation.navigate('SignUp');
                   }}>
-                  Already have an account?{' '}
-                  <Text style={style.account_link}>Sign up</Text>
+                  {I18n.t('dontAccount')}{' '}
+                  <Text style={style.account_link}>{I18n.t('signup')}</Text>
                 </Text>
               </View>
             </View>
-            {/*  */}
           </View>
         )}
       </Formik>

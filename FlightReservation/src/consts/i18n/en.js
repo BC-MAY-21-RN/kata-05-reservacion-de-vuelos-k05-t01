@@ -7,6 +7,7 @@ I18n.translations = {
       login: 'Log in',
       signup: 'Sign up',
       signupGoogle: 'Sign up with Google',
+      loginGoogle: 'Log in with Google',
       loading: 'Loading...',
       emailUsed: 'Email in use. Use a diferent email',
       name: 'Name',
@@ -16,6 +17,7 @@ I18n.translations = {
       productUpdates: 'Subscribe for select product updates.',
       or: 'or',
       alreadyAccount: 'Already have an account?',
+      dontAccount: 'Do not have an account?',
   }
 };
 
