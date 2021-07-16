@@ -9,7 +9,7 @@ import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
-import I18n from '../consts/i18n/en';
+import Span from '../consts/i18n/en';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -26,8 +26,16 @@ const SignUp = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && <Text>{I18n.t('loading')}</Text>}
-      {emailInUseError && <Text>{I18n.t('emailUsed')}</Text>}
+      {loading && (
+        <Text>
+          <Span text="loading" />
+        </Text>
+      )}
+      {emailInUseError && (
+        <Text>
+          <Span text="emailUsed" />
+        </Text>
+      )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -41,7 +49,9 @@ const SignUp = function ({navigation}) {
         {formProps => (
           <View>
             <View style={style.textFieldView}>
-              <Text style={style.title}>{I18n.t('signup')}</Text>
+              <Text style={style.title}>
+                <Span text="signup" />
+              </Text>
               <View style={style.textField__text}>
                 <TextField
                   {...formProps}
@@ -65,43 +75,45 @@ const SignUp = function ({navigation}) {
               <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="agreeTerms" />
                 <Text style={style.lower_content_text}>
-                  {I18n.t('terms')}
+                  <Span text="terms" />
                 </Text>
               </View>
               <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="subscribeForProducts" />
                 <Text style={style.lower_content_text}>
-                  {I18n.t('productUpdates')}
+                  <Span text="productUpdates" />
                 </Text>
               </View>
               <View>
-              <View style={style.buttons_container} />
-              <ButtonForm
-                isValid={formProps.isValid}
-                handleSubmit={formProps.handleSubmit}
-                text= {I18n.t('signup')}
-                loading={loading}
-              />
-              <Text style={style.lower_content_text}>{I18n.t('or')}</Text>
-              <ButtonForm
-                isValid={formProps.isValid}
-                handleSubmit={formProps.handleSubmit}
-                text= {I18n.t('signupGoogle')}
-                loading={loading}
-              />
-              <View style={style.lower_content_text}>
-                <Text style={style.alreadyTxt}>
-                  {I18n.t('alreadyAccount')}
-                  <Text
-                    style={style.account_link}
-                    onPress={() => {
-                      navigation.navigate('LogIn');
-                    }}>
-                    {' '}
-                    {I18n.t('login')}
-                  </Text>
+                <View style={style.buttons_container} />
+                <ButtonForm
+                  isValid={formProps.isValid}
+                  handleSubmit={formProps.handleSubmit}
+                  text={<Span text="signup" />}
+                  loading={loading}
+                />
+                <Text style={style.lower_content_text}>
+                  <Span text="or" />
                 </Text>
-              </View>
+                <ButtonForm
+                  isValid={formProps.isValid}
+                  handleSubmit={formProps.handleSubmit}
+                  text={<Span text="signupGoogle" />}
+                  loading={loading}
+                />
+                <View style={style.lower_content_text}>
+                  <Text style={style.alreadyTxt}>
+                    <Span text="alreadyAccount" />
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('LogIn');
+                      }}>
+                      {' '}
+                      <Span text="login" />
+                    </Text>
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
