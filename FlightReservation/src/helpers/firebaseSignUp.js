@@ -1,4 +1,6 @@
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {useEffect} from 'react';
 
 export const signInWithNameEmailAndPassword = (name, email, password) => {
   return new Promise((resolve, reject) => {
@@ -15,4 +17,26 @@ export const signInWithNameEmailAndPassword = (name, email, password) => {
         }
       });
   });
+};
+
+export const useGoogleConfiguration = () => {
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '485144115607-mricdh0gp8vvo7911rvjc4ahb5mavbjk.apps.googleusercontent.com',
+    });
+  }, []);
+};
+
+export const onGoogleButtonPress = async (navigation) => {
+  console.log("is working");
+  // // Get the users ID token
+  // const { idToken } = await GoogleSignin.signIn();
+  // // Create a Google credential with the token
+  // const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  // // Sign-in the user with the credential
+  // auth().signInWithCredential(googleCredential).then((response) => {
+  //   if (response){
+  //     navigation.navigate("LogIn");
+  //   }
+  // })
 };

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "485144115607-dttqkm4b4en48s08pops3e0fc2u30s7m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flightreservation",
+            "certificate_hash": "a18ad55a468d4bab95d5f1af665b6b6631414fa5"
+          }
+        },
+        {
           "client_id": "485144115607-mricdh0gp8vvo7911rvjc4ahb5mavbjk.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -6,7 +6,7 @@ import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import ButtonForm from '../components/form/ButtonForm';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
-import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+import {onGoogleButtonPress, signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import {bool} from 'yup';
@@ -76,12 +76,13 @@ const SignUp = function ({navigation}) {
               </View>
               <View>
                 <View style={style.signUpBtns}/>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
+                <ButtonForm isValid = {formProps.isValid} onPress = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
                 <Text
                   style={style.lower_content_text}>
                     or
                 </Text>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign Up with Google" loading = {loading}/>
+                {/* <ButtonForm onPress={() => { onGoogleButtonPress(); navigation.navigate("LogIn")}} text = "Sign Up with Google"/> */}
+                <ButtonForm onPress = {() => onGoogleButtonPress(navigation)} text = "Sign Up with Google"/>
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
                     Already have an account?

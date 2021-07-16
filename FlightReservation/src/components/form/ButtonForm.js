@@ -4,11 +4,11 @@ import {View, Text, Pressable} from 'react-native';
 import style from '../../consts/style';
 
 
-const ButtonForm = ({isValid, handleSubmit, loading, text}) => {
+const ButtonForm = ({isValid, onPress, loading, text}) => {
     return (
         <Pressable
             disabled={!isValid || loading}
-            onPress={handleSubmit}>
+            onPress={onPress}>
             <View style={style.btn}>
                 <Text style={style.btnForm}>
                     {text}
