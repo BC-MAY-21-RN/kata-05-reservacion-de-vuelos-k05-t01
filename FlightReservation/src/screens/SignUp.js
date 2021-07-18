@@ -9,7 +9,7 @@ import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
-import {bool} from 'yup';
+import Span from '../consts/i18n/en';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -26,8 +26,16 @@ const SignUp = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && <Text>Loading...</Text>}
-      {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
+      {loading && (
+        <Text>
+          <Span text="loading" />
+        </Text>
+      )}
+      {emailInUseError && (
+        <Text>
+          <Span text="emailUsed" />
+        </Text>
+      )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -41,7 +49,9 @@ const SignUp = function ({navigation}) {
         {formProps => (
           <View>
             <View style={style.textFieldView}>
-              <Text style={style.title}>Sign Up</Text>
+              <Text style={style.title}>
+                <Span text="signup" />
+              </Text>
               <View style={style.textField__text}>
                 <TextField
                   {...formProps}
@@ -65,13 +75,13 @@ const SignUp = function ({navigation}) {
               <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="agreeTerms" />
                 <Text style={style.lower_content_text}>
-                  I agree with the Terms and Privacy Policy. *
+                  <Span text="terms" />
                 </Text>
               </View>
               <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="subscribeForProducts" />
                 <Text style={style.lower_content_text}>
-                  Subscribe for select product updates.
+                  <Span text="productUpdates" />
                 </Text>
               </View>
               <View>
@@ -79,26 +89,28 @@ const SignUp = function ({navigation}) {
                 <ButtonForm
                   isValid={formProps.isValid}
                   handleSubmit={formProps.handleSubmit}
-                  text="Sign up"
+                  text={<Span text="signup" />}
                   loading={loading}
                 />
-                <Text style={style.lower_content_text}>or</Text>
+                <Text style={style.lower_content_text}>
+                  <Span text="or" />
+                </Text>
                 <ButtonForm
                   isValid={formProps.isValid}
                   handleSubmit={formProps.handleSubmit}
-                  text="Sign Up with Google"
+                  text={<Span text="signupGoogle" />}
                   loading={loading}
                 />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
-                    Already have an account?
+                    <Span text="alreadyAccount" />
                     <Text
                       style={style.account_link}
                       onPress={() => {
                         navigation.navigate('LogIn');
                       }}>
                       {' '}
-                      Log in
+                      <Span text="login" />
                     </Text>
                   </Text>
                 </View>

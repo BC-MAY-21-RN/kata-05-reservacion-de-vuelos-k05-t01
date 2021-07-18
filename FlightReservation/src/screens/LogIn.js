@@ -6,9 +6,9 @@ import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
-import colors from '../consts/colors';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
+import Span from '../consts/i18n/en';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,11 @@ const LogIn = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && <Text>Loading...</Text>}
+      {loading && (
+        <Text>
+          <Span text="loading" />
+        </Text>
+      )}
       <Formik
         validationSchema={logInValidationSchema}
         initialValues={{
@@ -37,7 +41,9 @@ const LogIn = function ({navigation}) {
         {formProps => (
           <View>
             <View style={style.upper_background}>
-              <Text style={style.title}>Log in</Text>
+              <Text style={style.title}>
+                <Span text="login" />
+              </Text>
               <View>
                 <TextField {...formProps} label="Email" name="email" />
               </View>
@@ -49,7 +55,6 @@ const LogIn = function ({navigation}) {
                 />
               </View>
             </View>
-
             <View>
               <View style={style.buttons_container} />
               <Pressable
@@ -57,17 +62,21 @@ const LogIn = function ({navigation}) {
                 onPress={formProps.handleSubmit}
                 title="Log in">
                 <View style={style.btn}>
-                  <Text style={style.button_text}>Log In</Text>
+                  <Text style={style.button_text}>
+                    <Span text="login" />
+                  </Text>
                 </View>
               </Pressable>
-
-              <Text style={style.lower_content_text}>or</Text>
-
+              <Text style={style.lower_content_text}>
+                <Span text="or" />
+              </Text>
               <Pressable
                 disabled={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}>
                 <View style={style.btn}>
-                  <Text style={style.button_text}>Log In with Google</Text>
+                  <Text style={style.button_text}>
+                    <Span text="loginGoogle" />
+                  </Text>
                 </View>
               </Pressable>
               <View style={style.lower_content_text}>
@@ -76,12 +85,13 @@ const LogIn = function ({navigation}) {
                   onPress={() => {
                     navigation.navigate('SignUp');
                   }}>
-                  Already have an account?{' '}
-                  <Text style={style.account_link}>Sign up</Text>
+                  <Span text="dontAccount" />
+                  <Text style={style.account_link}>
+                    <Span text="signup" />
+                  </Text>
                 </Text>
               </View>
             </View>
-            {/*  */}
           </View>
         )}
       </Formik>
