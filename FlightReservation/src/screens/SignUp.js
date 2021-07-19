@@ -82,7 +82,7 @@ const SignUp = function ({navigation}) {
                   style={style.lower_content_text}>
                     or
                 </Text>
-                <GoogleButton onPress = {onGoogleButtonPress} text = "Sign In with Google"/>
+                <GoogleButton onPress = {() => onGoogleButtonPress(navigation)} text = "Sign In with Google"/>
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
                     Already have an account?
