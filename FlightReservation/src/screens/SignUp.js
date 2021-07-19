@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
+import {View, Text, Button, SafeAreaView, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -10,7 +10,7 @@ import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {onGoogleButtonPress, signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
-import {bool} from 'yup';
+import Span from '../consts/i18n/en';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -27,8 +27,16 @@ const SignUp = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && <Text>Loading...</Text>}
-      {emailInUseError && <Text>Email in use. Use a diferent email</Text>}
+      {loading && (
+        <Text>
+          <Span text="loading" />
+        </Text>
+      )}
+      {emailInUseError && (
+        <Text>
+          <Span text="emailUsed" />
+        </Text>
+      )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -42,7 +50,9 @@ const SignUp = function ({navigation}) {
         {formProps => (
           <View>
             <View style={style.textFieldView}>
-              <Text style={style.title}>Sign Up</Text>
+              <Text style={style.title}>
+                <Span text="signup" />
+              </Text>
               <View style={style.textField__text}>
                 <TextField
                   {...formProps}
@@ -66,26 +76,40 @@ const SignUp = function ({navigation}) {
               <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="agreeTerms" />
                 <Text style={style.lower_content_text}>
-                  I agree with the Terms and Privacy Policy. *
+                  <Span text="terms" />
                 </Text>
               </View>
-              <View style={{flexDirection: 'row'}}>
+              <View style={style.termsView}>
                 <CheckBoxField {...formProps} name="subscribeForProducts" />
                 <Text style={style.lower_content_text}>
-                  Subscribe for select product updates.
+                  <Span text="productUpdates" />
                 </Text>
               </View>
               <View>
-                <View style={style.signUpBtns}/>
-                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
-                <Text
-                  style={style.lower_content_text}>
-                    or
+                <View style={style.buttons_container} />
+                <ButtonForm
+                  isValid={formProps.isValid}
+                  handleSubmit={formProps.handleSubmit}
+                  text={<Span text="signup" />}
+                  loading={loading}
+                />
+                <Text style={style.lower_content_text}>
+                  <Span text="or" />
                 </Text>
-                <GoogleButton onPress = {() => onGoogleButtonPress(navigation)} text = "Sign In with Google"/>
+                <GoogleButton 
+                  onPress = {() => onGoogleButtonPress(navigation)} 
+                  text = "Sign In with Google"/>
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
-                    Already have an account?
+                    <Span text="alreadyAccount" />
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('LogIn');
+                      }}>
+                      {' '}
+                      <Span text="login" />
+                    </Text>
                   </Text>
                   <TouchableOpacity onPress={()=> {navigation.navigate('LogIn')}}>
                     <Text style={style.logInLink}>Log in</Text>

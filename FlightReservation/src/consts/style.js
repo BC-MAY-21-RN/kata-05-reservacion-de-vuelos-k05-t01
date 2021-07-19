@@ -3,10 +3,15 @@ import colors from './colors';
 
 const style = StyleSheet.create({
   //* SignUp Style *//
+
+  upper_background: {
+    backgroundColor: colors.green,
+  },
+
   textFieldView: {
     backgroundColor: colors.green,
   },
-  textFieldBG : {
+  textFieldBG: {
     backgroundColor: colors.orange,
   },
   title: {
@@ -21,6 +26,11 @@ const style = StyleSheet.create({
     flexDirection: 'column',
     paddingLeft: 20,
     paddingRight: 20,
+  },
+  termsView: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingTop: 10,
   },
   lower_content_text: {
     alignSelf: 'center',
@@ -38,22 +48,22 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   btnForm: {
-    fontSize:18,
+    fontSize: 18,
     color: colors.white,
   },
-  termsView : {
-    flexDirection: 'row',
-    paddingTop: 20,
-  },
-  signUpBtns: {
+  buttons_container: {
     flex: 1,
     justifyContent: 'flex-end',
-    paddingBottom: 40,
+    paddingBottom: 20,
+  },
+  button_text: {
+    color: colors.white,
+    fontSize: 18,
   },
   alreadyTxt: {
-    paddingTop: 20,
+    paddingTop: 10,
   },
-  logInLink :{
+  account_link: {
     color: colors.blue,
   },
 

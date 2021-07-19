@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
 
+
 const Stack = createStackNavigator();
 
 const App = () => {
