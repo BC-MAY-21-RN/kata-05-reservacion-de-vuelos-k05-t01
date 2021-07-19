@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView, Pressable} from 'react-native';
+import {View, Text, Button, SafeAreaView, Pressable, TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -111,9 +111,6 @@ const SignUp = function ({navigation}) {
                       <Span text="login" />
                     </Text>
                   </Text>
-                  <TouchableOpacity onPress={()=> {navigation.navigate('LogIn')}}>
-                    <Text style={style.logInLink}>Log in</Text>
-                  </TouchableOpacity>
                 </View>
               </View>
             </View>
