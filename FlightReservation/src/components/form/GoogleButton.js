@@ -3,12 +3,10 @@ import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 import style from '../../consts/style';
 
-
-const ButtonForm = ({isValid, handleSubmit, loading, text}) => {
+const GoogleButton = ({text, onPress}) => {
     return (
         <Pressable
-            disabled={!isValid || loading}
-            onPress={handleSubmit}>
+        onPress={onPress}>
             <View style={style.btn}>
                 <Text style={style.btnForm}>
                     {text}
@@ -18,4 +16,4 @@ const ButtonForm = ({isValid, handleSubmit, loading, text}) => {
     );
 };
 
-export default ButtonForm;
+export default GoogleButton;

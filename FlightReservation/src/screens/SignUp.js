@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView, Pressable,TouchableOpacity} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import ButtonForm from '../components/form/ButtonForm';
+import GoogleButton from '../components/form/GoogleButton';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {onGoogleButtonPress, signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
@@ -76,18 +77,17 @@ const SignUp = function ({navigation}) {
               </View>
               <View>
                 <View style={style.signUpBtns}/>
-                <ButtonForm isValid = {formProps.isValid} onPress = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
+                <ButtonForm isValid = {formProps.isValid} handleSubmit = {formProps.handleSubmit} text = "Sign up" loading = {loading}/>
                 <Text
                   style={style.lower_content_text}>
                     or
                 </Text>
-                {/* <ButtonForm onPress={() => { onGoogleButtonPress(); navigation.navigate("LogIn")}} text = "Sign Up with Google"/> */}
-                <ButtonForm onPress = {() => onGoogleButtonPress(navigation)} text = "Sign Up with Google"/>
+                <GoogleButton onPress = {onGoogleButtonPress} text = "Sign In with Google"/>
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
                     Already have an account?
                   </Text>
-                  <TouchableOpacity onPress={()=> {navigation.navigate("LogIn")}}>
+                  <TouchableOpacity onPress={()=> {navigation.navigate('LogIn')}}>
                     <Text style={style.logInLink}>Log in</Text>
                   </TouchableOpacity>
                 </View>

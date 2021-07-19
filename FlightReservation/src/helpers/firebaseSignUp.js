@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import {useEffect} from 'react';
@@ -28,15 +29,12 @@ export const useGoogleConfiguration = () => {
 };
 
 export const onGoogleButtonPress = async (navigation) => {
-  console.log("is working");
-  // // Get the users ID token
-  // const { idToken } = await GoogleSignin.signIn();
-  // // Create a Google credential with the token
-  // const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-  // // Sign-in the user with the credential
-  // auth().signInWithCredential(googleCredential).then((response) => {
-  //   if (response){
-  //     navigation.navigate("LogIn");
-  //   }
-  // })
+  console.log('working');
+  const { idToken } = await GoogleSignin.signIn();
+  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  auth().signInWithCredential(googleCredential).then((response) => {
+    if (response){
+      navigation.navigate('LogIn');
+    }
+ });
 };

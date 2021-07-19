@@ -6,6 +6,8 @@ import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+import {onGoogleButtonPress} from '../helpers/firebaseSignUp';
+import GoogleButton from '../components/form/GoogleButton';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -52,11 +54,11 @@ const LogIn = function ({navigation}) {
                   title="Log in"
                 />
                 <Text>or</Text>
-                <Button title="Log in with Google" />
+                <GoogleButton onPress = {onGoogleButtonPress} text = "Sign In with Google"/>
                 <Text>
                   Don't have an account?
                 </Text>
-                <TouchableOpacity onPress={()=> {navigation.navigate("SignUp")}}>
+                <TouchableOpacity onPress={()=> {navigation.navigate('SignUp')}}>
                   <Text>Sign up</Text>
                 </TouchableOpacity>
               </View>
