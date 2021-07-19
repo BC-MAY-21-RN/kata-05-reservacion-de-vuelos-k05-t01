@@ -16,13 +16,15 @@ const LogIn = function ({navigation}) {
   const [emailInUseError, setEmailInUseError] = useState(false);
 
   //Change the handleSignIn function for the handleLogIn
-  const handleLogIn = values => {
+  const handleLogIn = async values => {
     const {email, password} = values;
     setLoading(true);
-    logInWithEmailAndPassword(email, password)
-      .then(() => setEmailInUseError(false))
-      .catch(() => setEmailInUseError(true))
-      .finally(() => setLoading(false));
+    await logInWithEmailAndPassword(email, password).then(response => {
+      setEmailInUseError(false);
+      setLoading(false);
+    });
+    // .catch(() => setEmailInUseError(true))
+    // .finally(() => setLoading(false));
   };
 
   return (
