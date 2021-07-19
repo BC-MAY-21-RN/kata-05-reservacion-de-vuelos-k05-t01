@@ -6,7 +6,6 @@ import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 // import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
-import colors from '../consts/colors';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
 import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';

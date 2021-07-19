@@ -2,6 +2,7 @@ import auth from '@react-native-firebase/auth';
 
 export const logInWithEmailAndPassword = async (email, password) => {
   return await auth()
+    .signInWithEmailAndPassword(email, password)
     .then(({user}) => {
       console.log('User account created & signed in!');
     })
@@ -17,15 +18,3 @@ export const logInWithEmailAndPassword = async (email, password) => {
       console.error(error);
     });
 };
-
-// return await auth()
-//   .signInWithEmailAndPassword(email, password)
-//   .then(() => {
-//     console.log('Login succesful');
-//     true;
-//   })
-//   .catch(() => {
-//     console.log('Invalid credentials');
-//     false;
-//   });
-// };
