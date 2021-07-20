@@ -17,8 +17,8 @@ I18n.translations = {
     terms: 'I agree with the Terms and Privacy Policy. *',
     productUpdates: 'Subscribe for select product updates.',
     or: 'or',
-    alreadyAccount: 'Already have an account?',
-    dontAccount: 'Do not have an account?',
+    alreadyAccount: 'Already have an account? ',
+    dontAccount: 'Do not have an account? ',
   },
 };
 

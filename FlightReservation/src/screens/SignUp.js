@@ -109,7 +109,6 @@ const SignUp = function ({navigation}) {
                       onPress={() => {
                         navigation.navigate('LogIn');
                       }}>
-                      {' '}
                       <Span text="login" />
                     </Text>
                   </Text>

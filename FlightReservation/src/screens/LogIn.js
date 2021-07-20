@@ -5,7 +5,6 @@ import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
-// import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
 import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
@@ -35,8 +34,8 @@ const LogIn = function ({navigation}) {
       <Formik
         validationSchema={logInValidationSchema}
         initialValues={{
-          email: 'juan1@example.com',
-          password: 'Juan123%',
+          email: '',
+          password: '',
         }}
         validateOnMount={true}
         onSubmit={values => handleLogIn(values)}>
