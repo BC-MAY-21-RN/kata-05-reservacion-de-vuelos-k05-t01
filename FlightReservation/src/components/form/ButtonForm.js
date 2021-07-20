@@ -3,12 +3,11 @@ import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 import style from '../../consts/style';
 
-
-const ButtonForm = ({isValid, handleSubmit, loading, text}) => {
+const ButtonForm = ({isDisabled, onPress, loading, text}) => {
     return (
         <Pressable
-            disabled={!isValid || loading}
-            onPress={handleSubmit}>
+           disabled={isDisabled || loading}
+            onPress={onPress}>
             <View style={style.btn}>
                 <Text style={style.btnForm}>
                     {text}
@@ -17,5 +16,6 @@ const ButtonForm = ({isValid, handleSubmit, loading, text}) => {
         </Pressable>
     );
 };
+
 
 export default ButtonForm;

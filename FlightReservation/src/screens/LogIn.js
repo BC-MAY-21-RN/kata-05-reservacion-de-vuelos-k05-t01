@@ -7,10 +7,10 @@ import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import {onGoogleButtonPress} from '../helpers/firebaseSignUp';
-import GoogleButton from '../components/form/GoogleButton';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
 import Span from '../consts/i18n/en';
+import ButtonForm from '../components/form/ButtonForm';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -60,7 +60,7 @@ const LogIn = function ({navigation}) {
             <View>
               <View style={style.buttons_container} />
               <Pressable
-                disabled={!formProps.isValid || loading}
+                isValid={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}
                 title="Log in">
                 <View style={style.btn}>
@@ -72,9 +72,9 @@ const LogIn = function ({navigation}) {
               <Text style={style.lower_content_text}>
                 <Span text="or" />
               </Text>
-              <GoogleButton 
-                onPress = {onGoogleButtonPress} 
-                text = "Sign In with Google"/>
+              <ButtonForm
+                onPress = {onGoogleButtonPress}
+                text={<Span text="signinGoogle" />}/>
               <View style={style.lower_content_text}>
                 <Text
                   style={style.alreadyTxt}

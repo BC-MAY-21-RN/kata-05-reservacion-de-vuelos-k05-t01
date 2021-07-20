@@ -2,6 +2,7 @@
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import {useEffect} from 'react';
+import {WEB_CLIENT_ID} from '@env';
 
 export const signInWithNameEmailAndPassword = (name, email, password) => {
   return new Promise((resolve, reject) => {
@@ -23,13 +24,12 @@ export const signInWithNameEmailAndPassword = (name, email, password) => {
 export const useGoogleConfiguration = () => {
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '485144115607-mricdh0gp8vvo7911rvjc4ahb5mavbjk.apps.googleusercontent.com',
+      webClientId: WEB_CLIENT_ID,
     });
   }, []);
 };
 
 export const onGoogleButtonPress = async (navigation) => {
-  console.log('working');
   const { idToken } = await GoogleSignin.signIn();
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
   auth().signInWithCredential(googleCredential).then((response) => {

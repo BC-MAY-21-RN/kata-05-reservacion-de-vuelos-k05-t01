@@ -5,7 +5,6 @@ import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import ButtonForm from '../components/form/ButtonForm';
-import GoogleButton from '../components/form/GoogleButton';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
 import {onGoogleButtonPress, signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
@@ -88,17 +87,18 @@ const SignUp = function ({navigation}) {
               <View>
                 <View style={style.buttons_container} />
                 <ButtonForm
-                  isValid={formProps.isValid}
-                  handleSubmit={formProps.handleSubmit}
+                  isDisabled={!formProps.isValid}
+                  onPress={formProps.handleSubmit}
                   text={<Span text="signup" />}
                   loading={loading}
                 />
                 <Text style={style.lower_content_text}>
                   <Span text="or" />
                 </Text>
-                <GoogleButton 
-                  onPress = {() => onGoogleButtonPress(navigation)} 
-                  text = "Sign In with Google"/>
+                <ButtonForm
+                  onPress = {() => onGoogleButtonPress(navigation)}
+                  text={<Span text="signinGoogle" />}
+                />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
                     <Span text="alreadyAccount" />
