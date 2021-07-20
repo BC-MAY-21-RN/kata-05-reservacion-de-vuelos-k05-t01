@@ -17,5 +17,4 @@ const ButtonForm = ({isDisabled, onPress, loading, text}) => {
     );
 };
 
-
 export default ButtonForm;
