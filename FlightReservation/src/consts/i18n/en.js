@@ -7,8 +7,7 @@ I18n.translations = {
   en: {
     login: 'Log in',
     signup: 'Sign up',
-    signupGoogle: 'Sign up with Google',
-    loginGoogle: 'Log in with Google',
+    signinGoogle: 'Sign in with Google',
     loading: 'Loading...',
     emailUsed: 'Email in use. Use a diferent email',
     name: 'Name',

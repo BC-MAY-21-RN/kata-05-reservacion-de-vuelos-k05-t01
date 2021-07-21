@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView, Pressable} from 'react-native';
+import {View, Text, Button, SafeAreaView, Pressable, TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import ButtonForm from '../components/form/ButtonForm';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
-import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+import {onGoogleButtonPress, signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import Span from '../consts/i18n/en';
@@ -87,8 +87,8 @@ const SignUp = function ({navigation}) {
               <View>
                 <View style={style.buttons_container} />
                 <ButtonForm
-                  isValid={formProps.isValid}
-                  handleSubmit={formProps.handleSubmit}
+                  isDisabled={!formProps.isValid}
+                  onPress={formProps.handleSubmit}
                   text={<Span text="signup" />}
                   loading={loading}
                 />
@@ -96,10 +96,8 @@ const SignUp = function ({navigation}) {
                   <Span text="or" />
                 </Text>
                 <ButtonForm
-                  isValid={formProps.isValid}
-                  handleSubmit={formProps.handleSubmit}
-                  text={<Span text="signupGoogle" />}
-                  loading={loading}
+                  onPress = {() => onGoogleButtonPress(navigation)}
+                  text={<Span text="signinGoogle" />}
                 />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>

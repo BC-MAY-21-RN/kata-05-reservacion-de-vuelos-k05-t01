@@ -5,10 +5,12 @@ import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
+import {onGoogleButtonPress} from '../helpers/firebaseSignUp';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
 import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
 import Span from '../consts/i18n/en';
+import ButtonForm from '../components/form/ButtonForm';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -59,7 +61,7 @@ const LogIn = function ({navigation}) {
             <View>
               <View style={style.buttons_container} />
               <Pressable
-                disabled={!formProps.isValid || loading}
+                isValid={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}
                 title="Log in">
                 <View style={style.btn}>
@@ -71,15 +73,9 @@ const LogIn = function ({navigation}) {
               <Text style={style.lower_content_text}>
                 <Span text="or" />
               </Text>
-              <Pressable
-                disabled={!formProps.isValid || loading}
-                onPress={formProps.handleSubmit}>
-                <View style={style.btn}>
-                  <Text style={style.button_text}>
-                    <Span text="loginGoogle" />
-                  </Text>
-                </View>
-              </Pressable>
+              <ButtonForm
+                onPress = {onGoogleButtonPress}
+                text={<Span text="signinGoogle" />}/>
               <View style={style.lower_content_text}>
                 <Text
                   style={style.alreadyTxt}
