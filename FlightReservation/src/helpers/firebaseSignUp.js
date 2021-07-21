@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useEffect} from 'react';
 import {WEB_CLIENT_ID} from '@env';
 
@@ -30,12 +30,14 @@ export const useGoogleConfiguration = () => {
   }, []);
 };
 
-export const onGoogleButtonPress = async (navigation) => {
-  const { idToken } = await GoogleSignin.signIn();
+export const onGoogleButtonPress = async navigation => {
+  const {idToken} = await GoogleSignin.signIn();
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-  auth().signInWithCredential(googleCredential).then((response) => {
-    if (response){
-      navigation.navigate('LogIn');
-    }
- });
+  auth()
+    .signInWithCredential(googleCredential)
+    .then(response => {
+      if (response) {
+        navigation.navigate('LogIn');
+      }
+    });
 };
