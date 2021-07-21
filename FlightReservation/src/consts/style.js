@@ -101,6 +101,15 @@ const style = StyleSheet.create({
     color: colors.white,
     paddingRight: 20,
   },
+  iconFlight: {
+    fontSize: 25,
+    color: colors.orange,
+  },
+  iconBooking: {
+    fontSize: 50,
+    color: colors.orange,
+    padding: 15,
+  },
   password_advice: {
     paddingLeft: 20,
     paddingRight: 20,

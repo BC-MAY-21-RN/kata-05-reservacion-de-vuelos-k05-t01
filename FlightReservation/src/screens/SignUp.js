@@ -112,6 +112,14 @@ const SignUp = function ({navigation}) {
                       {' '}
                       <Span text="login" />
                     </Text>
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('From');
+                      }}>
+                      {' '}
+                      <Span text="signup" />
+                    </Text>
                   </Text>
                 </View>
               </View>
