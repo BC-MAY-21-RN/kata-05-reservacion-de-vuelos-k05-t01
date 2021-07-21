@@ -5,22 +5,25 @@ import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
-import {signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+import {onGoogleButtonPress} from '../helpers/firebaseSignUp';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
+import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
 import Span from '../consts/i18n/en';
+import ButtonForm from '../components/form/ButtonForm';
 
 const LogIn = function ({navigation}) {
   const [loading, setLoading] = useState(false);
+  const [emailInUseError, setEmailInUseError] = useState(false);
 
   //Change the handleSignIn function for the handleLogIn
-  const handleSignIn = values => {
+  const handleLogIn = async values => {
     const {email, password} = values;
     setLoading(true);
-    signInWithNameEmailAndPassword(email, password)
-      .then(() => setEmailInUseError(false))
-      .catch(() => setEmailInUseError(true))
-      .finally(() => setLoading(false));
+    await logInWithEmailAndPassword(email, password).then(response => {
+      setEmailInUseError(false);
+      setLoading(false);
+    });
   };
 
   return (
@@ -33,11 +36,11 @@ const LogIn = function ({navigation}) {
       <Formik
         validationSchema={logInValidationSchema}
         initialValues={{
-          email: 'juan1@example.com',
-          password: 'Juan123%',
+          email: '',
+          password: '',
         }}
         validateOnMount={true}
-        onSubmit={values => handleSignIn(values)}>
+        onSubmit={values => handleLogIn(values)}>
         {formProps => (
           <View>
             <View style={style.upper_background}>
@@ -58,7 +61,7 @@ const LogIn = function ({navigation}) {
             <View>
               <View style={style.buttons_container} />
               <Pressable
-                disabled={!formProps.isValid || loading}
+                isValid={!formProps.isValid || loading}
                 onPress={formProps.handleSubmit}
                 title="Log in">
                 <View style={style.btn}>
@@ -70,15 +73,9 @@ const LogIn = function ({navigation}) {
               <Text style={style.lower_content_text}>
                 <Span text="or" />
               </Text>
-              <Pressable
-                disabled={!formProps.isValid || loading}
-                onPress={formProps.handleSubmit}>
-                <View style={style.btn}>
-                  <Text style={style.button_text}>
-                    <Span text="loginGoogle" />
-                  </Text>
-                </View>
-              </Pressable>
+              <ButtonForm
+                onPress = {onGoogleButtonPress}
+                text={<Span text="signinGoogle" />}/>
               <View style={style.lower_content_text}>
                 <Text
                   style={style.alreadyTxt}

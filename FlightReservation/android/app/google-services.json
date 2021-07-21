@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "81212485003",
-    "project_id": "flights-reservation-app",
-    "storage_bucket": "flights-reservation-app.appspot.com"
+    "project_number": "485144115607",
+    "project_id": "flight-reservation-ec3cd",
+    "storage_bucket": "flight-reservation-ec3cd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:81212485003:android:95e270417fa1ccc91dd38e",
+        "mobilesdk_app_id": "1:485144115607:android:7637e2da4f163510396cd2",
         "android_client_info": {
-          "package_name": "com.flights_reservation"
+          "package_name": "com.flightreservation"
         }
       },
       "oauth_client": [
         {
-          "client_id": "81212485003-pf4hmksfd95p5re7331f0h5ahui822mt.apps.googleusercontent.com",
+          "client_id": "485144115607-dttqkm4b4en48s08pops3e0fc2u30s7m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flightreservation",
+            "certificate_hash": "a18ad55a468d4bab95d5f1af665b6b6631414fa5"
+          }
+        },
+        {
+          "client_id": "485144115607-mricdh0gp8vvo7911rvjc4ahb5mavbjk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRKJpJDacjf8wFXbs1-e6hWObtz3nx_tY"
+          "current_key": "AIzaSyANqTrFaDIU0OZle3wUAaT5Wz80vZCZLQc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "81212485003-pf4hmksfd95p5re7331f0h5ahui822mt.apps.googleusercontent.com",
+              "client_id": "485144115607-mricdh0gp8vvo7911rvjc4ahb5mavbjk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
