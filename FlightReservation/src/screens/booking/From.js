@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {Text, SafeAreaView} from 'react-native';
 import Span from '../../consts/i18n/en';
 import Place from '../../components/booking/Place';
 import ButtonForm from '../../components/form/ButtonForm';
@@ -20,17 +20,8 @@ const From = function ({navigation, route}) {
       <Text>
         <Span text="from" />
       </Text>
-      <Place
-        fromPlace={fromPlace}
-        setSelectedFromPlace={setSelectedFromPlace}
-      />
+      <Place place={fromPlace} setSelectedPlace={setSelectedFromPlace} />
       <ButtonForm onPress={next} text={<Span text="next" />} />
-      <Text
-        onPress={() => {
-          navigation.navigate('To');
-        }}>
-        <Span text="next" />
-      </Text>
     </SafeAreaView>
   );
 };

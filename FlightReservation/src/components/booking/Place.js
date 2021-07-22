@@ -3,13 +3,13 @@ import React from 'react';
 import {View, SafeAreaView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const Place = function ({fromPlace, setSelectedFromPlace}) {
+const Place = function ({place, setSelectedPlace}) {
   return (
     <SafeAreaView>
       <View>
         <Picker
-          selectedValue={fromPlace}
-          onValueChange={itemValue => setSelectedFromPlace(itemValue)}>
+          selectedValue={place}
+          onValueChange={itemValue => setSelectedPlace(itemValue)}>
           <Picker.Item label="Select location:" />
           <Picker.Item label="CDMX" value="Ciudad de Mexico" />
           <Picker.Item label="AGS" value="Aguascalientes" />

@@ -1,69 +1,40 @@
-import React, {Component} from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import React from 'react';
+import {SafeAreaView, View} from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
-import style from '../../consts/style';
 import color from '../../consts/colors';
-import Span from '../../consts/i18n/en';
-import ArrowBack from '../../components/booking/ArrowBack';
-import ButtonForm from '../../components/form/ButtonForm';
 
-class Calendar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedStartDate: null,
-      selectedEndDate: null,
-    };
-    this.onDateChange = this.onDateChange.bind(this);
-  }
-
-  onDateChange(date, type) {
+const Calendar = ({dateSelected, setSelectedDate}) => {
+  const onDateChange = (date, type) => {
     if (type === 'END_DATE') {
-      this.setState({
-        selectedEndDate: date,
-      });
+      setSelectedDate({...dateSelected, endDate: date});
     } else {
-      this.setState({
-        selectedStartDate: date,
-        selectedEndDate: null,
-      });
+      setSelectedDate({startDate: date, endDate: null});
     }
-  }
+  };
 
-  render() {
-    const {selectedStartDate, selectedEndDate} = this.state;
-    const minDate = new Date(); // Today
-    const maxDate = new Date(2022, 6, 6);
-    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
-    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+  const minDate = new Date(); // Today
+  const maxDate = new Date(2022, 6, 6);
+  const startDate = dateSelected.startDate
+    ? dateSelected.startDate.toString()
+    : '';
+  const endDate = dateSelected.endDate ? dateSelected.endDate.toString() : '';
 
-    return (
-      <SafeAreaView>
-        <View>
-          <CalendarPicker
-            startFromMonday={true}
-            allowRangeSelection={true}
-            minDate={minDate}
-            maxDate={maxDate}
-            todayBackgroundColor={color.orange}
-            selectedDayColor={color.orange}
-            selectedDayTextColor={color.white}
-            onDateChange={this.onDateChange}
-          />
-          <View>
-            <Text>
-              <Span text="startDate" />
-              {startDate}
-            </Text>
-            <Text>
-              <Span text="endDate" />
-              {endDate}
-            </Text>
-          </View>
-        </View>
-      </SafeAreaView>
-    );
-  }
-}
+  return (
+    <SafeAreaView>
+      <View>
+        <CalendarPicker
+          startFromMonday={true}
+          allowRangeSelection={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          todayBackgroundColor={color.orange}
+          selectedDayColor={color.orange}
+          selectedDayTextColor={color.white}
+          onDateChange={onDateChange}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
 
 export default Calendar;

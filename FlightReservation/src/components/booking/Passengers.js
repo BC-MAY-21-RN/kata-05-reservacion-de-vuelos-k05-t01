@@ -1,11 +1,9 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React from 'react';
 import {View, SafeAreaView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const Passengers = function () {
-  const [passengers, setPassengers] = useState();
-
+const Passengers = function ({passengers, setPassengers}) {
   return (
     <SafeAreaView>
       <View>
