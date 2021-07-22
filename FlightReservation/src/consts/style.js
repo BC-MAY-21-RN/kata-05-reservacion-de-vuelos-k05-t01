@@ -66,6 +66,10 @@ const style = StyleSheet.create({
   account_link: {
     color: colors.blue,
   },
+  invalid_input_text: {
+    color: colors.red,
+    // fontWeight: 'bold',
+  },
 
   //* PasswordFields Style *//
   input_password_container: {

@@ -9,7 +9,7 @@ I18n.translations = {
     signup: 'Sign up',
     signinGoogle: 'Sign in with Google',
     loading: 'Loading...',
-    emailUsed: 'Email in use. Use a diferent email',
+    emailUsed: 'Email in use. Use a different email',
     name: 'Name',
     email: 'Email',
     password: 'Password',
@@ -22,5 +22,6 @@ I18n.translations = {
 };
 
 const Span = ({text}) => I18n.t(text);
+export const span = text => I18n.t(text);
 
 export default Span;

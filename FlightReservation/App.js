@@ -8,7 +8,8 @@ import LogIn from './src/screens/LogIn';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
-
+import * as eva from '@eva-design/eva';
+import {ApplicationProvider, Layout, Text} from '@ui-kitten/components';
 
 const Stack = createStackNavigator();
 
@@ -16,12 +17,14 @@ const App = () => {
   useGoogleConfiguration();
   return (
     <NavigationContainer>
-      <Provider store={store}>
-        <Stack.Navigator screenOptions={{header: () => null}}>
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="LogIn" component={LogIn} />
-        </Stack.Navigator>
-      </Provider>
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <Provider store={store}>
+          <Stack.Navigator screenOptions={{header: () => null}}>
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="LogIn" component={LogIn} />
+          </Stack.Navigator>
+        </Provider>
+      </ApplicationProvider>
     </NavigationContainer>
   );
 };
