@@ -3,12 +3,13 @@ import React from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-const BookingsResults = ({route, navigation}) => {
-    const {from, to, date, passengers} = route.params;
+export const BookingsResults = ({route}) => {
+    const {from, to, startDate, endDate, passengers} = route.params;
     const newData = {
         from,
         to,
-        date,
+        startDate,
+        endDate,
         passengers,
     };
     const next = () => {
@@ -26,10 +27,7 @@ const BookingsResults = ({route, navigation}) => {
                     .collection('bookings')
                     .doc(auth().currentUser.uid)
                     .set(collectionData);
-                //navigation.navigate();
-             }
-         });
+            }
+        });
     };
 };
-
-export default BookingsResults;
