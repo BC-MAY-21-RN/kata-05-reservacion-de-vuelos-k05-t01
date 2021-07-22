@@ -112,6 +112,8 @@ const style = StyleSheet.create({
     color: colors.white,
     alignSelf: 'center',
   },
+
+  //* Logo animation *//
 });
 
 export default style;

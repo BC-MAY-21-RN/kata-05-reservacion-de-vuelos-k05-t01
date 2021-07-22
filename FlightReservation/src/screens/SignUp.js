@@ -21,8 +21,6 @@ import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import Span, {span} from '../consts/i18n/en';
 import {default as theme} from '../consts/custom-theme.json';
-import * as eva from '@eva-design/eva';
-import {ApplicationProvider, Layout} from '@ui-kitten/components';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -38,96 +36,100 @@ const SignUp = function ({navigation}) {
   };
 
   return (
-    <ApplicationProvider {...eva} theme={{...eva.light, ...theme}}>
-      <SafeAreaView>
-        {loading && (
-          <Text>
-            <Span text="loading" />
-          </Text>
-        )}
-        <Formik
-          validationSchema={signUpValidationSchema}
-          initialValues={{
-            name: 'Juan',
-            email: 'juan1@example.com',
-            password: 'Juan123%',
-            agreeTerms: true,
-          }}
-          validateOnMount={true}
-          onSubmit={values => handleSignIn(values)}>
-          {formProps => (
-            <View>
-              <View style={style.textFieldView}>
-                <Text style={style.title}>
-                  <Span text="signup" />
-                </Text>
-                <View>
-                  <TextField
-                    {...formProps}
-                    label={`Name  ${span('emailUsed')}`}
-                    name="name"
-                    text="emailUsed"
-                  />
-                </View>
-
-                <View>
-                  <TextField {...formProps} label="Email" name="email" />
-                </View>
-                <View>
-                  <PasswordField
-                    {...formProps}
-                    title="Password"
-                    name="password"
-                  />
-                </View>
+    <SafeAreaView>
+      {loading && (
+        <Text style={{color: '#ff0000'}}>
+          <Span text="loading" />
+        </Text>
+      )}
+      <Formik
+        validationSchema={signUpValidationSchema}
+        initialValues={{
+          name: 'Juan',
+          email: 'juan1@example.com',
+          password: 'Juan123%',
+          agreeTerms: true,
+        }}
+        validateOnMount={true}
+        onSubmit={values => handleSignIn(values)}>
+        {formProps => (
+          <View>
+            <View style={style.textFieldView}>
+              <Text style={style.title}>
+                <Span text="signup" />
+              </Text>
+              <View>
+                <TextField
+                  {...formProps}
+                  label="Name"
+                  name="name"
+                  text="emailUsed"
+                />
               </View>
-              <View style={style.inferior_content_container}>
-                <View style={style.termsView}>
-                  <CheckBoxField {...formProps} name="agreeTerms" />
-                  <Text style={style.lower_content_text}>
-                    <Span text="terms" />
-                  </Text>
-                </View>
-                <View style={style.termsView}>
-                  <CheckBoxField {...formProps} name="subscribeForProducts" />
-                  <Text style={style.lower_content_text}>
-                    <Span text="productUpdates" />
-                  </Text>
-                </View>
-                <View>
-                  <View style={style.buttons_container} />
-                  <ButtonForm
-                    isDisabled={!formProps.isValid}
-                    onPress={formProps.handleSubmit}
-                    text={<Span text="signup" />}
-                    loading={loading}
-                  />
-                  <Text style={style.lower_content_text}>
-                    <Span text="or" />
-                  </Text>
-                  <ButtonForm
-                    onPress={() => onGoogleButtonPress(navigation)}
-                    text={<Span text="signinGoogle" />}
-                  />
-                  <View style={style.lower_content_text}>
-                    <Text style={style.alreadyTxt}>
-                      <Span text="alreadyAccount" />
-                      <Text
-                        style={style.account_link}
-                        onPress={() => {
-                          navigation.navigate('LogIn');
-                        }}>
-                        <Span text="login" />
-                      </Text>
+
+              <View>
+                <TextField
+                  {...formProps}
+                  label={
+                    emailInUseError ? `Email  ${span('emailUsed')}` : `Email`
+                  }
+                  name="email"
+                />
+              </View>
+              <View>
+                <PasswordField
+                  {...formProps}
+                  title="Password"
+                  name="password"
+                />
+              </View>
+            </View>
+            <View style={style.inferior_content_container}>
+              <View style={style.termsView}>
+                <CheckBoxField {...formProps} name="agreeTerms" />
+                <Text style={style.lower_content_text}>
+                  <Span text="terms" />
+                </Text>
+              </View>
+              <View style={style.termsView}>
+                <CheckBoxField {...formProps} name="subscribeForProducts" />
+                <Text style={style.lower_content_text}>
+                  <Span text="productUpdates" />
+                </Text>
+              </View>
+              <View>
+                <View style={style.buttons_container} />
+                <ButtonForm
+                  isDisabled={!formProps.isValid}
+                  onPress={formProps.handleSubmit}
+                  text={<Span text="signup" />}
+                  loading={loading}
+                />
+                <Text style={style.lower_content_text}>
+                  <Span text="or" />
+                </Text>
+                <ButtonForm
+                  onPress={() => onGoogleButtonPress(navigation)}
+                  text={<Span text="signinGoogle" />}
+                />
+                <View style={style.lower_content_text}>
+                  <Text style={style.alreadyTxt}>
+                    <Span text="alreadyAccount" />
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('LogIn');
+                      }}>
+                      <Span text="login" />
                     </Text>
-                  </View>
+                  </Text>
                 </View>
               </View>
             </View>
-          )}
-        </Formik>
-      </SafeAreaView>
-    </ApplicationProvider>
+          </View>
+        )}
+      </Formik>
+    </SafeAreaView>
   );
 };
 
