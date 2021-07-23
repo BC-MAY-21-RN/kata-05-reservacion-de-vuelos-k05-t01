@@ -5,6 +5,25 @@ import {Picker} from '@react-native-picker/picker';
 import color from '../../consts/colors';
 import style from '../../consts/style';
 
+const listPassengers = [
+  {label: 'Select number:', value: null},
+  {label: '1', value: '1 passenger'},
+  {label: '2', value: '2 passengers'},
+  {label: '3', value: '3 passengers'},
+  {label: '4', value: '4 passengers'},
+  {label: '5', value: '5 passengers'},
+  {label: '6', value: '6 passengers'},
+];
+
+const passenger = listPassengers.map(({label, value}) => (
+  <Picker.Item
+    style={style.itemListText}
+    key={label}
+    label={label}
+    value={value}
+  />
+));
+
 const Passengers = function ({passengers, setPassengers}) {
   return (
     <SafeAreaView>
@@ -13,37 +32,7 @@ const Passengers = function ({passengers, setPassengers}) {
           dropdownIconColor={color.orange}
           selectedValue={passengers}
           onValueChange={itemValue => setPassengers(itemValue)}>
-          <Picker.Item style={style.listText} label="Select number:" />
-          <Picker.Item
-            style={style.itemListText}
-            label="1 passenger"
-            value="1"
-          />
-          <Picker.Item
-            style={style.itemListText}
-            label="2 passenger"
-            value="2"
-          />
-          <Picker.Item
-            style={style.itemListText}
-            label="3 passenger"
-            value="3"
-          />
-          <Picker.Item
-            style={style.itemListText}
-            label="4 passenger"
-            value="4"
-          />
-          <Picker.Item
-            style={style.itemListText}
-            label="5 passenger"
-            value="5"
-          />
-          <Picker.Item
-            style={style.itemListText}
-            label="6 passenger"
-            value="6"
-          />
+          {passenger}
         </Picker>
       </View>
     </SafeAreaView>

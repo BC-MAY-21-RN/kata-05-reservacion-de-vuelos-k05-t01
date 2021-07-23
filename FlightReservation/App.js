@@ -14,8 +14,21 @@ import Passenger from './src/screens/booking/Passenger';
 import Results from './src/screens/booking/Results';
 import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
 
-
 const Stack = createStackNavigator();
+
+const listScreens = [
+  {name: 'SignUp', component: SignUp},
+  {name: 'LogIn', component: LogIn},
+  {name: 'From', component: From},
+  {name: 'To', component: To},
+  {name: 'Date', component: Date},
+  {name: 'Passenger', component: Passenger},
+  {name: 'Results', component: Results},
+];
+
+const screens = listScreens.map(({name, component}) => (
+  <Stack.Screen key={name} name={name} component={component} />
+));
 
 const App = () => {
   useGoogleConfiguration();
@@ -23,13 +36,7 @@ const App = () => {
     <NavigationContainer>
       <Provider store={store}>
         <Stack.Navigator screenOptions={{header: () => null}}>
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="LogIn" component={LogIn} />
-          <Stack.Screen name="From" component={From} />
-          <Stack.Screen name="To" component={To} />
-          <Stack.Screen name="Date" component={Date} />
-          <Stack.Screen name="Passenger" component={Passenger} />
-          <Stack.Screen name="Results" component={Results} />
+          {screens}
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

@@ -28,9 +28,7 @@ const Results = function ({navigation, route}) {
         <View style={style.dateContainer}>
           <Text style={style.dateTitle}>{startDate}</Text>
           <Text style={style.dateTitle}>{endDate}</Text>
-          <Text style={style.dateTitle}>
-            {route.params.passengers} Passenger
-          </Text>
+          <Text style={style.dateTitle}>{route.params.passengers}</Text>
         </View>
       </View>
       <View style={style.bookingTitleContainer}>

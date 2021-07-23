@@ -40,7 +40,7 @@ const Passenger = function ({navigation, route}) {
       </View>
       <Passengers passengers={passengers} setPassengers={setPassengers} />
       <View style={style.btnPasseneger}>
-        <ButtonForm onPress={next} text={<Span text="finish" />} />
+        <ButtonForm onPress={next} text={<Span text="next" />} />
       </View>
     </SafeAreaView>
   );
