@@ -4,7 +4,7 @@ import Span from '../../consts/i18n/en';
 import style from '../../consts/style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const LoadingPage = ({status}) => {
+const LoadingPage = ({status, navigation, setStatus}) => {
   if (status === 'loading') {
     return (
       status === 'loading' && (
@@ -23,6 +23,12 @@ const LoadingPage = ({status}) => {
       )
     );
   } else if (status === 'signedUp') {
+    setTimeout(() => {
+      console.log('hola');
+      setStatus(false);
+      navigation.navigate('SignUp');
+    }, 2000);
+
     return (
       status === 'signedUp' && (
         <View style={[style.modal_container, style.center_item]}>

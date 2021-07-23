@@ -34,7 +34,6 @@ const SignUp = function ({navigation}) {
       .then(() => {
         setEmailInUseError(false);
         setStatus('signedUp');
-        console.log(status);
       })
       .catch(() => {
         setEmailInUseError(true);
@@ -42,14 +41,19 @@ const SignUp = function ({navigation}) {
       })
       .finally(() => {
         setLoading(false);
-        console.log(status);
       });
   };
 
   return (
     <SafeAreaView>
       {status === 'loading' && <LoadingPage status={'loading'} />}
-      {status === 'signedUp' && <LoadingPage status={'signedUp'} />}
+      {status === 'signedUp' && (
+        <LoadingPage
+          status={'signedUp'}
+          navigation={navigation}
+          setStatus={setStatus}
+        />
+      )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
