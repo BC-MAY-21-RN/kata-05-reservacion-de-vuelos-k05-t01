@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {Text, SafeAreaView} from 'react-native';
+import {Text, SafeAreaView, View} from 'react-native';
 import Span from '../../consts/i18n/en';
 import Place from '../../components/booking/Place';
 import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
+import Flight from '../../components/booking/Flight';
+import style from '../../consts/style';
 
 const From = function ({navigation, route}) {
   const [fromPlace, setSelectedFromPlace] = useState();
@@ -17,11 +19,18 @@ const From = function ({navigation, route}) {
   return (
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
-      <Text>
-        <Span text="from" />
-      </Text>
+      <View style={style.superior_content_container}>
+        <View style={style.bookingTitleContainer}>
+          <Flight name="flight-takeoff" />
+          <Text style={style.bookingTitle}>
+            <Span text="from" />
+          </Text>
+        </View>
+      </View>
       <Place place={fromPlace} setSelectedPlace={setSelectedFromPlace} />
-      <ButtonForm onPress={next} text={<Span text="next" />} />
+      <View style={style.btnBooking}>
+        <ButtonForm onPress={next} text={<Span text="next" />} />
+      </View>
     </SafeAreaView>
   );
 };

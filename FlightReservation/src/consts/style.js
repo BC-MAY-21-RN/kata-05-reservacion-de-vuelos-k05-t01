@@ -3,7 +3,6 @@ import colors from './colors';
 
 const style = StyleSheet.create({
   //* SignUp Style *//
-
   upper_background: {
     backgroundColor: colors.green,
   },
@@ -102,13 +101,14 @@ const style = StyleSheet.create({
     paddingRight: 20,
   },
   iconFlight: {
-    fontSize: 25,
+    fontSize: 28,
+    marginHorizontal: 10,
     color: colors.orange,
   },
   iconBooking: {
     fontSize: 50,
     color: colors.orange,
-    padding: 15,
+    padding: 10,
   },
   password_advice: {
     paddingLeft: 20,
@@ -116,6 +116,99 @@ const style = StyleSheet.create({
     paddingBottom: 10,
     color: colors.white,
     alignSelf: 'center',
+  },
+  // Booking views style
+  superior_content_container: {
+    display: 'flex',
+    height: 150,
+    flexDirection: 'column',
+    backgroundColor: colors.green,
+    paddingLeft: 10,
+    paddingRight: 10,
+    justifyContent: 'space-around',
+  },
+  superior_passenegers_container: {
+    display: 'flex',
+    height: 240,
+    flexDirection: 'column',
+    backgroundColor: colors.green,
+    paddingLeft: 10,
+    paddingRight: 10,
+    justifyContent: 'space-around',
+  },
+  bookingTitleContainer: {marginTop: 5, display: 'flex', flexDirection: 'row'},
+  upperLocationContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomWidth: 2,
+    borderBottomColor: colors.light_green,
+    marginBottom: 20,
+    alignContent: 'center',
+    justifyContent: 'space-around',
+  },
+  upperLocationTitle: {
+    fontSize: 20,
+    color: colors.white,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    paddingLeft: 20,
+  },
+  dateContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    paddingHorizontal: 20,
+  },
+  dateTitle: {
+    fontSize: 16,
+    color: colors.white,
+  },
+  bookingTitle: {
+    fontSize: 28,
+    color: colors.white,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 50,
+    paddingBottom: 30,
+  },
+  resultsTitle: {
+    fontSize: 28,
+    color: colors.orange,
+    fontWeight: 'bold',
+    paddingTop: 40,
+    paddingLeft: 20,
+    paddingRight: 50,
+    paddingBottom: 30,
+  },
+  listText: {
+    color: colors.orange,
+    fontSize: 20,
+  },
+  itemListText: {
+    color: colors.orange,
+    fontSize: 18,
+  },
+  iconBookingFlight: {
+    paddingVertical: 20,
+    paddingLeft: 20,
+    fontSize: 35,
+    color: colors.white,
+  },
+  calendarContainer: {
+    marginTop: 40,
+  },
+  btnBooking: {
+    marginTop: 440,
+  },
+  btnCalendar: {
+    marginTop: 160,
+  },
+  btnPasseneger: {
+    marginTop: 360,
+  },
+  btnResults: {
+    marginTop: 280,
   },
 });
 
