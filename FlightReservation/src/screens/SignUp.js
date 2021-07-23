@@ -79,13 +79,7 @@ const SignUp = function ({navigation}) {
                 />
               </View>
               <View>
-                <TextField
-                  {...formProps}
-                  label={
-                    emailInUseError ? `Email  ${span('emailUsed')}` : `Email`
-                  }
-                  name="email"
-                />
+                <TextField {...formProps} label="Email" name="email" />
               </View>
               <View>
                 <PasswordField
