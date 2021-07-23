@@ -12,6 +12,7 @@ export const signInWithNameEmailAndPassword = (name, email, password) => {
         user
           .updateProfile({displayName: name})
           .then(() => resolve('User created & signed in'));
+        console.log('Signed Up!');
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {

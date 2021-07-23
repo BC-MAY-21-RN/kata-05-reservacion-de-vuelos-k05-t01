@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+LoadingPage; /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -20,24 +20,36 @@ import {
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import Span, {span} from '../consts/i18n/en';
-import LoadingPage from '../components/form/LoadingPage';
+import LoadingPage from '../components/form/LoadingSigningUp';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
   const [emailInUseError, setEmailInUseError] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const handleSignIn = values => {
     const {name, email, password} = values;
-    setLoading(true);
+    setStatus('loading');
     signInWithNameEmailAndPassword(name, email, password)
-      .then(() => setEmailInUseError(false))
-      .catch(() => setEmailInUseError(true))
-      .finally(() => setLoading(false));
+      .then(() => {
+        setEmailInUseError(false);
+        setStatus('signedUp');
+        console.log(status);
+      })
+      .catch(() => {
+        setEmailInUseError(true);
+        setStatus('false');
+      })
+      .finally(() => {
+        setLoading(false);
+        console.log(status);
+      });
   };
 
   return (
     <SafeAreaView>
-      {loading && <LoadingPage></LoadingPage>}
+      {status === 'loading' && <LoadingPage status={'loading'} />}
+      {status === 'signedUp' && <LoadingPage status={'signedUp'} />}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -50,7 +62,6 @@ const SignUp = function ({navigation}) {
         onSubmit={values => handleSignIn(values)}>
         {formProps => (
           <View>
-            {/* <LoadingPage></LoadingPage> */}
             <View style={style.textFieldView}>
               <Text style={style.title}>
                 <Span text="signup" />

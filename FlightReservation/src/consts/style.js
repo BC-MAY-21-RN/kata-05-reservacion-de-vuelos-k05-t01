@@ -135,15 +135,19 @@ const style = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    color: colors.orange,
-    color: '#FC8417',
+    // color: colors.white,
     marginBottom: 20,
   },
   modal_text: {
-    color: '#FC8417',
+    color: colors.white,
     fontWeight: 'bold',
     fontSize: 18,
     letterSpacing: 1,
+  },
+  modal_icon: {
+    fontSize: 55,
+    color: colors.white,
+    marginBottom: 10,
   },
 });
 
