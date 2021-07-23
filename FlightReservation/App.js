@@ -13,10 +13,7 @@ import To from './src/screens/booking/To';
 import Date from './src/screens/booking/Date';
 import Passenger from './src/screens/booking/Passenger';
 import Results from './src/screens/booking/Results';
-<<<<<<< HEAD
 import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
-=======
->>>>>>> f5c0c349069752720c7c136674b962508ab1c602
 
 const Stack = createStackNavigator();
 
