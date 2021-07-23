@@ -37,11 +37,7 @@ const SignUp = function ({navigation}) {
 
   return (
     <SafeAreaView>
-      {loading && (
-        <Text>
-          <Span text="loading" />
-        </Text>
-      )}
+      {loading && <LoadingPage></LoadingPage>}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -54,7 +50,7 @@ const SignUp = function ({navigation}) {
         onSubmit={values => handleSignIn(values)}>
         {formProps => (
           <View>
-            <LoadingPage></LoadingPage>
+            {/* <LoadingPage></LoadingPage> */}
             <View style={style.textFieldView}>
               <Text style={style.title}>
                 <Span text="signup" />

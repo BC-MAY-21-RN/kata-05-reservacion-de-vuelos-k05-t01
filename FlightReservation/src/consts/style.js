@@ -114,22 +114,36 @@ const style = StyleSheet.create({
   },
 
   //* Spinner Modal *//
-  modal_container: {
-    backgroundColor: '#fff',
-    flexDirection: 'row',
+  center_item: {
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '105%',
+  },
+  modal_container: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    height: '102%',
     width: '100%',
     position: 'absolute',
     zIndex: 1,
   },
-  spinner: {
-    color: colors.orange,
+  modal_background: {
     backgroundColor: colors.green,
     height: '20%',
     width: '40%',
+  },
+  spinner: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: colors.orange,
     color: '#FC8417',
+    marginBottom: 20,
+  },
+  modal_text: {
+    color: '#FC8417',
+    fontWeight: 'bold',
+    fontSize: 18,
+    letterSpacing: 1,
   },
 });
 
