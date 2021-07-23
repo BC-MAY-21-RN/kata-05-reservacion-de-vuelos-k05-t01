@@ -2,12 +2,9 @@ import {StyleSheet} from 'react-native';
 import colors from './colors';
 
 const style = StyleSheet.create({
-  //* SignUp Style *//
-
   upper_background: {
     backgroundColor: colors.green,
   },
-
   textFieldView: {
     backgroundColor: colors.green,
   },
@@ -36,8 +33,6 @@ const style = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 15,
     fontWeight: 'bold',
-    paddingTop: 10,
-    paddingBottom: 10,
   },
   btn: {
     height: 50,
@@ -66,8 +61,6 @@ const style = StyleSheet.create({
   account_link: {
     color: colors.blue,
   },
-
-  //* PasswordFields Style *//
   input_password_container: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -76,8 +69,13 @@ const style = StyleSheet.create({
   textField_text: {
     color: colors.white,
     fontSize: 20,
-    paddingLeft: 20,
+    paddingLeft: 30,
     alignSelf: 'flex-start',
+  },
+  checkBox:{
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    lineHeight: 10,
   },
   password_inputField_container: {
     flexDirection: 'row',
@@ -108,6 +106,38 @@ const style = StyleSheet.create({
     color: colors.white,
     alignSelf: 'center',
   },
+  errorMessage:{
+    color: colors.red,
+    fontSize: 18,
+  },
+  errorTextBox:{
+    color: colors.red,
+  },
+  inputs_nameAndMail_container: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingBottom: 18,
+  },
+  input: {
+    paddingLeft: 20,
+    backgroundColor: colors.light_green,
+    borderColor: colors.white,
+    borderWidth: 0.5,
+    borderRadius: 5,
+    color: colors.white,
+    fontSize: 18,
+    height: 50,
+    width: 350,
+  },
+  error: {
+    color: colors.red,
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  upTextField: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+  },
 });
-
 export default style;

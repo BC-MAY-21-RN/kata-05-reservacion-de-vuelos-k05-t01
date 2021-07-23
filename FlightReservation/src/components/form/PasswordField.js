@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Text, TextInput, View, StyleSheet} from 'react-native';
+import {Text, TextInput, View} from 'react-native';
 import style from './../../consts/style';
+import Span from '../../consts/i18n/en';
 
 export default function PasswordField({
   handleChange,
@@ -11,12 +13,20 @@ export default function PasswordField({
   touched,
   label,
   name,
+  authError,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <View style={style.input_password_container}>
-        <Text style={style.textField_text}>Password</Text>
+        <View style={style.upTextField}>
+          <Text style={style.textField_text}>{label}</Text>
+          {errors[name] && touched[name] ? (
+            <Text style={style.error}>{errors[name]}</Text>
+          ) : (
+            authError && <Text style={style.error}>{authError}</Text>
+          )}
+        </View>
         <View style={style.password_inputField_container}>
           <TextInput
             onChangeText={handleChange(name)}
@@ -31,13 +41,9 @@ export default function PasswordField({
             onPress={() => setShowPassword(!showPassword)}
           />
         </View>
-
-        {errors[name] && touched[name] && <Text>{errors[name]}</Text>}
-
-        {errors.password && touched.password && <Text>{errors.password}</Text>}
       </View>
       <Text style={style.password_advice}>
-        Use 8 or more characters with a mix of letter, numbers and symbols
+        <Span text = "passwordAdvice"/>
       </Text>
     </>
   );
