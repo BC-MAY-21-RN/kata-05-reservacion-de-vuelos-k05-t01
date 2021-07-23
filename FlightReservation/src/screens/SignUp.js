@@ -20,7 +20,7 @@ import {
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import Span, {span} from '../consts/i18n/en';
-import {default as theme} from '../consts/custom-theme.json';
+import LoadingPage from '../components/form/LoadingPage';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ const SignUp = function ({navigation}) {
   return (
     <SafeAreaView>
       {loading && (
-        <Text style={{color: '#ff0000'}}>
+        <Text>
           <Span text="loading" />
         </Text>
       )}
@@ -54,6 +54,7 @@ const SignUp = function ({navigation}) {
         onSubmit={values => handleSignIn(values)}>
         {formProps => (
           <View>
+            <LoadingPage></LoadingPage>
             <View style={style.textFieldView}>
               <Text style={style.title}>
                 <Span text="signup" />
@@ -66,7 +67,6 @@ const SignUp = function ({navigation}) {
                   text="emailUsed"
                 />
               </View>
-
               <View>
                 <TextField
                   {...formProps}

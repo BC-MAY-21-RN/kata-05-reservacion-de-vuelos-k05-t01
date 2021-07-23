@@ -113,7 +113,24 @@ const style = StyleSheet.create({
     alignSelf: 'center',
   },
 
-  //* Logo animation *//
+  //* Spinner Modal *//
+  modal_container: {
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '105%',
+    width: '100%',
+    position: 'absolute',
+    zIndex: 1,
+  },
+  spinner: {
+    color: colors.orange,
+    backgroundColor: colors.green,
+    height: '20%',
+    width: '40%',
+    color: '#FC8417',
+  },
 });
 
 export default style;
