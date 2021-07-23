@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import Span from '../../consts/i18n/en';
 import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
@@ -31,10 +31,18 @@ const Results = function ({navigation, route}) {
           <Text style={style.dateTitle}>{route.params.passengers}</Text>
         </View>
       </View>
-      <View style={style.bookingTitleContainer}>
-        <Text style={style.resultsTitle}>
-          <Span text="request" />
-        </Text>
+      <View style={style.resultsContainer}>
+        <View style={style.bookingTitleContainer}>
+          <Text style={style.resultsTitle}>
+            <Span text="request" />
+          </Text>
+        </View>
+      </View>
+      <View style={style.codeContainer}>
+        <Image
+          style={style.imgCode}
+          source={require('../../consts/img/code.png')}
+        />
       </View>
       <View style={style.btnResults}>
         <ButtonForm onPress={next} text={<Span text="finish" />} />

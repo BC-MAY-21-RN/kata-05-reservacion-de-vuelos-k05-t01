@@ -106,7 +106,7 @@ const style = StyleSheet.create({
     color: colors.orange,
   },
   iconBooking: {
-    fontSize: 50,
+    fontSize: 45,
     color: colors.orange,
     padding: 10,
   },
@@ -117,24 +117,28 @@ const style = StyleSheet.create({
     color: colors.white,
     alignSelf: 'center',
   },
-  // Booking views style
+  // --BOOKING SCREENS--
+  // CONTAINERS
   superior_content_container: {
     display: 'flex',
-    height: 150,
+    height: 200,
+    width: 400,
+    marginHorizontal: 6,
     flexDirection: 'column',
     backgroundColor: colors.green,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingHorizontal: 10,
     justifyContent: 'space-around',
+    borderRadius: 15,
   },
   superior_passenegers_container: {
     display: 'flex',
-    height: 240,
+    height: 230,
+    marginHorizontal: 6,
     flexDirection: 'column',
     backgroundColor: colors.green,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingHorizontal: 10,
     justifyContent: 'space-around',
+    borderRadius: 15,
   },
   bookingTitleContainer: {marginTop: 5, display: 'flex', flexDirection: 'row'},
   upperLocationContainer: {
@@ -146,18 +150,77 @@ const style = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'space-around',
   },
-  upperLocationTitle: {
-    fontSize: 20,
-    color: colors.white,
-    fontWeight: 'bold',
-    paddingTop: 20,
-    paddingLeft: 20,
+  calendarContainer: {
+    display: 'flex',
+    marginTop: 30,
+    height: 400,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
   },
   dateContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     paddingHorizontal: 20,
+  },
+  listPicker: {
+    display: 'flex',
+    marginTop: 40,
+    height: 100,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  resultsContainer: {
+    display: 'flex',
+    marginTop: 40,
+    height: 100,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  codeContainer: {
+    display: 'flex',
+    marginTop: 30,
+    height: 200,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 20,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  calendarWidget: {paddingVertical: 40},
+
+  // TEXT
+  upperLocationTitle: {
+    fontSize: 20,
+    color: colors.white,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    paddingLeft: 20,
   },
   dateTitle: {
     fontSize: 16,
@@ -174,42 +237,43 @@ const style = StyleSheet.create({
   },
   resultsTitle: {
     fontSize: 28,
-    color: colors.orange,
+    color: colors.green,
     fontWeight: 'bold',
-    paddingTop: 40,
     paddingLeft: 20,
     paddingRight: 50,
-    paddingBottom: 30,
   },
   listText: {
     color: colors.orange,
     fontSize: 20,
   },
   itemListText: {
-    color: colors.orange,
-    fontSize: 18,
+    color: colors.green,
+    fontSize: 20,
   },
+  // ICONS
   iconBookingFlight: {
     paddingVertical: 20,
     paddingLeft: 20,
     fontSize: 35,
     color: colors.white,
   },
-  calendarContainer: {
-    marginTop: 40,
-  },
+  // BUTTONS
   btnBooking: {
-    marginTop: 440,
+    marginTop: 330,
   },
   btnCalendar: {
-    marginTop: 160,
+    marginTop: 40,
   },
   btnPasseneger: {
-    marginTop: 360,
+    marginTop: 310,
   },
   btnResults: {
-    marginTop: 280,
+    marginTop: 80,
   },
+
+  // IMAGES
+  imgFlight: {width: 400, height: 450, tintColor: colors.green, opacity: 0.4},
+  imgCode: {width: 360, height: 200, tintColor: colors.dark, opacity: 0.8},
 });
 
 export default style;

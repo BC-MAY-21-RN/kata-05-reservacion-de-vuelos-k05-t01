@@ -6,7 +6,7 @@ import style from '../../consts/style';
 
 const ArrowBack = function ({navigation}) {
   return (
-    <View style={style.upper_background}>
+    <View>
       <Icon
         style={style.iconBooking}
         name="chevron-left"
