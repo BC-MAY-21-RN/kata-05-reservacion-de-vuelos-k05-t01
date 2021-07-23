@@ -57,9 +57,9 @@ const SignUp = function ({navigation}) {
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
-          name: 'Juan',
-          email: 'juan1@example.com',
-          password: 'Juan123%',
+          name: '',
+          email: '',
+          password: '',
           agreeTerms: true,
         }}
         validateOnMount={true}
