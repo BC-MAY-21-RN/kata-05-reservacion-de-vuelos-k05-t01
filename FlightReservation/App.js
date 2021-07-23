@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
+import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
 import SignUp from './src/screens/SignUp';
 import LogIn from './src/screens/LogIn';
 import From from './src/screens/booking/From';
@@ -12,7 +13,10 @@ import To from './src/screens/booking/To';
 import Date from './src/screens/booking/Date';
 import Passenger from './src/screens/booking/Passenger';
 import Results from './src/screens/booking/Results';
+<<<<<<< HEAD
 import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
+=======
+>>>>>>> f5c0c349069752720c7c136674b962508ab1c602
 
 const Stack = createStackNavigator();
 
