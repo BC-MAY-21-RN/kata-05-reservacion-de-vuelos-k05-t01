@@ -3,6 +3,18 @@ import React from 'react';
 import {View, SafeAreaView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
+const listPassengers = [
+  {label: '1', value: '1'},
+  {label: '2', value: '2'},
+  {label: '3', value: '3'},
+  {label: '4', value: '4'},
+  {label: '5', value: '5'},
+];
+
+const passenger = listPassengers.map(({label, value}) => (
+  <Picker.Item key={label} label={label} value={value} />
+));
+
 const Passengers = function ({passengers, setPassengers}) {
   return (
     <SafeAreaView>
@@ -10,11 +22,7 @@ const Passengers = function ({passengers, setPassengers}) {
         <Picker
           selectedValue={passengers}
           onValueChange={itemValue => setPassengers(itemValue)}>
-          <Picker.Item label="1" value="1" />
-          <Picker.Item label="2" value="2" />
-          <Picker.Item label="3" value="3" />
-          <Picker.Item label="4" value="4" />
-          <Picker.Item label="5" value="5" />
+          {passenger}
         </Picker>
       </View>
     </SafeAreaView>

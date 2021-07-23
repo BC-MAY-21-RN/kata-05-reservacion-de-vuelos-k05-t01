@@ -3,6 +3,19 @@ import React from 'react';
 import {View, SafeAreaView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
+const listPlaces = [
+  {label: 'Select location:', value: null},
+  {label: 'Ciudad de Mexico', value: 'Ciudad de Mexico'},
+  {label: 'Aguascalientes', value: 'Aguascalientes'},
+  {label: 'Colima', value: 'Colima'},
+  {label: 'Sinaloa', value: 'Sinaloa'},
+  {label: 'Zacatecas', value: 'Zacatecas'},
+];
+
+const places = listPlaces.map(({label, value}) => (
+  <Picker.Item key={label} label={label} value={value} />
+));
+
 const Place = function ({place, setSelectedPlace}) {
   return (
     <SafeAreaView>
@@ -10,12 +23,7 @@ const Place = function ({place, setSelectedPlace}) {
         <Picker
           selectedValue={place}
           onValueChange={itemValue => setSelectedPlace(itemValue)}>
-          <Picker.Item label="Select location:" />
-          <Picker.Item label="CDMX" value="Ciudad de Mexico" />
-          <Picker.Item label="AGS" value="Aguascalientes" />
-          <Picker.Item label="COL" value="Colima" />
-          <Picker.Item label="SIN" value="Sinaloa" />
-          <Picker.Item label="ZAC" value="Zacatecas" />
+          {places}
         </Picker>
       </View>
     </SafeAreaView>
