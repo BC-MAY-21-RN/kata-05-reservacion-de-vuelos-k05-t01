@@ -127,6 +127,14 @@ const SignUp = function ({navigation}) {
                       }}>
                       <Span text="login" />
                     </Text>
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('From');
+                      }}>
+                      {' '}
+                      <Span text="next" />
+                    </Text>
                   </Text>
                 </View>
               </View>
