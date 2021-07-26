@@ -24,7 +24,6 @@ const LoadingPage = ({status, navigation, setStatus}) => {
     );
   } else if (status === 'signedUp') {
     setTimeout(() => {
-      console.log('hola');
       setStatus(false);
       navigation.navigate('SignUp');
     }, 2000);

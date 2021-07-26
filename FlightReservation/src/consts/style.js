@@ -68,7 +68,6 @@ const style = StyleSheet.create({
   },
   invalid_input_text: {
     color: colors.red,
-    // fontWeight: 'bold',
   },
 
   //* PasswordFields Style *//
@@ -128,6 +127,7 @@ const style = StyleSheet.create({
   },
   modal_background: {
     backgroundColor: colors.green,
+    borderRadius: 10,
     height: '20%',
     width: '40%',
   },
@@ -135,7 +135,6 @@ const style = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // color: colors.white,
     marginBottom: 20,
   },
   modal_text: {
