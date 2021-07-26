@@ -1,12 +1,22 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  SafeAreaView,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
 import ButtonForm from '../components/form/ButtonForm';
 import {signUpValidationSchema} from '../schemas/signUpSchema';
-import {onGoogleButtonPress, signInWithNameEmailAndPassword} from '../helpers/firebaseSignUp';
+import {
+  onGoogleButtonPress,
+  signInWithNameEmailAndPassword,
+} from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import Span, { span } from '../consts/i18n/en';
@@ -109,6 +119,14 @@ const SignUp = function ({navigation}) {
                         navigation.navigate('LogIn');
                       }}>
                       <Span text="login" />
+                    </Text>
+                    <Text
+                      style={style.account_link}
+                      onPress={() => {
+                        navigation.navigate('From');
+                      }}>
+                      {' '}
+                      <Span text="next" />
                     </Text>
                   </Text>
                 </View>

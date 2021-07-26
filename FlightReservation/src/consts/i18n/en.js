@@ -1,3 +1,4 @@
+import React from 'react';
 import I18n from 'react-native-i18n';
 
 I18n.fallbacks = true;
@@ -18,6 +19,15 @@ I18n.translations = {
     dontAccount: 'Do not have an account? ',
     errorAuth: ' *Incorrect email and/or password',
     passwordAdvice: 'Use 8 or more characters with a mix of letter, numbers and symbols',
+    from: 'Where are you now?',
+    to: 'Where will you be flying to?',
+    date: 'Select date',
+    next: 'Next',
+    finish: 'Finish',
+    startDate: 'Selected start date: ',
+    endDate: 'Selected end date: ',
+    passenger: 'How many passengers?',
+    request: 'Your request was received.',
   },
 };
 

@@ -11,6 +11,7 @@ import {Pressable} from 'react-native';
 import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
 import Span, { span } from '../consts/i18n/en';
 import ButtonForm from '../components/form/ButtonForm';
+import ArrowBack from '../components/booking/ArrowBack';
 
 const LogIn = function ({navigation}) {
 const [authError, setAuthError] = useState(false);
@@ -34,9 +35,12 @@ const [authError, setAuthError] = useState(false);
         {formProps => (
           <View>
             <View style={style.upper_background}>
-              <Text style={style.title}>
-                <Span text="login" />
-              </Text>
+              <View>
+                <ArrowBack navigation={navigation} />
+                <Text style={style.title}>
+                  <Span text="login" />
+                </Text>
+              </View>
               <View>
                 <TextField
                   {...formProps}
@@ -68,8 +72,9 @@ const [authError, setAuthError] = useState(false);
                 <Span text="or" />
               </Text>
               <ButtonForm
-                onPress = {onGoogleButtonPress}
-                text={<Span text="signinGoogle" />}/>
+                onPress={onGoogleButtonPress}
+                text={<Span text="signinGoogle" />}
+              />
               <View style={style.lower_content_text}>
                 <Text
                   style={style.alreadyTxt}
