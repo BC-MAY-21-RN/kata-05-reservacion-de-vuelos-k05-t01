@@ -5,7 +5,8 @@ import Span from '../../consts/i18n/en';
 import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
 import Flight from '../../components/booking/Flight';
-import Passengers from '../../components/booking/Passengers';
+import List from '../../components/booking/ItemList';
+import ListPassengers from '../../components/booking/consts/ListPassengers';
 import style from '../../consts/style';
 
 const Passenger = function ({navigation, route}) {
@@ -38,7 +39,11 @@ const Passenger = function ({navigation, route}) {
           </Text>
         </View>
       </View>
-      <Passengers passengers={passengers} setPassengers={setPassengers} />
+      <List
+        list={ListPassengers}
+        item={passengers}
+        setSelectedItem={setPassengers}
+      />
       <View style={style.btnPasseneger}>
         <ButtonForm onPress={next} text={<Span text="next" />} />
       </View>
