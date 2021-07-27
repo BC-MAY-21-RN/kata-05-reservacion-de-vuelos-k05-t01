@@ -2,7 +2,8 @@
 import React, {useState} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import Span from '../../consts/i18n/en';
-import Place from '../../components/booking/Place';
+import List from '../../components/booking/ItemList';
+import ListPlaces from '../../components/booking/consts/ListPlaces';
 import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
 import Flight from '../../components/booking/Flight';
@@ -31,7 +32,11 @@ const To = function ({navigation, route}) {
           </Text>
         </View>
       </View>
-      <Place place={toPlace} setSelectedPlace={setSelectedToPlace} />
+      <List
+        list={ListPlaces}
+        item={toPlace}
+        setSelectedItem={setSelectedToPlace}
+      />
       <View style={style.btnBooking}>
         <ButtonForm onPress={next} text={<Span text="next" />} />
       </View>

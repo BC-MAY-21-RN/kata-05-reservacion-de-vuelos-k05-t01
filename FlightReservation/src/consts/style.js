@@ -173,7 +173,7 @@ const style = StyleSheet.create({
   listPicker: {
     display: 'flex',
     marginTop: 40,
-    height: 100,
+    height: 60,
     width: 400,
     marginHorizontal: 6,
     flexDirection: 'column',
@@ -226,6 +226,7 @@ const style = StyleSheet.create({
     fontSize: 16,
     color: colors.white,
   },
+
   bookingTitle: {
     fontSize: 28,
     color: colors.white,
