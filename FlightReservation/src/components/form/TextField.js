@@ -1,7 +1,7 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
-import {Text, TextInput, StyleSheet, View} from 'react-native';
-// import {Colors} from 'react-native/Libraries/NewAppScreen';
-import colors from '../../consts/colors';
+import {Text, TextInput, View} from 'react-native';
+import style from '../../consts/style';
 
 export default function TextField({
   handleChange,
@@ -11,44 +11,26 @@ export default function TextField({
   touched,
   label,
   name,
+  authError,
 }) {
   return (
     <>
       <View style={style.inputs_nameAndMail_container}>
-        <Text style={style.textField_text}>{label}</Text>
+        <View style={style.upTextField}>
+          <Text style={style.textField_text}>{label}</Text>
+          {errors[name] && touched[name] ? (
+            <Text style={style.error}>{errors[name]}</Text>
+          ) : (
+            authError && <Text style={style.error}>{authError}</Text>
+          )}
+        </View>
         <TextInput
           onChangeText={handleChange(name)}
           onBlur={handleBlur(name)}
           value={values[name]}
           style={style.input}
         />
-        {errors[name] && touched[name] && <Text>{errors[name]}</Text>}
       </View>
     </>
   );
 }
-
-const style = StyleSheet.create({
-  inputs_nameAndMail_container: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingBottom: 18,
-  },
-  textField_text: {
-    color: colors.white,
-    fontSize: 20,
-    paddingLeft: 20,
-    alignSelf: 'flex-start',
-  },
-  input: {
-    paddingLeft: 20,
-    backgroundColor: colors.light_green,
-    borderColor: colors.white,
-    borderWidth: 0.5,
-    borderRadius: 5,
-    color: colors.white,
-    fontSize: 18,
-    height: 50,
-    width: 350,
-  },
-});

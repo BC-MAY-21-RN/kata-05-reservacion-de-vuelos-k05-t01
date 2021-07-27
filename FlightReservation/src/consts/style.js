@@ -2,12 +2,9 @@ import {StyleSheet} from 'react-native';
 import colors from './colors';
 
 const style = StyleSheet.create({
-  //* SignUp Style *//
-
   upper_background: {
     backgroundColor: colors.green,
   },
-
   textFieldView: {
     backgroundColor: colors.green,
   },
@@ -36,8 +33,6 @@ const style = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 15,
     fontWeight: 'bold',
-    paddingTop: 10,
-    paddingBottom: 10,
   },
   btn: {
     height: 50,
@@ -66,8 +61,6 @@ const style = StyleSheet.create({
   account_link: {
     color: colors.blue,
   },
-
-  //* PasswordFields Style *//
   input_password_container: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -76,8 +69,13 @@ const style = StyleSheet.create({
   textField_text: {
     color: colors.white,
     fontSize: 20,
-    paddingLeft: 20,
+    paddingLeft: 30,
     alignSelf: 'flex-start',
+  },
+  checkBox:{
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    lineHeight: 10,
   },
   password_inputField_container: {
     flexDirection: 'row',
@@ -102,13 +100,14 @@ const style = StyleSheet.create({
     paddingRight: 20,
   },
   iconFlight: {
-    fontSize: 25,
+    fontSize: 28,
+    marginHorizontal: 10,
     color: colors.orange,
   },
   iconBooking: {
-    fontSize: 50,
+    fontSize: 45,
     color: colors.orange,
-    padding: 15,
+    padding: 10,
   },
   password_advice: {
     paddingLeft: 20,
@@ -117,6 +116,194 @@ const style = StyleSheet.create({
     color: colors.white,
     alignSelf: 'center',
   },
-});
+  errorMessage:{
+    color: colors.red,
+    fontSize: 18,
+  },
+  errorTextBox:{
+    color: colors.red,
+  },
+  inputs_nameAndMail_container: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingBottom: 18,
+  },
+  input: {
+    paddingLeft: 20,
+    backgroundColor: colors.light_green,
+    borderColor: colors.white,
+    borderWidth: 0.5,
+    borderRadius: 5,
+    color: colors.white,
+    fontSize: 18,
+    height: 50,
+    width: 350,
+  },
+  error: {
+    color: colors.red,
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  upTextField: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+  },
+  superior_content_container: {
+    display: 'flex',
+    height: 200,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.green,
+    paddingHorizontal: 10,
+    justifyContent: 'space-around',
+    borderRadius: 15,
+  },
+  superior_passenegers_container: {
+    display: 'flex',
+    height: 230,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.green,
+    paddingHorizontal: 10,
+    justifyContent: 'space-around',
+    borderRadius: 15,
+  },
+  bookingTitleContainer: {marginTop: 5, display: 'flex', flexDirection: 'row'},
+  upperLocationContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomWidth: 2,
+    borderBottomColor: colors.light_green,
+    marginBottom: 20,
+    alignContent: 'center',
+    justifyContent: 'space-around',
+  },
+  calendarContainer: {
+    display: 'flex',
+    marginTop: 30,
+    height: 400,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  dateContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    paddingHorizontal: 20,
+  },
+  listPicker: {
+    display: 'flex',
+    marginTop: 40,
+    height: 60,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  resultsContainer: {
+    display: 'flex',
+    marginTop: 40,
+    height: 100,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  codeContainer: {
+    display: 'flex',
+    marginTop: 30,
+    height: 200,
+    width: 400,
+    marginHorizontal: 6,
+    flexDirection: 'column',
+    backgroundColor: colors.grey,
+    paddingLeft: 20,
+    paddingRight: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  calendarWidget: {paddingVertical: 40},
 
+  // TEXT
+  upperLocationTitle: {
+    fontSize: 20,
+    color: colors.white,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    paddingLeft: 20,
+  },
+  dateTitle: {
+    fontSize: 16,
+    color: colors.white,
+  },
+
+  bookingTitle: {
+    fontSize: 28,
+    color: colors.white,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 50,
+    paddingBottom: 30,
+  },
+  resultsTitle: {
+    fontSize: 28,
+    color: colors.green,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+    paddingRight: 50,
+  },
+  listText: {
+    color: colors.orange,
+    fontSize: 20,
+  },
+  itemListText: {
+    color: colors.green,
+    fontSize: 20,
+  },
+  // ICONS
+  iconBookingFlight: {
+    paddingVertical: 20,
+    paddingLeft: 20,
+    fontSize: 35,
+    color: colors.white,
+  },
+  // BUTTONS
+  btnBooking: {
+    marginTop: 330,
+  },
+  btnCalendar: {
+    marginTop: 40,
+  },
+  btnPasseneger: {
+    marginTop: 310,
+  },
+  btnResults: {
+    marginTop: 80,
+  },
+
+  // IMAGES
+  imgFlight: {width: 400, height: 450, tintColor: colors.green, opacity: 0.4},
+  imgCode: {width: 360, height: 200, tintColor: colors.dark, opacity: 0.8},
+});
 export default style;
