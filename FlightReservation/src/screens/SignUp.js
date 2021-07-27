@@ -19,7 +19,7 @@ import {
 } from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
-import Span from '../consts/i18n/en';
+import Span, { span } from '../consts/i18n/en';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -41,11 +41,6 @@ const SignUp = function ({navigation}) {
           <Span text="loading" />
         </Text>
       )}
-      {emailInUseError && (
-        <Text>
-          <Span text="emailUsed" />
-        </Text>
-      )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
@@ -62,37 +57,43 @@ const SignUp = function ({navigation}) {
               <Text style={style.title}>
                 <Span text="signup" />
               </Text>
-              <View style={style.textField__text}>
+              <View >
                 <TextField
                   {...formProps}
-                  label="Name"
+                  label={<Span text="name"/>}
                   name="name"
-                  style={style.textFieldBG}
                 />
               </View>
               <View>
-                <TextField {...formProps} label="Email" name="email" />
+                <TextField
+                  {...formProps}
+                  label={<Span text="email"/>}
+                  name = "email"
+                  authError = {emailInUseError && span('emailUsed')}
+                />
               </View>
               <View>
                 <PasswordField
                   {...formProps}
-                  title="Password"
+                  label={<Span text="password"/>}
                   name="password"
                 />
               </View>
             </View>
             <View style={style.inferior_content_container}>
               <View style={style.termsView}>
-                <CheckBoxField {...formProps} name="agreeTerms" />
-                <Text style={style.lower_content_text}>
-                  <Span text="terms" />
-                </Text>
+                <CheckBoxField
+                  {...formProps}
+                  label={<Span text="terms"/>}
+                  name="agreeTerms"
+                />
               </View>
               <View style={style.termsView}>
-                <CheckBoxField {...formProps} name="subscribeForProducts" />
-                <Text style={style.lower_content_text}>
-                  <Span text="productUpdates" />
-                </Text>
+                <CheckBoxField
+                  {...formProps}
+                  label={<Span text="productUpdates"/>}
+                  name="subscribeForProducts"
+                />
               </View>
               <View>
                 <View style={style.buttons_container} />
@@ -106,8 +107,8 @@ const SignUp = function ({navigation}) {
                   <Span text="or" />
                 </Text>
                 <ButtonForm
-                  onPress={() => onGoogleButtonPress(navigation)}
-                  text={<Span text="signinGoogle" />}
+                  onPress = {onGoogleButtonPress}
+                  text={<Span text="signinGoogle"/>}
                 />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>

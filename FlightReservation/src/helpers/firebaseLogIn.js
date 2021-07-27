@@ -1,20 +1,17 @@
+/* eslint-disable prettier/prettier */
 import auth from '@react-native-firebase/auth';
 
 export const logInWithEmailAndPassword = async (email, password) => {
-  return await auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(({user}) => {
-      console.log('User signed in!');
-    })
-    .catch(error => {
-      if (error.code === 'auth/email-already-in-use') {
-        console.log('That email address is already in use!');
-      }
-
-      if (error.code === 'auth/invalid-email') {
-        console.log('That email address is invalid!');
-      }
-
-      console.error(error);
-    });
+  return new Promise((resolve, reject) => {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        resolve('User signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/wrong-password') {
+          reject('Incorrect email and/or password');
+        }
+      });
+  });
 };
