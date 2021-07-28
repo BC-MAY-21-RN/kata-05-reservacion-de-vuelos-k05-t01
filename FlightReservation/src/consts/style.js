@@ -188,17 +188,19 @@ const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  itemContainer:{
-    display: 'flex',
-    borderRadius: 15,
+  listContainer:{
+    marginTop: 40,
     marginHorizontal: 6,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 15,
     backgroundColor: colors.grey,
-    justifyContent: 'center',
     borderWidth: 1,
     borderColor: colors.green,
+    width: 400,
+    height: 60,
   },
   calendarContainer: {
-    display: 'flex',
     borderRadius: 15,
     height: 350,
     marginHorizontal: 6,
@@ -215,10 +217,6 @@ const style = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.green,
     marginHorizontal: 10,
-  },
-  listPicker: {
-    height: 60,
-    marginTop: 40,
   },
   resultsContainer: {
     marginTop: 40,
