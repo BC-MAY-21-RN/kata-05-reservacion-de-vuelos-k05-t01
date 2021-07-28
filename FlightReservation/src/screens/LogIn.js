@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, Button, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import {Formik} from 'formik';
 import TextField from '../components/form/TextField';
 import PasswordField from '../components/form/PasswordField';
@@ -9,31 +9,21 @@ import {onGoogleButtonPress} from '../helpers/firebaseSignUp';
 import style from './../consts/style';
 import {Pressable} from 'react-native';
 import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
-import Span from '../consts/i18n/en';
+import Span, { span } from '../consts/i18n/en';
 import ButtonForm from '../components/form/ButtonForm';
 import ArrowBack from '../components/booking/ArrowBack';
 
 const LogIn = function ({navigation}) {
-  const [loading, setLoading] = useState(false);
-  const [emailInUseError, setEmailInUseError] = useState(false);
+const [authError, setAuthError] = useState(false);
 
-  //Change the handleSignIn function for the handleLogIn
   const handleLogIn = async values => {
     const {email, password} = values;
-    setLoading(true);
-    await logInWithEmailAndPassword(email, password).then(response => {
-      setEmailInUseError(false);
-      setLoading(false);
-    });
+    await logInWithEmailAndPassword(email, password)
+    .then(() => setAuthError(false))
+    .catch(() => setAuthError(true));
   };
-
   return (
     <SafeAreaView>
-      {loading && (
-        <Text>
-          <Span text="loading" />
-        </Text>
-      )}
       <Formik
         validationSchema={logInValidationSchema}
         initialValues={{
@@ -52,22 +42,26 @@ const LogIn = function ({navigation}) {
                 </Text>
               </View>
               <View>
-                <TextField {...formProps} label="Email" name="email" />
+                <TextField
+                  {...formProps}
+                  label={<Span text="email"/>}
+                  name="email"
+                  authError = {authError && span('errorAuth')}
+                  />
               </View>
               <View>
                 <PasswordField
                   {...formProps}
-                  title="Password"
+                  label={<Span text="password"/>}
                   name="password"
+                  authError = {authError && span('errorAuth')}
                 />
               </View>
             </View>
             <View>
               <View style={style.buttons_container} />
               <Pressable
-                isValid={!formProps.isValid || loading}
-                onPress={formProps.handleSubmit}
-                title="Log in">
+                onPress={formProps.handleSubmit}>
                 <View style={style.btn}>
                   <Text style={style.button_text}>
                     <Span text="login" />

@@ -2,7 +2,6 @@ import React from 'react';
 import I18n from 'react-native-i18n';
 
 I18n.fallbacks = true;
-
 I18n.translations = {
   en: {
     login: 'Log in',
@@ -18,8 +17,10 @@ I18n.translations = {
     terms: 'I agree with the Terms and Privacy Policy. *',
     productUpdates: 'Subscribe for select product updates.',
     or: 'or',
-    alreadyAccount: 'Already have an account?',
-    dontAccount: 'Do not have an account?',
+    alreadyAccount: 'Already have an account? ',
+    dontAccount: 'Do not have an account? ',
+    errorAuth: ' *Incorrect email and/or password',
+    passwordAdvice: 'Use 8 or more characters with a mix of letter, numbers and symbols',
     from: 'Where are you now?',
     to: 'Where will you be flying to?',
     date: 'Select date',

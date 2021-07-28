@@ -22,6 +22,7 @@ import style from './../consts/style';
 import Span, {span} from '../consts/i18n/en';
 import LoadingPage from '../components/form/LoadingSigningUp';
 
+
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
   const [emailInUseError, setEmailInUseError] = useState(false);
@@ -70,37 +71,48 @@ const SignUp = function ({navigation}) {
               <Text style={style.title}>
                 <Span text="signup" />
               </Text>
+
               <View>
+
+              <View >
+
                 <TextField
                   {...formProps}
-                  label="Name"
+                  label={<Span text="name"/>}
                   name="name"
                   text="emailUsed"
                 />
               </View>
               <View>
-                <TextField {...formProps} label="Email" name="email" />
+                <TextField
+                  {...formProps}
+                  label={<Span text="email"/>}
+                  name = "email"
+                  authError = {emailInUseError && span('emailUsed')}
+                />
               </View>
               <View>
                 <PasswordField
                   {...formProps}
-                  title="Password"
+                  label={<Span text="password"/>}
                   name="password"
                 />
               </View>
             </View>
             <View style={style.inferior_content_container}>
               <View style={style.termsView}>
-                <CheckBoxField {...formProps} name="agreeTerms" />
-                <Text style={style.lower_content_text}>
-                  <Span text="terms" />
-                </Text>
+                <CheckBoxField
+                  {...formProps}
+                  label={<Span text="terms"/>}
+                  name="agreeTerms"
+                />
               </View>
               <View style={style.termsView}>
-                <CheckBoxField {...formProps} name="subscribeForProducts" />
-                <Text style={style.lower_content_text}>
-                  <Span text="productUpdates" />
-                </Text>
+                <CheckBoxField
+                  {...formProps}
+                  label={<Span text="productUpdates"/>}
+                  name="subscribeForProducts"
+                />
               </View>
               <View>
                 <View style={style.buttons_container} />
@@ -114,8 +126,8 @@ const SignUp = function ({navigation}) {
                   <Span text="or" />
                 </Text>
                 <ButtonForm
-                  onPress={() => onGoogleButtonPress(navigation)}
-                  text={<Span text="signinGoogle" />}
+                  onPress = {onGoogleButtonPress}
+                  text={<Span text="signinGoogle"/>}
                 />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
