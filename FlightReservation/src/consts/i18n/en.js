@@ -18,7 +18,8 @@ I18n.translations = {
     alreadyAccount: 'Already have an account? ',
     dontAccount: 'Do not have an account? ',
     errorAuth: ' *Incorrect email and/or password',
-    passwordAdvice: 'Use 8 or more characters with a mix of letter, numbers and symbols',
+    passwordAdvice:
+      'Use 8 or more characters with a mix of letter, numbers and symbols',
     from: 'Where are you now?',
     to: 'Where will you be flying to?',
     date: 'Select date',
@@ -28,6 +29,8 @@ I18n.translations = {
     endDate: 'Selected end date: ',
     passenger: 'How many passengers?',
     request: 'Your request was received.',
+    // My flight screen
+    flights: ' My Flights',
   },
 };
 
