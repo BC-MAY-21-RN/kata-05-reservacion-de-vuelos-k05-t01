@@ -111,7 +111,6 @@ const SignUp = function ({navigation}) {
                 <CheckBoxField
                   {...formProps}
                   label={<Span text="productUpdates"/>}
-                  name="subscribeForProducts"
                 />
               </View>
               <View>
