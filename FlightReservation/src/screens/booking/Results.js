@@ -1,51 +1,43 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text, SafeAreaView, Image} from 'react-native';
+import {View, SafeAreaView} from 'react-native';
 import Span from '../../consts/i18n/en';
+import style from '../../consts/style';
 import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
-import Flight from '../../components/booking/Flight';
-import style from '../../consts/style';
+import FlightTitle from '../../components/booking/FlightTitle';
+import DateTitle from '../../components/booking/DateTitle';
+import BarCode from '../../components/booking/BarCode';
+import Request from '../../components/booking/Request';
+import registerFlight from '../../helpers/firestoreBookings';
 
 const Results = function ({navigation, route}) {
-  const next = () => {
-    navigation.navigate('Results', {
-      ...route.params,
-    });
-  };
   const {startDate = new Date(startDate), endDate = new Date(endDate)} =
     route.params;
+
   console.log(route.params);
+
   return (
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
       <View style={style.superior_content_container}>
-        <View style={style.upperLocationContainer}>
-          <Text style={style.upperLocationTitle}>{route.params.fromPlace}</Text>
-          <Flight name="flight" />
-          <Text style={style.upperLocationTitle}>{route.params.toPlace}</Text>
-        </View>
-        <View style={style.passengerInformation}>
-          <Text style={style.dateTitle}>{startDate}</Text>
-          <Text style={style.dateTitle}>{endDate}</Text>
-          <Text style={style.dateTitle}>{route.params.passengers}</Text>
-        </View>
-      </View>
-      <View style={style.resultsContainer}>
-        <View style={style.bookingTitleContainer}>
-          <Text style={style.resultsTitle}>
-            <Span text="request" />
-          </Text>
-        </View>
-      </View>
-      <View style={style.barcodeContainer}>
-        <Image
-          style={style.imgCode}
-          source={require('../../consts/img/code.png')}
+        <FlightTitle
+          fromPlace={route.params.fromPlace}
+          toPlace={route.params.toPlace}
+        />
+        <DateTitle
+          startDate={startDate}
+          endDate={endDate}
+          passengers={route.params.passengers}
         />
       </View>
+      <Request />
+      <BarCode />
       <View style={style.btnResults}>
-        <ButtonForm onPress={next} text={<Span text="finish" />} />
+        <ButtonForm
+          onPress={() => registerFlight(route, navigation)}
+          text={<Span text="finish" />}
+        />
       </View>
     </SafeAreaView>
   );

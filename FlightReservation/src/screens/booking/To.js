@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
-import Span from '../../consts/i18n/en';
+import {View, SafeAreaView} from 'react-native';
+import style from '../../consts/style';
 import List from '../../components/booking/ItemList';
 import ListPlaces from '../../components/booking/consts/ListPlaces';
-import ButtonForm from '../../components/form/ButtonForm';
+import BookingTitle from '../../components/booking/BookingTitle';
 import ArrowBack from '../../components/booking/ArrowBack';
-import Flight from '../../components/booking/Flight';
-import style from '../../consts/style';
+import NextButton from '../../components/booking/NextButton';
+import FlightTitle from '../../components/booking/FlightTitle';
 
 const To = function ({navigation, route}) {
   const [toPlace, setSelectedToPlace] = useState();
@@ -21,25 +21,15 @@ const To = function ({navigation, route}) {
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
       <View style={style.superior_content_container}>
-        <View style={style.upperLocationContainer}>
-          <Text style={style.upperLocationTitle}>{route.params.fromPlace}</Text>
-          <Flight name="flight" />
-        </View>
-        <View style={style.bookingTitleContainer}>
-          <Flight name="flight-land" />
-          <Text style={style.bookingTitle}>
-            <Span text="to" />
-          </Text>
-        </View>
+        <FlightTitle fromPlace={route.params.fromPlace} />
+        <BookingTitle flight="flight-land" text="to" />
       </View>
       <List
         list={ListPlaces}
         item={toPlace}
         setSelectedItem={setSelectedToPlace}
       />
-      <View style={style.btnBooking}>
-        <ButtonForm onPress={next} text={<Span text="next" />} />
-      </View>
+      <NextButton styleButton={style.btnBooking} next={next} text="next" />
     </SafeAreaView>
   );
 };
