@@ -1,13 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
-import {Text, SafeAreaView, View} from 'react-native';
-import Span from '../../consts/i18n/en';
+import {SafeAreaView, View} from 'react-native';
 import List from '../../components/booking/ItemList';
 import ListPlaces from '../../components/booking/consts/ListPlaces';
-import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
-import Flight from '../../components/booking/Flight';
+import BookingTitle from '../../components/booking/BookingTitle';
 import style from '../../consts/style';
+import NextButton from '../../components/booking/NextButton';
 
 const From = function ({navigation, route}) {
   const [fromPlace, setSelectedFromPlace] = useState();
@@ -21,21 +20,14 @@ const From = function ({navigation, route}) {
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
       <View style={style.superior_content_container}>
-        <View style={style.bookingTitleContainer}>
-          <Flight name="flight-takeoff" />
-          <Text style={style.bookingTitle}>
-            <Span text="from" />
-          </Text>
-        </View>
+        <BookingTitle flight="flight-takeoff" text="from" />
       </View>
       <List
         list={ListPlaces}
         item={fromPlace}
         setSelectedItem={setSelectedFromPlace}
       />
-      <View style={style.btnBooking}>
-        <ButtonForm onPress={next} text={<Span text="next" />} />
-      </View>
+      <NextButton styleButton={style.btnBooking} next={next} text="next" />
     </SafeAreaView>
   );
 };
