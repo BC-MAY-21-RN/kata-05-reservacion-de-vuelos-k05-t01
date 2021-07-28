@@ -17,7 +17,7 @@ const ItemList = function ({list, item, setSelectedItem}) {
   ));
   return (
     <SafeAreaView>
-      <View style={style.listPicker}>
+      <View style={style.itemContainer, style.listPicker}>
         <Picker
           dropdownIconColor={color.green}
           selectedValue={item}

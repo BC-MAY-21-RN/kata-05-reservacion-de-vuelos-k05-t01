@@ -22,7 +22,7 @@ I18n.translations = {
     errorAuth: ' *Incorrect email and/or password',
     passwordAdvice: 'Use 8 or more characters with a mix of letter, numbers and symbols',
     from: 'Where are you now?',
-    to: 'Where will you be flying to?',
+    to: 'Where you go?',
     date: 'Select date',
     next: 'Next',
     finish: 'Finish',

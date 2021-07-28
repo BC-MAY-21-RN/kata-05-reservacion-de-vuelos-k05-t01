@@ -22,7 +22,7 @@ const Passenger = function ({navigation, route}) {
   return (
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
-      <View style={style.superior_passenegers_container}>
+      <View style={style.superior_content_container}>
         <View style={style.upperLocationContainer}>
           <Text style={style.upperLocationTitle}>{route.params.fromPlace}</Text>
           <Flight name="flight" />

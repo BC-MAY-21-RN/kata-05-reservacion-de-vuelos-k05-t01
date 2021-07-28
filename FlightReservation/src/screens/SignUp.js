@@ -71,11 +71,7 @@ const SignUp = function ({navigation}) {
               <Text style={style.title}>
                 <Span text="signup" />
               </Text>
-
-              <View>
-
               <View >
-
                 <TextField
                   {...formProps}
                   label={<Span text="name"/>}

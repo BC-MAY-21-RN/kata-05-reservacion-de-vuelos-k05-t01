@@ -19,13 +19,13 @@ const Results = function ({navigation, route}) {
   return (
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
-      <View style={style.superior_passenegers_container}>
+      <View style={style.superior_content_container}>
         <View style={style.upperLocationContainer}>
           <Text style={style.upperLocationTitle}>{route.params.fromPlace}</Text>
           <Flight name="flight" />
           <Text style={style.upperLocationTitle}>{route.params.toPlace}</Text>
         </View>
-        <View style={style.dateContainer}>
+        <View style={style.passengerInformation}>
           <Text style={style.dateTitle}>{startDate}</Text>
           <Text style={style.dateTitle}>{endDate}</Text>
           <Text style={style.dateTitle}>{route.params.passengers}</Text>
@@ -38,7 +38,7 @@ const Results = function ({navigation, route}) {
           </Text>
         </View>
       </View>
-      <View style={style.codeContainer}>
+      <View style={style.barcodeContainer}>
         <Image
           style={style.imgCode}
           source={require('../../consts/img/code.png')}
