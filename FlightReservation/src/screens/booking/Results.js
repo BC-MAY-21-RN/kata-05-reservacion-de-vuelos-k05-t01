@@ -6,16 +6,14 @@ import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
 import Flight from '../../components/booking/Flight';
 import style from '../../consts/style';
+import registerFlight from '../../helpers/firestoreBookings';
 
 const Results = function ({navigation, route}) {
-  const next = () => {
-    navigation.navigate('Results', {
-      ...route.params,
-    });
-  };
   const {startDate = new Date(startDate), endDate = new Date(endDate)} =
     route.params;
+
   console.log(route.params);
+
   return (
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
@@ -45,7 +43,10 @@ const Results = function ({navigation, route}) {
         />
       </View>
       <View style={style.btnResults}>
-        <ButtonForm onPress={next} text={<Span text="finish" />} />
+        <ButtonForm
+          onPress={() => registerFlight(route, navigation)}
+          text={<Span text="finish" />}
+        />
       </View>
     </SafeAreaView>
   );
