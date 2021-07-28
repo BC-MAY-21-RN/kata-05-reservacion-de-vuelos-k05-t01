@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+LoadingPage; /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -19,34 +19,48 @@ import {
 } from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
-import Span, { span } from '../consts/i18n/en';
+import Span, {span} from '../consts/i18n/en';
+import LoadingPage from '../components/form/LoadingSigningUp';
+
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
   const [emailInUseError, setEmailInUseError] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const handleSignIn = values => {
     const {name, email, password} = values;
-    setLoading(true);
+    setStatus('loading');
     signInWithNameEmailAndPassword(name, email, password)
-      .then(() => setEmailInUseError(false))
-      .catch(() => setEmailInUseError(true))
-      .finally(() => setLoading(false));
+      .then(() => {
+        setEmailInUseError(false);
+        setStatus('signedUp');
+      })
+      .catch(() => {
+        setEmailInUseError(true);
+        setStatus('false');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <SafeAreaView>
-      {loading && (
-        <Text>
-          <Span text="loading" />
-        </Text>
+      {status === 'loading' && <LoadingPage status={'loading'} />}
+      {status === 'signedUp' && (
+        <LoadingPage
+          status={'signedUp'}
+          navigation={navigation}
+          setStatus={setStatus}
+        />
       )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
-          name: 'Juan',
-          email: 'juan1@example.com',
-          password: 'Juan123%',
+          name: '',
+          email: '',
+          password: '',
           agreeTerms: true,
         }}
         validateOnMount={true}
@@ -57,11 +71,16 @@ const SignUp = function ({navigation}) {
               <Text style={style.title}>
                 <Span text="signup" />
               </Text>
+
+              <View>
+
               <View >
+
                 <TextField
                   {...formProps}
                   label={<Span text="name"/>}
                   name="name"
+                  text="emailUsed"
                 />
               </View>
               <View>

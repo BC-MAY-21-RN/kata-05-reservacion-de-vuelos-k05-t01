@@ -7,8 +7,10 @@ I18n.translations = {
     login: 'Log in',
     signup: 'Sign up',
     signinGoogle: 'Sign in with Google',
+    signingUp: 'Signing up...',
+    signedUp: 'Signed Up!',
     loading: 'Loading...',
-    emailUsed: ' *Email in use. Use a diferent email',
+    emailUsed: 'Email in use. Use a different email',
     name: 'Name',
     email: 'Email',
     password: 'Password',
@@ -33,4 +35,5 @@ I18n.translations = {
 
 const Span = ({text}) => I18n.t(text);
 export const span = text => I18n.t(text);
+
 export default Span;
