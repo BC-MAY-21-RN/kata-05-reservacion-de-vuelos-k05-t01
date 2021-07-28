@@ -61,6 +61,11 @@ const style = StyleSheet.create({
   account_link: {
     color: colors.blue,
   },
+  invalid_input_text: {
+    color: colors.red,
+  },
+
+  //* PasswordFields Style *//
   input_password_container: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -305,5 +310,42 @@ const style = StyleSheet.create({
   // IMAGES
   imgFlight: {width: 400, height: 450, tintColor: colors.green, opacity: 0.4},
   imgCode: {width: 360, height: 200, tintColor: colors.dark, opacity: 0.8},
+
+  //* Spinner Modal *//
+  center_item: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modal_container: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    height: '102%',
+    width: '100%',
+    position: 'absolute',
+    zIndex: 1,
+  },
+  modal_background: {
+    backgroundColor: colors.green,
+    borderRadius: 10,
+    height: '20%',
+    width: '40%',
+  },
+  spinner: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  modal_text: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 18,
+    letterSpacing: 1,
+  },
+  modal_icon: {
+    fontSize: 55,
+    color: colors.white,
+    marginBottom: 10,
+  },
 });
 export default style;
