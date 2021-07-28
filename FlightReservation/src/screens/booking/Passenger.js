@@ -10,7 +10,7 @@ import ListPassengers from '../../components/booking/consts/ListPassengers';
 import style from '../../consts/style';
 
 const Passenger = function ({navigation, route}) {
-  const [passengers, setPassengers] = useState();
+  const [passengers, setPassengers] = useState(1);
   const next = () => {
     navigation.navigate('Results', {
       ...route.params,

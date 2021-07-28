@@ -10,7 +10,7 @@ import Flight from '../../components/booking/Flight';
 import style from '../../consts/style';
 
 const From = function ({navigation, route}) {
-  const [fromPlace, setSelectedFromPlace] = useState();
+  const [fromPlace, setSelectedFromPlace] = useState(null);
   const next = () => {
     navigation.navigate('To', {
       ...route.params,

@@ -44,7 +44,7 @@ const Results = function ({navigation, route}) {
       </View>
       <View style={style.btnResults}>
         <ButtonForm
-          onPress={() => registerFlight(route, navigation)}
+          onPress={async () => await registerFlight(route, navigation)}
           text={<Span text="finish" />}
         />
       </View>

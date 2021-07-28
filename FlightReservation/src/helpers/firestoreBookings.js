@@ -16,18 +16,18 @@ const registerFlight = async (route, navigation) => {
     .collection('bookings')
     .doc(auth().currentUser.uid)
     .get()
-    .then(documentSnapshot => {
+    .then(async documentSnapshot => {
       if (documentSnapshot.exists) {
         var collectionData = documentSnapshot.data();
-        newData.id = collectionData.flights.lenght.toString();
+        newData.id = (collectionData.flights.length + 1).toString();
         collectionData.flights.push(newData);
-
-        firestore()
+        console.log("COLECCIÓN DE VUELOS:",collectionData.flights);
+        await firestore()
           .collection('bookings')
           .doc(auth().currentUser.uid)
           .set(collectionData);
       }
       navigation.navigate('Results');
-    });
+    })
 };
 export default registerFlight;
