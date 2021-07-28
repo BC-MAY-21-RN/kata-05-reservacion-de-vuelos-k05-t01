@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
-import Span from '../../consts/i18n/en';
-import ButtonForm from '../../components/form/ButtonForm';
+import style from '../../consts/style';
 import ArrowBack from '../../components/booking/ArrowBack';
-import Flight from '../../components/booking/Flight';
+import FlightTitle from '../../components/booking/FlightTitle';
+import BookingTitle from '../../components/booking/BookingTitle';
 import List from '../../components/booking/ItemList';
 import ListPassengers from '../../components/booking/consts/ListPassengers';
-import style from '../../consts/style';
+import NextButton from '../../components/booking/NextButton';
+import DateTitle from '../../components/booking/DateTitle';
 
 const Passenger = function ({navigation, route}) {
   const [passengers, setPassengers] = useState();
@@ -23,30 +24,23 @@ const Passenger = function ({navigation, route}) {
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
       <View style={style.superior_passenegers_container}>
-        <View style={style.upperLocationContainer}>
-          <Text style={style.upperLocationTitle}>{route.params.fromPlace}</Text>
-          <Flight name="flight" />
-          <Text style={style.upperLocationTitle}>{route.params.toPlace}</Text>
-        </View>
-        <View style={style.dateContainer}>
-          <Text style={style.dateTitle}>{startDate}</Text>
-          <Text style={style.dateTitle}>{endDate}</Text>
-        </View>
-        <View style={style.bookingTitleContainer}>
-          <Flight name="people" />
-          <Text style={style.bookingTitle}>
-            <Span text="passenger" />
-          </Text>
-        </View>
+        <FlightTitle
+          fromPlace={route.params.fromPlace}
+          toPlace={route.params.toPlace}
+        />
+        <DateTitle
+          startDate={startDate}
+          endDate={endDate}
+          passengers={route.params.passengers}
+        />
+        <BookingTitle flight="people" text="passenger" />
       </View>
       <List
         list={ListPassengers}
         item={passengers}
         setSelectedItem={setPassengers}
       />
-      <View style={style.btnPasseneger}>
-        <ButtonForm onPress={next} text={<Span text="next" />} />
-      </View>
+      <NextButton styleButton={style.btnPasseneger} next={next} text="next" />
     </SafeAreaView>
   );
 };
