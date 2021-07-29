@@ -7,6 +7,7 @@ import ArrowBack from '../../components/booking/ArrowBack';
 import BookingTitle from '../../components/booking/BookingTitle';
 import style from '../../consts/style';
 import NextButton from '../../components/booking/NextButton';
+import ScreenGreenTitle from '../../components/screenConsts/ScreenGreenTitle';
 
 const From = function ({navigation, route}) {
   const [fromPlace, setSelectedFromPlace] = useState('');

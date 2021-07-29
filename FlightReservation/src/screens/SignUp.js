@@ -22,6 +22,7 @@ import style from './../consts/style';
 import Span, {span} from '../consts/i18n/en';
 import FlightReservation from './FlightReservation';
 import LoadingPage from '../components/form/LoadingSigningUp';
+import ScreenGreenTitle from './../components/screenConsts/ScreenGreenTitle';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -67,10 +68,8 @@ const SignUp = function ({navigation}) {
         onSubmit={values => handleSignIn(values)}>
         {formProps => (
           <View>
-            <View style={style.textFieldView}>
-              <Text style={style.title}>
-                <Span text="signup" />
-              </Text>
+            <View style={style.upper_background}>
+              <ScreenGreenTitle span={'signup'} />
               <View>
                 <TextField
                   {...formProps}

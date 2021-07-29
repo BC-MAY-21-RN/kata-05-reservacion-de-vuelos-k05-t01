@@ -6,7 +6,7 @@ import style from './../../consts/style';
 
 const ScreenGreenTitle = ({span}) => {
   return (
-    <View style={style.textFieldView}>
+    <View style={style.upper_background}>
       <Text style={style.title}>
         <Span text={span} span={span} />
       </Text>

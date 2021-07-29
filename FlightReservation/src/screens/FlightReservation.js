@@ -15,13 +15,8 @@ const FlightReservation = ({navigation}) => {
   return (
     <ScrollView>
       <View>
-        {/*  <View style={style.textFieldView}>
-          <Text style={style.title}>
-          <Span text="flights" span={'flights'} />
-          </Text>
-        </View> */}
         <ArrowBack navigation={navigation} />
-        <ScreenGreenTitle span={'flights'}></ScreenGreenTitle>
+        <ScreenGreenTitle span={'flights'} />
         <View style={style.inferior_content_container}>
           {/* <FlightDestiny /> */}
           {flightList}

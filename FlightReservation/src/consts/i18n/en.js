@@ -33,6 +33,8 @@ I18n.translations = {
     request: 'Your request was received.',
     // My flight screen
     flights: ' My Flights',
+    origin: 'Origin',
+    destiny: 'Destiny',
   },
 };
 

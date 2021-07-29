@@ -7,12 +7,6 @@ const style = StyleSheet.create({
   upper_background: {
     backgroundColor: colors.green,
   },
-  textFieldView: {
-    backgroundColor: colors.green,
-  },
-  textFieldBG: {
-    backgroundColor: colors.orange,
-  },
   title: {
     fontSize: 28,
     color: colors.white,
@@ -172,6 +166,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: 'space-around',
     borderRadius: 15,
+    marginTop: 10,
   },
   bookingTitleContainer: {
     alignItems: 'center',
