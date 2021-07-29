@@ -5,7 +5,7 @@ import style from '../../consts/style';
 
 const BarCode = function () {
   return (
-    <View style={style.codeContainer}>
+    <View style={style.barcodeContainer}>
       <Image
         style={style.imgCode}
         source={require('../../consts/img/code.png')}

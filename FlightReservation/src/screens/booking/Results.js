@@ -20,7 +20,7 @@ const Results = function ({navigation, route}) {
   return (
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
-      <View style={style.superior_passenegers_container}>
+      <View style={style.superior_content_container}>
         <FlightTitle
           fromPlace={route.params.fromPlace}
           toPlace={route.params.toPlace}
