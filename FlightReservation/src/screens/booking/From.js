@@ -7,9 +7,10 @@ import ArrowBack from '../../components/booking/ArrowBack';
 import BookingTitle from '../../components/booking/BookingTitle';
 import style from '../../consts/style';
 import NextButton from '../../components/booking/NextButton';
+import ScreenGreenTitle from '../../components/screenConsts/ScreenGreenTitle';
 
 const From = function ({navigation, route}) {
-  const [fromPlace, setSelectedFromPlace] = useState();
+  const [fromPlace, setSelectedFromPlace] = useState('');
   const next = () => {
     navigation.navigate('To', {
       ...route.params,
@@ -27,7 +28,12 @@ const From = function ({navigation, route}) {
         item={fromPlace}
         setSelectedItem={setSelectedFromPlace}
       />
-      <NextButton styleButton={style.btnBooking} next={next} text="next" />
+      <NextButton
+        isDisabled={!fromPlace}
+        styleButton={style.btnBooking}
+        next={next}
+        text="next"
+      />
     </SafeAreaView>
   );
 };

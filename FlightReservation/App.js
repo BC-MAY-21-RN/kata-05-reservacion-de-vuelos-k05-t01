@@ -13,6 +13,7 @@ import To from './src/screens/booking/To';
 import Date from './src/screens/booking/Date';
 import Passenger from './src/screens/booking/Passenger';
 import Results from './src/screens/booking/Results';
+import FlightReservation from './src/screens/FlightReservation';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const listScreens = [
   {name: 'Date', component: Date},
   {name: 'Passenger', component: Passenger},
   {name: 'Results', component: Results},
+  {name: 'FlightReservation', component: FlightReservation},
 ];
 
 const screens = listScreens.map(({name, component}) => (

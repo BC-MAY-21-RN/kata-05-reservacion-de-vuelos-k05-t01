@@ -1,16 +1,11 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
+import {RotationGestureHandler} from 'react-native-gesture-handler';
 import colors from './colors';
 
 const style = StyleSheet.create({
   upper_background: {
     backgroundColor: colors.green,
-  },
-  textFieldView: {
-    backgroundColor: colors.green,
-  },
-  textFieldBG: {
-    backgroundColor: colors.orange,
   },
   title: {
     fontSize: 28,
@@ -39,6 +34,14 @@ const style = StyleSheet.create({
     height: 50,
     marginHorizontal: 20,
     backgroundColor: colors.orange,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  disabledButton: {
+    height: 50,
+    marginHorizontal: 20,
+    backgroundColor: colors.grey,
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -78,7 +81,7 @@ const style = StyleSheet.create({
     paddingLeft: 30,
     alignSelf: 'flex-start',
   },
-  checkBox:{
+  checkBox: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     lineHeight: 10,
@@ -122,11 +125,11 @@ const style = StyleSheet.create({
     color: colors.white,
     alignSelf: 'center',
   },
-  errorMessage:{
+  errorMessage: {
     color: colors.red,
     fontSize: 18,
   },
-  errorTextBox:{
+  errorTextBox: {
     color: colors.red,
   },
   inputs_nameAndMail_container: {
@@ -163,6 +166,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: 'space-around',
     borderRadius: 15,
+    marginTop: 10,
   },
   bookingTitleContainer: {
     alignItems: 'center',
@@ -182,13 +186,13 @@ const style = StyleSheet.create({
     marginTop: 30,
     alignItems: 'center',
   },
-  passengerInformation:{
+  passengerInformation: {
     marginTop: 20,
     marginBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  listContainer:{
+  listContainer: {
     marginTop: 40,
     marginHorizontal: 6,
     paddingLeft: 10,
@@ -210,7 +214,7 @@ const style = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.green,
   },
-  barcodeContainer:{
+  barcodeContainer: {
     height: 200,
     borderRadius: 15,
     backgroundColor: colors.grey,
@@ -225,7 +229,7 @@ const style = StyleSheet.create({
     paddingVertical: 40,
   },
 
-  // TEXT
+  ///// TEXT /////
   upperLocationTitle: {
     fontSize: 20,
     color: colors.white,
@@ -259,13 +263,55 @@ const style = StyleSheet.create({
     color: colors.green,
     fontSize: 20,
   },
-  // ICONS
+  ///// FLIGHT SCREEN /////
+  flights_row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  flights_col: {
+    flexDirection: 'column',
+  },
+  flights_big_text: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  flight_element: {
+    // backgroundColor: '#DFFCFA',
+    marginTop: 20,
+  },
+  flights_small_text_light: {
+    fontSize: 18,
+    color: colors.dark_grey,
+  },
+  flights_small_text_bold: {
+    fontSize: 18,
+    color: colors.dark,
+    fontWeight: 'bold',
+  },
+  separator_thin: {
+    borderBottomColor: colors.dark_grey,
+    borderBottomWidth: 1,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  separator_thick: {
+    borderBottomColor: colors.dark,
+    borderBottomWidth: 2,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  ///// ICONS /////
   iconBookingFlight: {
     paddingVertical: 20,
     fontSize: 35,
     color: colors.white,
   },
-  // BUTTONS
+  flight_icon: {
+    color: colors.orange,
+    fontSize: 35,
+    transform: [{rotate: '90deg'}],
+  },
+  ///// BUTTONS /////
   btnBooking: {
     marginTop: 330,
   },
@@ -279,9 +325,16 @@ const style = StyleSheet.create({
     marginTop: 80,
   },
 
-  // IMAGES
+  ///// IMAGES /////
   imgFlight: {width: 400, height: 450, tintColor: colors.green, opacity: 0.4},
-  imgCode: {width: 360, height: 200, tintColor: colors.dark, opacity: 0.8, display: 'flex', alignSelf: 'center'},
+  imgCode: {
+    width: 360,
+    height: 200,
+    tintColor: colors.dark,
+    opacity: 0.8,
+    display: 'flex',
+    alignSelf: 'center',
+  },
 
   //* Spinner Modal *//
   center_item: {
@@ -291,7 +344,7 @@ const style = StyleSheet.create({
   },
   modal_container: {
     backgroundColor: 'rgba(0,0,0,0.5)',
-    height: '102%',
+    height: '122%',
     width: '100%',
     position: 'absolute',
     zIndex: 1,

@@ -29,7 +29,12 @@ const To = function ({navigation, route}) {
         item={toPlace}
         setSelectedItem={setSelectedToPlace}
       />
-      <NextButton styleButton={style.btnBooking} next={next} text="next" />
+      <NextButton
+        isDisabled={!toPlace}
+        styleButton={style.btnBooking}
+        next={next}
+        text="next"
+      />
     </SafeAreaView>
   );
 };
