@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import Span, {span} from '../consts/i18n/en';
 import style from './../consts/style';
 import ArrowBack from './../components/booking/ArrowBack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import FlightDestiny from './../components/flights/FlightDestiny';
 
 const FlightReservation = ({navigation}) => {
   return (
@@ -15,23 +15,8 @@ const FlightReservation = ({navigation}) => {
         </Text>
       </View>
       <View style={style.inferior_content_container}>
-        <View style={style.flight_element}>
-          <View style={style.flights_row}>
-            <Text style={style.flights_big_text}>BEG</Text>
-            <Icon style={style.flight_icon} name="airplanemode-active" />
-            <Text style={style.flights_big_text}>AMS</Text>
-          </View>
-          <View style={style.flights_row}>
-            <Text style={style.flights_small_text_light}>Serbia</Text>
-            <Text style={style.flights_small_text_light}>Netherlands</Text>
-          </View>
-          <View style={style.separator_thin} />
-          <View style={style.flights_row}>
-            <Text style={style.flights_small_text_bold}>September 2, 2020</Text>
-            <Text style={style.flights_small_text_bold}>2 passengers</Text>
-          </View>
-          <View style={style.separator_thick} />
-        </View>
+        {/* Insert FlightDestiny */}
+        <FlightDestiny />
       </View>
     </View>
   );
