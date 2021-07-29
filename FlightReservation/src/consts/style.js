@@ -284,7 +284,6 @@ const style = StyleSheet.create({
   },
   ///// FLIGHT SCREEN /////
   flights_row: {
-    // backgroundColor: '#FCBF23',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
