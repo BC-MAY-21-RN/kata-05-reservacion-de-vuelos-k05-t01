@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {RotationGestureHandler} from 'react-native-gesture-handler';
 import colors from './colors';
@@ -62,6 +63,11 @@ const style = StyleSheet.create({
   account_link: {
     color: colors.blue,
   },
+  invalid_input_text: {
+    color: colors.red,
+  },
+
+  //* PasswordFields Style *//
   input_password_container: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -153,116 +159,88 @@ const style = StyleSheet.create({
   superior_content_container: {
     display: 'flex',
     height: 200,
-    width: 400,
     marginHorizontal: 6,
-    flexDirection: 'column',
     backgroundColor: colors.green,
     paddingHorizontal: 10,
     justifyContent: 'space-around',
     borderRadius: 15,
   },
-  superior_passenegers_container: {
+  bookingTitleContainer: {
+    alignItems: 'center',
+    paddingLeft: 10,
     display: 'flex',
-    height: 230,
-    marginHorizontal: 6,
-    flexDirection: 'column',
-    backgroundColor: colors.green,
-    paddingHorizontal: 10,
-    justifyContent: 'space-around',
-    borderRadius: 15,
+    flexDirection: 'row',
   },
-  bookingTitleContainer: {marginTop: 5, display: 'flex', flexDirection: 'row'},
   upperLocationContainer: {
     display: 'flex',
     flexDirection: 'row',
     borderBottomWidth: 2,
     borderBottomColor: colors.light_green,
-    marginBottom: 20,
-    alignContent: 'center',
     justifyContent: 'space-around',
-  },
-  calendarContainer: {
-    display: 'flex',
-    marginTop: 30,
-    height: 400,
-    width: 400,
-    marginHorizontal: 6,
-    flexDirection: 'column',
-    backgroundColor: colors.grey,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: colors.green,
+    alignItems: 'center',
   },
   dateContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingHorizontal: 20,
+    marginTop: 30,
+    alignItems: 'center',
   },
-  listPicker: {
-    display: 'flex',
+  passengerInformation: {
+    marginTop: 20,
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  listContainer: {
     marginTop: 40,
-    height: 60,
-    width: 400,
     marginHorizontal: 6,
-    flexDirection: 'column',
-    backgroundColor: colors.grey,
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 15,
+    backgroundColor: colors.grey,
     borderWidth: 1,
     borderColor: colors.green,
+    width: 400,
+    height: 60,
+  },
+  calendarContainer: {
+    borderRadius: 15,
+    height: 350,
+    marginHorizontal: 6,
+    backgroundColor: colors.grey,
+    justifyContent: 'center',
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: colors.green,
+  },
+  barcodeContainer: {
+    height: 200,
+    borderRadius: 15,
+    backgroundColor: colors.grey,
+    borderWidth: 1,
+    borderColor: colors.green,
+    marginHorizontal: 10,
   },
   resultsContainer: {
-    display: 'flex',
     marginTop: 40,
-    height: 100,
-    width: 400,
-    marginHorizontal: 6,
-    flexDirection: 'column',
-    backgroundColor: colors.grey,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: colors.green,
   },
-  codeContainer: {
-    display: 'flex',
-    marginTop: 30,
-    height: 200,
-    width: 400,
-    marginHorizontal: 6,
-    flexDirection: 'column',
-    backgroundColor: colors.grey,
-    paddingLeft: 20,
-    paddingRight: 10,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: colors.green,
+  calendarWidget: {
+    paddingVertical: 40,
   },
-  calendarWidget: {paddingVertical: 40},
 
   ///// TEXT /////
   upperLocationTitle: {
     fontSize: 20,
     color: colors.white,
     fontWeight: 'bold',
-    paddingTop: 20,
-    paddingLeft: 20,
   },
   dateTitle: {
     fontSize: 16,
     color: colors.white,
   },
-
   bookingTitle: {
     fontSize: 28,
     color: colors.white,
     fontWeight: 'bold',
-    paddingTop: 20,
+    paddingTop: 25,
     paddingLeft: 20,
     paddingRight: 50,
     paddingBottom: 30,
@@ -271,8 +249,8 @@ const style = StyleSheet.create({
     fontSize: 28,
     color: colors.green,
     fontWeight: 'bold',
-    paddingLeft: 20,
-    paddingRight: 50,
+    paddingLeft: 25,
+    paddingBottom: 10,
   },
   listText: {
     color: colors.orange,
@@ -321,7 +299,6 @@ const style = StyleSheet.create({
   ///// ICONS /////
   iconBookingFlight: {
     paddingVertical: 20,
-    paddingLeft: 20,
     fontSize: 35,
   },
   flight_icon: {
@@ -345,6 +322,50 @@ const style = StyleSheet.create({
 
   ///// IMAGES /////
   imgFlight: {width: 400, height: 450, tintColor: colors.green, opacity: 0.4},
-  imgCode: {width: 360, height: 200, tintColor: colors.dark, opacity: 0.8},
+  imgCode: {
+    width: 360,
+    height: 200,
+    tintColor: colors.dark,
+    opacity: 0.8,
+    display: 'flex',
+    alignSelf: 'center',
+  },
+
+  //* Spinner Modal *//
+  center_item: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modal_container: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    height: '122%',
+    width: '100%',
+    position: 'absolute',
+    zIndex: 1,
+  },
+  modal_background: {
+    backgroundColor: colors.green,
+    borderRadius: 10,
+    height: '20%',
+    width: '40%',
+  },
+  spinner: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  modal_text: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 18,
+    letterSpacing: 1,
+  },
+  modal_icon: {
+    fontSize: 55,
+    color: colors.white,
+    marginBottom: 10,
+  },
 });
 export default style;

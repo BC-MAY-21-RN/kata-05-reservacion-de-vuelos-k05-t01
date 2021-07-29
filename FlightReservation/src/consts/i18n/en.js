@@ -7,8 +7,10 @@ I18n.translations = {
     login: 'Log in',
     signup: 'Sign up',
     signinGoogle: 'Sign in with Google',
+    signingUp: 'Signing up...',
+    signedUp: 'Signed Up!',
     loading: 'Loading...',
-    emailUsed: ' *Email in use. Use a diferent email',
+    emailUsed: 'Email in use. Use a different email',
     name: 'Name',
     email: 'Email',
     password: 'Password',
@@ -21,7 +23,7 @@ I18n.translations = {
     passwordAdvice:
       'Use 8 or more characters with a mix of letter, numbers and symbols',
     from: 'Where are you now?',
-    to: 'Where will you be flying to?',
+    to: 'Where do you go?',
     date: 'Select date',
     next: 'Next',
     finish: 'Finish',
@@ -36,4 +38,5 @@ I18n.translations = {
 
 const Span = ({text}) => I18n.t(text);
 export const span = text => I18n.t(text);
+
 export default Span;
