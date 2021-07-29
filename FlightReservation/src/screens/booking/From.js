@@ -10,7 +10,7 @@ import NextButton from '../../components/booking/NextButton';
 import ScreenGreenTitle from '../../components/screenConsts/ScreenGreenTitle';
 
 const From = function ({navigation, route}) {
-  const [fromPlace, setSelectedFromPlace] = useState('');
+  const [fromPlace, setSelectedFromPlace] = useState(null);
   const next = () => {
     navigation.navigate('To', {
       ...route.params,

@@ -1,13 +1,12 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const registerFlight = async (route, navigation) => {
-  const {from, to, startDate, endDate, passengers} = route.params;
+  const {fromPlace, toPlace, startDate, endDate, passengers} = route.params;
   const newData = {
-    from,
-    to,
+    fromPlace,
+    toPlace,
     startDate,
     endDate,
     passengers,
@@ -16,13 +15,12 @@ const registerFlight = async (route, navigation) => {
     .collection('bookings')
     .doc(auth().currentUser.uid)
     .get()
-    .then(documentSnapshot => {
+    .then(async documentSnapshot => {
       if (documentSnapshot.exists) {
         var collectionData = documentSnapshot.data();
-        newData.id = collectionData.flights.lenght.toString();
+        newData.id = collectionData.flights.length.toString();
         collectionData.flights.push(newData);
-
-        firestore()
+        await firestore()
           .collection('bookings')
           .doc(auth().currentUser.uid)
           .set(collectionData);

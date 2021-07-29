@@ -11,7 +11,7 @@ import NextButton from '../../components/booking/NextButton';
 import DateTitle from '../../components/booking/DateTitle';
 
 const Passenger = function ({navigation, route}) {
-  const [passengers, setPassengers] = useState();
+  const [passengers, setPassengers] = useState(1);
   const next = () => {
     navigation.navigate('Results', {
       ...route.params,
