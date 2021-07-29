@@ -4,6 +4,7 @@ import Span, {span} from '../consts/i18n/en';
 import style from './../consts/style';
 import ArrowBack from './../components/booking/ArrowBack';
 import FlightDestiny from './../components/flights/FlightDestiny';
+import ScreenGreenTitle from './../components/screenConsts/ScreenGreenTitle';
 
 const flightList: JSX.Element[] = [];
 for (let i = 0; i < 8; i++) {
@@ -14,12 +15,13 @@ const FlightReservation = ({navigation}) => {
   return (
     <ScrollView>
       <View>
-        <View style={style.textFieldView}>
-          <ArrowBack navigation={navigation} />
+        {/*  <View style={style.textFieldView}>
           <Text style={style.title}>
-            <Span text="flights" />
+          <Span text="flights" span={'flights'} />
           </Text>
-        </View>
+        </View> */}
+        <ArrowBack navigation={navigation} />
+        <ScreenGreenTitle span={'flights'}></ScreenGreenTitle>
         <View style={style.inferior_content_container}>
           {/* <FlightDestiny /> */}
           {flightList}
