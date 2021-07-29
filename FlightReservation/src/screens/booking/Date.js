@@ -39,7 +39,12 @@ const Date = function ({navigation, route}) {
           setSelectedDate={setSelectedDate}
         />
       </View>
-      <NextButton styleButton={style.btnCalendar} next={next} text="next" />
+      <NextButton
+        isDisabled={!dateSelected.startDate || !dateSelected.endDate}
+        styleButton={style.btnCalendar}
+        next={next}
+        text="next"
+      />
     </SafeAreaView>
   );
 };

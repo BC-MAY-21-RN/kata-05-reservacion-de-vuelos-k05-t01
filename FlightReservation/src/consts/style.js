@@ -44,6 +44,14 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  disabledButton: {
+    height: 50,
+    marginHorizontal: 20,
+    backgroundColor: colors.grey,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   btnForm: {
     fontSize: 18,
     color: colors.white,
@@ -273,6 +281,7 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
   },
   flight_element: {
+    // backgroundColor: '#DFFCFA',
     marginTop: 20,
   },
   flights_small_text_light: {
@@ -291,7 +300,7 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   separator_thick: {
-    borderBottomColor: colors.dark_grey,
+    borderBottomColor: colors.dark,
     borderBottomWidth: 2,
     marginTop: 20,
     marginBottom: 20,

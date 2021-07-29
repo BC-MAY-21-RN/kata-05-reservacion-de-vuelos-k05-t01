@@ -4,10 +4,14 @@ import {View} from 'react-native';
 import Span from '../../consts/i18n/en';
 import ButtonForm from '../../components/form/ButtonForm';
 
-const NextButton = function ({styleButton, next, text}) {
+const NextButton = function ({isDisabled, styleButton, next, text}) {
   return (
     <View style={styleButton}>
-      <ButtonForm onPress={next} text={<Span text={text} />} />
+      <ButtonForm
+        isDisabled={isDisabled}
+        onPress={next}
+        text={<Span text={text} />}
+      />
     </View>
   );
 };
