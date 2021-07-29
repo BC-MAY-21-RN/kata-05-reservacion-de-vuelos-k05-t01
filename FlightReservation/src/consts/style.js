@@ -309,6 +309,7 @@ const style = StyleSheet.create({
   iconBookingFlight: {
     paddingVertical: 20,
     fontSize: 35,
+    color: colors.white,
   },
   flight_icon: {
     color: colors.orange,
