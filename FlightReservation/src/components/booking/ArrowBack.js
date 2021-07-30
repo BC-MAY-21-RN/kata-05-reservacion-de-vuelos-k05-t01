@@ -8,7 +8,7 @@ const ArrowBack = function ({navigation}) {
   return (
     <View>
       <Icon
-        style={style.iconBooking}
+        style={[style.iconBooking, style.upper_background]}
         name="chevron-left"
         onPress={() => navigation.goBack()}
       />

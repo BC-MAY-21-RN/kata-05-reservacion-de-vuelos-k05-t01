@@ -13,5 +13,4 @@ export const signUpValidationSchema = yup.object().shape({
       ' *Invalid password',
     ),
   agreeTerms: yup.bool().oneOf([true], 'Accept Terms & Conditions is required'),
-  subscribeForProducts: yup.bool().oneOf([true, false]),
 });

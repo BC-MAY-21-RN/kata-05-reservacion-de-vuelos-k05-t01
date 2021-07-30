@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+LoadingPage; /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -19,63 +19,77 @@ import {
 } from '../helpers/firebaseSignUp';
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
-import Span, { span } from '../consts/i18n/en';
+import Span, {span} from '../consts/i18n/en';
+import FlightReservation from './FlightReservation';
+import LoadingPage from '../components/form/LoadingSigningUp';
+import ScreenGreenTitle from './../components/screenConsts/ScreenGreenTitle';
 
 const SignUp = function ({navigation}) {
   const [loading, setLoading] = useState(false);
   const [emailInUseError, setEmailInUseError] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const handleSignIn = values => {
     const {name, email, password} = values;
-    setLoading(true);
+    setStatus('loading');
     signInWithNameEmailAndPassword(name, email, password)
-      .then(() => setEmailInUseError(false))
-      .catch(() => setEmailInUseError(true))
-      .finally(() => setLoading(false));
+      .then(() => {
+        setEmailInUseError(false);
+        setStatus('signedUp');
+      })
+      .catch(() => {
+        setEmailInUseError(true);
+        setStatus('false');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <SafeAreaView>
-      {loading && (
-        <Text>
-          <Span text="loading" />
-        </Text>
+      {status === 'loading' && <LoadingPage status={'loading'} />}
+      {status === 'signedUp' && (
+        <LoadingPage
+          status={'signedUp'}
+          navigation={navigation}
+          setStatus={setStatus}
+        />
       )}
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
-          name: 'Juan',
-          email: 'juan1@example.com',
-          password: 'Juan123%',
+          name: '',
+          email: '',
+          password: '',
           agreeTerms: true,
         }}
         validateOnMount={true}
         onSubmit={values => handleSignIn(values)}>
         {formProps => (
           <View>
-            <View style={style.textFieldView}>
-              <Text style={style.title}>
-                <Span text="signup" />
-              </Text>
-              <View >
+            <View style={style.upper_background}>
+              <ScreenGreenTitle span={'signup'} />
+              <View>
                 <TextField
                   {...formProps}
-                  label={<Span text="name"/>}
+                  label={<Span text="name" />}
                   name="name"
+                  text="emailUsed"
                 />
               </View>
               <View>
                 <TextField
                   {...formProps}
-                  label={<Span text="email"/>}
-                  name = "email"
-                  authError = {emailInUseError && span('emailUsed')}
+                  label={<Span text="email" />}
+                  name="email"
+                  authError={emailInUseError && span('emailUsed')}
                 />
               </View>
               <View>
                 <PasswordField
                   {...formProps}
-                  label={<Span text="password"/>}
+                  label={<Span text="password" />}
                   name="password"
                 />
               </View>
@@ -84,15 +98,14 @@ const SignUp = function ({navigation}) {
               <View style={style.termsView}>
                 <CheckBoxField
                   {...formProps}
-                  label={<Span text="terms"/>}
+                  label={<Span text="terms" />}
                   name="agreeTerms"
                 />
               </View>
               <View style={style.termsView}>
                 <CheckBoxField
                   {...formProps}
-                  label={<Span text="productUpdates"/>}
-                  name="subscribeForProducts"
+                  label={<Span text="productUpdates" />}
                 />
               </View>
               <View>
@@ -107,8 +120,8 @@ const SignUp = function ({navigation}) {
                   <Span text="or" />
                 </Text>
                 <ButtonForm
-                  onPress = {onGoogleButtonPress}
-                  text={<Span text="signinGoogle"/>}
+                  onPress={onGoogleButtonPress}
+                  text={<Span text="signinGoogle" />}
                 />
                 <View style={style.lower_content_text}>
                   <Text style={style.alreadyTxt}>
@@ -127,6 +140,13 @@ const SignUp = function ({navigation}) {
                       }}>
                       {' '}
                       <Span text="next" />
+                    </Text>
+                    <Text
+                      style={{backgroundColor: '#ff0'}}
+                      onPress={() => {
+                        navigation.navigate('FlightReservation');
+                      }}>
+                      <Span text="flights" />
                     </Text>
                   </Text>
                 </View>
