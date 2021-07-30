@@ -18,8 +18,8 @@ import FlightReservation from './src/screens/FlightReservation';
 const Stack = createStackNavigator();
 
 const listScreens = [
-  {name: 'SignUp', component: SignUp},
   {name: 'LogIn', component: LogIn},
+  {name: 'SignUp', component: SignUp},
   {name: 'From', component: From},
   {name: 'To', component: To},
   {name: 'Date', component: Date},

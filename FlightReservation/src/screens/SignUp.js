@@ -141,13 +141,6 @@ const SignUp = function ({navigation}) {
                       {' '}
                       <Span text="next" />
                     </Text>
-                    <Text
-                      style={{backgroundColor: '#ff0'}}
-                      onPress={() => {
-                        navigation.navigate('FlightReservation');
-                      }}>
-                      <Span text="flights" />
-                    </Text>
                   </Text>
                 </View>
               </View>

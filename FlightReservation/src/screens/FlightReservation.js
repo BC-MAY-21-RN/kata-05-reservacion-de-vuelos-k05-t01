@@ -6,10 +6,10 @@ import ArrowBack from './../components/booking/ArrowBack';
 import FlightDestiny from './../components/flights/FlightDestiny';
 import ScreenGreenTitle from './../components/screenConsts/ScreenGreenTitle';
 
-const flightList: JSX.Element[] = [];
-for (let i = 0; i < 8; i++) {
-  flightList.push(<FlightDestiny />);
-}
+// const flightList: JSX.Element[] = [];
+// for (let i = 0; i < 8; i++) {
+//   flightList.push(<FlightDestiny />);
+// }
 
 const FlightReservation = ({navigation}) => {
   return (
@@ -18,8 +18,8 @@ const FlightReservation = ({navigation}) => {
         <ArrowBack navigation={navigation} />
         <ScreenGreenTitle span={'flights'} />
         <View style={style.inferior_content_container}>
-          {/* <FlightDestiny /> */}
-          {flightList}
+          <FlightDestiny />
+          {/* {flightList} */}
         </View>
       </View>
     </ScrollView>
