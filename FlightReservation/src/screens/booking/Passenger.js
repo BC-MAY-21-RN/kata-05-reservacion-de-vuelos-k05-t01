@@ -40,7 +40,12 @@ const Passenger = function ({navigation, route}) {
         item={passengers}
         setSelectedItem={setPassengers}
       />
-      <NextButton styleButton={style.btnPasseneger} next={next} text="next" />
+      <NextButton
+        isDisabled={!passengers}
+        styleButton={style.btnPasseneger}
+        next={next}
+        text="next"
+      />
     </SafeAreaView>
   );
 };
