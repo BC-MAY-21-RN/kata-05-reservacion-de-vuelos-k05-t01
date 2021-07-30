@@ -271,6 +271,9 @@ const style = StyleSheet.create({
   flights_col: {
     flexDirection: 'column',
   },
+  flights_container: {
+    flex: 1,
+  },
   flights_big_text: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -323,6 +326,15 @@ const style = StyleSheet.create({
   },
   btnResults: {
     marginTop: 80,
+  },
+  plus_button_container: {
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  plus_button: {
+    color: colors.orange,
+    fontSize: 60,
   },
 
   ///// IMAGES /////
