@@ -4,16 +4,16 @@ import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import style from '../../consts/style';
 
-const ArrowBack = function ({navigation, name}) {
+const LogOut = function ({navigation}) {
   return (
     <View>
       <Icon
         style={[style.iconBooking, style.upper_background]}
-        name={name}
-        onPress={navigation}
+        name="logout"
+        onPress={() => navigation.navigate('LogIn')}
       />
     </View>
   );
 };
 
-export default ArrowBack;
+export default LogOut;
