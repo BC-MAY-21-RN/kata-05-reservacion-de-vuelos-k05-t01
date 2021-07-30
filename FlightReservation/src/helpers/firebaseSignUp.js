@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import {WEB_CLIENT_ID} from '@env';
@@ -12,13 +12,13 @@ export const signInWithNameEmailAndPassword = (name, email, password) => {
       .then(({user}) => {
         user
           .updateProfile({displayName: name})
-          .then(() =>
-            resolve('User created & signed in'),
-            createAditionalData());
+          .then(
+            () => resolve('User created & signed in'),
+            createAditionalData(),
+          );
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
           reject('That email address is already in use!');
         }
       });
@@ -33,29 +33,28 @@ export const useGoogleConfiguration = () => {
   }, []);
 };
 
-export const onGoogleButtonPress = async () => {
-  const { idToken } = await GoogleSignin.signIn();
+export const onGoogleButtonPress = async navigation => {
+  const {idToken} = await GoogleSignin.signIn();
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-  return auth()
+  auth()
     .signInWithCredential(googleCredential)
-    .then(() => {
-      createAditionalData();
- });
+    .then(response => {
+      if (response) {
+        navigation.navigate('LogIn');
+      }
+    });
 };
 
 const createAditionalData = () => {
   firestore()
-  .collection('bookings')
-  .doc(auth().currentUser.uid)
-  .get()
-  .then(response => {
-    if (!response.exists) {
-      firestore()
-        .collection('bookings')
-        .doc(auth().currentUser.uid)
-        .set({
+    .collection('bookings')
+    .doc(auth().currentUser.uid)
+    .get()
+    .then(response => {
+      if (!response.exists) {
+        firestore().collection('bookings').doc(auth().currentUser.uid).set({
           flights: [],
         });
-    }
-  });
+      }
+    });
 };

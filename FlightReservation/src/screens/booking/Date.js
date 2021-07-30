@@ -4,9 +4,11 @@ import {View, Text, SafeAreaView} from 'react-native';
 import Span from '../../consts/i18n/en';
 import ButtonForm from '../../components/form/ButtonForm';
 import ArrowBack from '../../components/booking/ArrowBack';
-import Flight from '../../components/booking/Flight';
+import FlightTitle from '../../components/booking/FlightTitle';
 import Calendar from '../../components/booking/Calendar';
 import style from '../../consts/style';
+import BookingTitle from '../../components/booking/BookingTitle';
+import NextButton from '../../components/booking/NextButton';
 
 const Date = function ({navigation, route}) {
   const [dateSelected, setSelectedDate] = useState({
@@ -25,17 +27,11 @@ const Date = function ({navigation, route}) {
     <SafeAreaView>
       <ArrowBack navigation={navigation} />
       <View style={style.superior_content_container}>
-        <View style={style.upperLocationContainer}>
-          <Text style={style.upperLocationTitle}>{route.params.fromPlace}</Text>
-          <Flight name="flight" />
-          <Text style={style.upperLocationTitle}>{route.params.toPlace}</Text>
-        </View>
-        <View style={style.bookingTitleContainer}>
-          <Flight name="event" />
-          <Text style={style.bookingTitle}>
-            <Span text="date" />
-          </Text>
-        </View>
+        <FlightTitle
+          fromPlace={route.params.fromPlace}
+          toPlace={route.params.toPlace}
+        />
+        <BookingTitle flight="event" text="date" />
       </View>
       <View style={style.calendarContainer}>
         <Calendar
@@ -43,9 +39,12 @@ const Date = function ({navigation, route}) {
           setSelectedDate={setSelectedDate}
         />
       </View>
-      <View style={style.btnCalendar}>
-        <ButtonForm onPress={next} text={<Span text="next" />} />
-      </View>
+      <NextButton
+        isDisabled={!dateSelected.startDate || !dateSelected.endDate}
+        styleButton={style.btnCalendar}
+        next={next}
+        text="next"
+      />
     </SafeAreaView>
   );
 };
