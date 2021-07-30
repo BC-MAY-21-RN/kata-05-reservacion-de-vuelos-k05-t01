@@ -10,7 +10,7 @@ import NextButton from '../../components/booking/NextButton';
 import FlightTitle from '../../components/booking/FlightTitle';
 
 const To = function ({navigation, route}) {
-  const [toPlace, setSelectedToPlace] = useState();
+  const [toPlace, setSelectedToPlace] = useState(null);
   const next = () => {
     navigation.navigate('Date', {
       ...route.params,
