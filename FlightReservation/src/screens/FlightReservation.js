@@ -8,11 +8,6 @@ import FlightDestiny from '../components/flights/FlightDestiny';
 import ScreenGreenTitle from '../components/screenConsts/ScreenGreenTitle';
 import PlusButton from './../components/flights/PlusButton';
 
-// const flightList: JSX.Element[] = [];
-// for (let i = 0; i < 8; i++) {
-//   flightList.push(<FlightDestiny />);
-// }
-
 const FlightReservation = ({navigation}) => {
   return (
     <View style={style.flights_container}>
@@ -25,7 +20,6 @@ const FlightReservation = ({navigation}) => {
           <ScreenGreenTitle span={'flights'} />
           <View style={style.inferior_content_container}>
             <FlightDestiny />
-            {/* {flightList} */}
           </View>
         </View>
       </ScrollView>
