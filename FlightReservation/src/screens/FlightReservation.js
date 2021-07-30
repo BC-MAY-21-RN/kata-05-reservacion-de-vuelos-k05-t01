@@ -18,7 +18,10 @@ const FlightReservation = ({navigation}) => {
     <View style={style.flights_container}>
       <ScrollView>
         <View>
-          <ArrowBack navigation={navigation} />
+          <ArrowBack
+            navigation={() => navigation.navigate('LogIn')}
+            name={'logout'}
+          />
           <ScreenGreenTitle span={'flights'} />
           <View style={style.inferior_content_container}>
             <FlightDestiny />
@@ -26,7 +29,7 @@ const FlightReservation = ({navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <PlusButton />
+      <PlusButton navigation={() => navigation.navigate('From')} />
       <View></View>
     </View>
   );
