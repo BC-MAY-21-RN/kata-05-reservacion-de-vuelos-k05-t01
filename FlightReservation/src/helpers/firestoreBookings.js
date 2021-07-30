@@ -24,8 +24,8 @@ const registerFlight = async (route, navigation) => {
           .collection('bookings')
           .doc(auth().currentUser.uid)
           .set(collectionData);
+          navigation.navigate('FlightReservation');
       }
-      navigation.navigate('Results');
     });
 };
 export default registerFlight;

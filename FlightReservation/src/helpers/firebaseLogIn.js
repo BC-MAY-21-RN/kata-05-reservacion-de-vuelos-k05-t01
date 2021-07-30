@@ -6,7 +6,6 @@ export const logInWithEmailAndPassword = async (email, password, navigation) => 
   return await auth()
     .signInWithEmailAndPassword(email, password)
     .then(({user}) => {
-      console.log('User signed in!');
       navigation.navigate('FlightReservation');
     })
     .catch(error => {
