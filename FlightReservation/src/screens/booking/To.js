@@ -19,8 +19,8 @@ const To = function ({navigation, route}) {
   };
   return (
     <SafeAreaView>
-      <ArrowBack navigation={navigation} />
-      <View style={style.superior_content_container}>
+    <ArrowBack navigation={() => navigation.goBack()} name={"chevron-left"}/>
+    <View style={style.superior_content_container}>
         <FlightTitle fromPlace={route.params.fromPlace} />
         <BookingTitle flight="flight-land" text="to" />
       </View>

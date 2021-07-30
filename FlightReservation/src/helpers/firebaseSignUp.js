@@ -8,14 +8,14 @@ import {WEB_CLIENT_ID} from '@env';
 export const signInWithNameEmailAndPassword = (name, email, password) => {
   return new Promise((resolve, reject) => {
     auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(({user}) => {
-        user
-          .updateProfile({displayName: name})
-          .then(
-            () => resolve('User created & signed in'),
-            createAditionalData(),
-          );
+    .createUserWithEmailAndPassword(email, password)
+    .then(({user}) => {
+      user
+      .updateProfile({displayName: name})
+      .then(
+        () => resolve('User created & signed in'),
+        createAditionalData(),
+        );
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -40,6 +40,7 @@ export const onGoogleButtonPress = async navigation => {
     .signInWithCredential(googleCredential)
     .then(response => {
       if (response) {
+        createAditionalData();
         navigation.navigate('FlightReservation');
       }
     });
