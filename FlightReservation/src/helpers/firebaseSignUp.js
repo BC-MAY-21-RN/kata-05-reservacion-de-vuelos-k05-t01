@@ -40,7 +40,7 @@ export const onGoogleButtonPress = async navigation => {
     .signInWithCredential(googleCredential)
     .then(response => {
       if (response) {
-        navigation.navigate('LogIn');
+        navigation.navigate('FlightReservation');
       }
     });
 };
