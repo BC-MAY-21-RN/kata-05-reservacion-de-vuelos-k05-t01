@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import Span from '../../consts/i18n/en';
@@ -25,7 +26,7 @@ const LoadingPage = ({status, navigation, setStatus}) => {
   } else if (status === 'signedUp') {
     setTimeout(() => {
       setStatus(false);
-      navigation.navigate('SignUp');
+      navigation.navigate('FlightReservation');
     }, 2000);
 
     return (
@@ -35,7 +36,6 @@ const LoadingPage = ({status, navigation, setStatus}) => {
             <Icon
               style={style.modal_icon}
               name="check-circle-outline"
-              onPress={() => setShowPassword(!showPassword)}
             />
             <Text style={style.modal_text}>
               <Span text="signedUp" />

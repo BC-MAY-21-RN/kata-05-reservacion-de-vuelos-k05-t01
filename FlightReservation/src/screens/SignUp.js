@@ -1,4 +1,4 @@
-LoadingPage; /* eslint-disable prettier/prettier */
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -20,7 +20,6 @@ import {
 import CheckBoxField from '../components/form/CheckBoxField';
 import style from './../consts/style';
 import Span, {span} from '../consts/i18n/en';
-import FlightReservation from './FlightReservation';
 import LoadingPage from '../components/form/LoadingSigningUp';
 import ScreenGreenTitle from './../components/screenConsts/ScreenGreenTitle';
 
@@ -120,7 +119,7 @@ const SignUp = function ({navigation}) {
                   <Span text="or" />
                 </Text>
                 <ButtonForm
-                  onPress={onGoogleButtonPress}
+                  onPress={() => onGoogleButtonPress(navigation)}
                   text={<Span text="signinGoogle" />}
                 />
                 <View style={style.lower_content_text}>
@@ -140,13 +139,6 @@ const SignUp = function ({navigation}) {
                       }}>
                       {' '}
                       <Span text="next" />
-                    </Text>
-                    <Text
-                      style={{backgroundColor: '#ff0'}}
-                      onPress={() => {
-                        navigation.navigate('FlightReservation');
-                      }}>
-                      <Span text="flights" />
                     </Text>
                   </Text>
                 </View>

@@ -7,11 +7,9 @@ import PasswordField from '../components/form/PasswordField';
 import {logInValidationSchema} from '../schemas/logInSchema';
 import {onGoogleButtonPress} from '../helpers/firebaseSignUp';
 import style from './../consts/style';
-import {Pressable} from 'react-native';
 import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
 import Span, {span} from '../consts/i18n/en';
 import ButtonForm from '../components/form/ButtonForm';
-import ArrowBack from '../components/booking/ArrowBack';
 import ScreenGreenTitle from '../components/screenConsts/ScreenGreenTitle';
 
 const LogIn = function ({navigation}) {
@@ -19,7 +17,7 @@ const LogIn = function ({navigation}) {
 
   const handleLogIn = async values => {
     const {email, password} = values;
-    await logInWithEmailAndPassword(email, password)
+    await logInWithEmailAndPassword(email, password, navigation)
       .then(() => setAuthError(false))
       .catch(() => setAuthError(true));
   };
@@ -38,7 +36,6 @@ const LogIn = function ({navigation}) {
           <View>
             <View style={style.upper_background}>
               <View>
-                <ArrowBack navigation={navigation} />
                 <ScreenGreenTitle span={'login'} />
               </View>
               <View>
@@ -69,7 +66,7 @@ const LogIn = function ({navigation}) {
                 <Span text="or" />
               </Text>
               <ButtonForm
-                onPress={onGoogleButtonPress}
+                onPress={() => onGoogleButtonPress(navigation)}
                 text={<Span text="signinGoogle" />}
               />
               <View style={style.lower_content_text}>
