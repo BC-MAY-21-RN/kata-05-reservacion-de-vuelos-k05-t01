@@ -270,6 +270,7 @@ const style = StyleSheet.create({
   },
   flights_col: {
     flexDirection: 'column',
+    alignSelf: 'center',
   },
   flights_container: {
     flex: 1,
@@ -281,6 +282,7 @@ const style = StyleSheet.create({
   flight_element: {
     // backgroundColor: '#DFFCFA',
     marginTop: 20,
+    marginHorizontal: 10,
   },
   flights_small_text_light: {
     fontSize: 18,
@@ -290,6 +292,7 @@ const style = StyleSheet.create({
     fontSize: 18,
     color: colors.dark,
     fontWeight: 'bold',
+    alignSelf: 'center',
   },
   separator_thin: {
     borderBottomColor: colors.dark_grey,
