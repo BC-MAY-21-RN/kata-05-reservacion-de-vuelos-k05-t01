@@ -8,22 +8,23 @@ import ScreenGreenTitle from '../components/screenConsts/ScreenGreenTitle';
 import PlusButton from './../components/flights/PlusButton';
 
 import {ListItem} from '../components/booking/ListItem';
+import LogOut from '../helpers/firebaseLogOut';
 
-const FlightReservation = ({navigation, flightList: {flights},getFlightsUser}) => {
-  useEffect(async() => {
+const FlightReservation = ({
+  navigation,
+  flightList: {flights},
+  getFlightsUser,
+}) => {
+  useEffect(async () => {
     await getFlightsUser();
   }, []);
-
-  const flightListComponent = flights.map((item,index) => {
+  const flightListComponent = flights.map((item, index) => {
     return <ListItem {...item} key={index} />;
   });
   return (
     <View style={style.flights_container}>
       <ScrollView>
-        <ArrowBack
-          navigation={() => navigation.navigate('LogIn')}
-          name={'logout'}
-        />
+        <ArrowBack navigation={() => LogOut(navigation)} name={'logout'} />
         <ScreenGreenTitle span={'flights'} />
         {flights.length ? flightListComponent : null}
       </ScrollView>

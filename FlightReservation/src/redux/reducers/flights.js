@@ -8,7 +8,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const {payload: flights} = action;
-  console.log(action.type,flights);
   switch (action.type) {
     case DISPLAY_FLIGHTS.request():
       return getNewState(state, {

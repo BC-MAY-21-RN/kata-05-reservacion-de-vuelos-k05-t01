@@ -11,6 +11,7 @@ import {logInWithEmailAndPassword} from './../helpers/firebaseLogIn';
 import Span, {span} from '../consts/i18n/en';
 import ButtonForm from '../components/form/ButtonForm';
 import ScreenGreenTitle from '../components/screenConsts/ScreenGreenTitle';
+import { verifyAuth } from '../helpers/customHooks/verifyAuth';
 
 const LogIn = function ({navigation}) {
   const [authError, setAuthError] = useState(false);
@@ -21,7 +22,7 @@ const LogIn = function ({navigation}) {
       .then(() => setAuthError(false))
       .catch(() => setAuthError(true));
   };
-
+  verifyAuth(navigation)
   return (
     <SafeAreaView>
       <Formik
