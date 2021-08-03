@@ -11,11 +11,10 @@ import BarCode from '../../components/booking/BarCode';
 import Request from '../../components/booking/Request';
 import registerFlight from '../../helpers/firestoreBookings';
 
-const Results = function ({navigation, route}) {
+const Results = function ({navigation, route,getFlightsUser}) {
   const {startDate = new Date(startDate), endDate = new Date(endDate)} =
     route.params;
 
-  console.log(route.params);
 
   return (
     <SafeAreaView>
@@ -35,7 +34,7 @@ const Results = function ({navigation, route}) {
       <BarCode />
       <View style={style.btnResults}>
         <ButtonForm
-          onPress={async () => await registerFlight(route, navigation)}
+          onPress={async () => await registerFlight(route, navigation,getFlightsUser)}
           text={<Span text="finish" />}
         />
       </View>

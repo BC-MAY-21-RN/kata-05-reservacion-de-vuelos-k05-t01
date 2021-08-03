@@ -2,7 +2,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-const registerFlight = async (route, navigation) => {
+const registerFlight = async (route, navigation, getFlightsUser) => {
   const {fromPlace, toPlace, startDate, endDate, passengers} = route.params;
   const newData = {
     fromPlace,
@@ -24,7 +24,9 @@ const registerFlight = async (route, navigation) => {
           .collection('bookings')
           .doc(auth().currentUser.uid)
           .set(collectionData);
-          navigation.navigate('FlightReservation');
+        navigation.navigate('FlightReservation');
+
+        await getFlightsUser();
       }
     });
 };

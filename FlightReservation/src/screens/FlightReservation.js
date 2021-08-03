@@ -1,30 +1,34 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {FlatList, ScrollView, View, Text} from 'react-native';
 import Span, {span} from '../consts/i18n/en';
 import style from '../consts/style';
 import ArrowBack from '../components/booking/ArrowBack';
-import FlightDestiny from '../components/flights/FlightDestiny';
 import ScreenGreenTitle from '../components/screenConsts/ScreenGreenTitle';
 import PlusButton from './../components/flights/PlusButton';
 
-const FlightReservation = ({navigation}) => {
+import {ListItem} from '../components/booking/ListItem';
+import LogOut from '../helpers/firebaseLogOut';
+
+const FlightReservation = ({
+  navigation,
+  flightList: {flights},
+  getFlightsUser,
+}) => {
+  useEffect(async () => {
+    await getFlightsUser();
+  }, []);
+  const flightListComponent = flights.map((item, index) => {
+    return <ListItem {...item} key={index} />;
+  });
   return (
     <View style={style.flights_container}>
       <ScrollView>
-        <View>
-          <ArrowBack
-            navigation={() => navigation.navigate('LogIn')}
-            name={'logout'}
-          />
-          <ScreenGreenTitle span={'flights'} />
-          <View style={style.inferior_content_container}>
-            <FlightDestiny />
-          </View>
-        </View>
+        <ArrowBack navigation={() => LogOut(navigation)} name={'logout'} />
+        <ScreenGreenTitle span={'flights'} />
+        {flights.length ? flightListComponent : null}
       </ScrollView>
       <PlusButton navigation={() => navigation.navigate('From')} />
-      <View></View>
     </View>
   );
 };
