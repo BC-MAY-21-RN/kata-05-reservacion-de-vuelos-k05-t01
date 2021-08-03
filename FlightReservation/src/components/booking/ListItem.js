@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import style from '../../consts/style';
 
 export const ListItem = props => {
-  console.log(props);
   return (
     <View style={style.flight_element}>
       <View style={style.flights_row}>

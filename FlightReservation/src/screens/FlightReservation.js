@@ -6,18 +6,16 @@ import style from '../consts/style';
 import ArrowBack from '../components/booking/ArrowBack';
 import ScreenGreenTitle from '../components/screenConsts/ScreenGreenTitle';
 import PlusButton from './../components/flights/PlusButton';
-import {getFlights} from '../helpers/flightsController';
-import { ListItem } from '../components/booking/ListItem';
 
-const FlightReservation = ({navigation}) => {
-  const [flightsList, setFlightsList] = useState([]);
+import {ListItem} from '../components/booking/ListItem';
 
-  useEffect(() => {
-    getFlights(setFlightsList);
-  }, [setFlightsList]);
+const FlightReservation = ({navigation, flightList: {flights},getFlightsUser}) => {
+  useEffect(async() => {
+    await getFlightsUser();
+  }, []);
 
-  const flightListComponent = flightsList.map(item => {
-    return <ListItem {...item} />;
+  const flightListComponent = flights.map((item,index) => {
+    return <ListItem {...item} key={index} />;
   });
   return (
     <View style={style.flights_container}>
@@ -27,7 +25,7 @@ const FlightReservation = ({navigation}) => {
           name={'logout'}
         />
         <ScreenGreenTitle span={'flights'} />
-        {flightsList.length ? flightListComponent : null}
+        {flights.length ? flightListComponent : null}
       </ScrollView>
       <PlusButton navigation={() => navigation.navigate('From')} />
     </View>

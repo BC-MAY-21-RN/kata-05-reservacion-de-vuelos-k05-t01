@@ -3,8 +3,6 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Provider} from 'react-redux';
-import {store} from './src/store/store';
 import {useGoogleConfiguration} from './src/helpers/firebaseSignUp';
 import SignUp from './src/screens/SignUp';
 import LogIn from './src/screens/LogIn';
@@ -12,8 +10,9 @@ import From from './src/screens/booking/From';
 import To from './src/screens/booking/To';
 import Date from './src/screens/booking/Date';
 import Passenger from './src/screens/booking/Passenger';
-import Results from './src/screens/booking/Results';
-import FlightReservation from './src/screens/FlightReservation';
+
+import {FlightReservation,Results} from './src/containers/index';
+import withRedux from './src/redux';
 
 const Stack = createStackNavigator();
 
@@ -36,13 +35,14 @@ const App = () => {
   useGoogleConfiguration();
   return (
     <NavigationContainer>
-      <Provider store={store}>
+
         <Stack.Navigator screenOptions={{header: () => null}}>
           {screens}
         </Stack.Navigator>
-      </Provider>
+
     </NavigationContainer>
   );
 };
 
-export default App;
+
+export default withRedux(App);
